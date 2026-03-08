@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acriba — Brand Book</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* ── Primary ── */
+      --midnight:    #0B1D33;   /* Deep navy — primary background, authority */
+      --deep-teal:   #0F3D3E;   /* Dark teal — secondary dark, depth */
+
+      /* ── Accent ── */
+      --amber:       #D4A44C;   /* Warm gold — CTAs, highlights, premium feel */
+      --amber-light: #E8C77B;   /* Lighter gold — hover states */
+
+      /* ── Secondary ── */
+      --sage:        #5B8A72;   /* Muted green — tech elements, subtle accent */
+      --steel:       #64748B;   /* Blue-gray — secondary text, metadata */
+
+      /* ── Neutrals ── */
+      --ivory:       #FAF8F5;   /* Warm white — page background */
+      --sand:        #F0EDE8;   /* Light warm gray — section backgrounds */
+      --graphite:    #2D2D2D;   /* Near-black — body text */
+      --mist:        #E2DFD9;   /* Dividers, borders */
+
+      /* ── Typography ── */
+      --font-display: 'Newsreader', Georgia, serif;
+      --font-body:    'DM Sans', -apple-system, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--graphite);
+      background: var(--ivory);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ── Header ── */
+    .brand-header {
+      background: var(--midnight);
+      color: white;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+    .brand-header h1 {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .brand-header p {
+      font-size: 1.1rem;
+      color: var(--amber);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    /* ── Sections ── */
+    .section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--mist);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--steel);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--mist);
+    }
+
+    /* ── Color Palette ── */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .color-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--mist);
+    }
+    .color-swatch {
+      height: 120px;
+    }
+    .color-info {
+      padding: 1rem;
+      background: white;
+    }
+    .color-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    .color-hex {
+      font-family: 'DM Sans', monospace;
+      font-size: 0.8rem;
+      color: var(--steel);
+    }
+    .color-role {
+      font-size: 0.8rem;
+      color: var(--steel);
+      margin-top: 0.5rem;
+      line-height: 1.4;
+    }
+    .color-var {
+      font-family: monospace;
+      font-size: 0.7rem;
+      color: var(--sage);
+      margin-top: 0.25rem;
+    }
+
+    /* ── Typography ── */
+    .type-specimen {
+      margin-top: 2rem;
+    }
+    .type-block {
+      padding: 2.5rem;
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--mist);
+    }
+    .type-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .type-display {
+      font-family: var(--font-display);
+    }
+    .type-body {
+      font-family: var(--font-body);
+    }
+    .type-h1 { font-size: 3rem; font-weight: 400; line-height: 1.1; margin-bottom: 0.5rem; }
+    .type-h2 { font-size: 2rem; font-weight: 400; line-height: 1.2; margin-bottom: 0.5rem; }
+    .type-h3 { font-size: 1.5rem; font-weight: 400; line-height: 1.3; margin-bottom: 0.5rem; }
+    .type-p  { font-size: 1.05rem; line-height: 1.7; color: var(--graphite); max-width: 600px; }
+    .type-small { font-size: 0.875rem; line-height: 1.6; color: var(--steel); }
+    .type-meta {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .type-meta span {
+      font-size: 0.8rem;
+      color: var(--steel);
+      background: var(--sand);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+    }
+
+    /* ── Spacing Scale ── */
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .spacing-bar {
+      background: var(--amber);
+      height: 24px;
+      border-radius: 4px;
+      opacity: 0.7;
+    }
+    .spacing-label {
+      font-size: 0.8rem;
+      color: var(--steel);
+      min-width: 80px;
+    }
+
+    /* ── Logo Area ── */
+    .logo-specimens {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .logo-box {
+      padding: 3rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--mist);
+    }
+    .logo-box.light { background: white; }
+    .logo-box.dark { background: var(--midnight); }
+    .logo-box.teal { background: var(--deep-teal); }
+    .logo-box.sand { background: var(--sand); }
+    .logo-text {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+    }
+    .logo-text.dark-text { color: var(--midnight); }
+    .logo-text.light-text { color: var(--ivory); }
+    .logo-text.amber-text { color: var(--amber); }
+
+    @media (max-width: 640px) {
+      .brand-header h1 { font-size: 2.5rem; }
+      .logo-specimens { grid-template-columns: 1fr; }
+      .color-grid { grid-template-columns: 1fr 1fr; }
+      .type-h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="brand-header">
+    <h1>Acriba</h1>
+    <p>Brand Book</p>
+  </div>
+
+  <div class="container">
+
+    <!-- Color Palette -->
+    <div class="section">
+      <div class="section-label">Color Palette</div>
+      <p style="max-width:600px;color:var(--steel);margin-bottom:1rem;">A sophisticated palette rooted in deep navy and warm gold. Conveys pharmaceutical authority, technological precision, and premium positioning.</p>
+
+      <div class="color-grid">
+        <div class="color-card">
+          <div class="color-swatch" style="background:var(--midnight);"></div>
+          <div class="color-info">
+            <div class="color-name">Midnight</div>
+            <div class="color-hex">#0B1D33</div>
+            <div class="color-var">--midnight</div>
+            <div class="color-role">Primary dark. Hero backgrounds, headers, authority elements.</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:var(--deep-teal);"></div>
+          <div class="color-info">
+            <div class="color-name">Deep Teal</div>
+            <div class="color-hex">#0F3D3E</div>
+            <div class="color-var">--deep-teal</div>
+            <div class="color-role">Secondary dark. Alt sections, depth, variety.</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:var(--amber);"></div>
+          <div class="color-info">
+            <div class="color-name">Amber</div>
+            <div class="color-hex">#D4A44C</div>
+            <div class="color-var">--amber</div>
+            <div class="color-role">Primary accent. CTAs, highlights, premium signals.</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:var(--amber-light);"></div>
+          <div class="color-info">
+            <div class="color-name">Amber Light</div>
+            <div class="color-hex">#E8C77B</div>
+            <div class="color-var">--amber-light</div>
+            <div class="color-role">Hover states, subtle gold accents.</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:var(--sage);"></div>
+          <div class="color-info">
+            <div class="color-name">Sage</div>
+            <div class="color-hex">#5B8A72</div>
+            <div class="color-var">--sage</div>
+            <div class="color-role">Tech accent. Tags, badges, secondary elements.</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:var(--steel);"></div>
+          <div class="color-info">
+            <div class="color-name">Steel</div>
+            <div class="color-hex">#64748B</div>
+            <div class="color-var">--steel</div>
+            <div class="color-role">Secondary text. Metadata, captions, labels.</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:var(--ivory);"></div>
+          <div class="color-info">
+            <div class="color-name">Ivory</div>
+            <div class="color-hex">#FAF8F5</div>
+            <div class="color-var">--ivory</div>
+            <div class="color-role">Page background. Warm, not clinical white.</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:var(--sand);"></div>
+          <div class="color-info">
+            <div class="color-name">Sand</div>
+            <div class="color-hex">#F0EDE8</div>
+            <div class="color-var">--sand</div>
+            <div class="color-role">Section backgrounds. Alternating content areas.</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:var(--graphite);"></div>
+          <div class="color-info">
+            <div class="color-name">Graphite</div>
+            <div class="color-hex">#2D2D2D</div>
+            <div class="color-var">--graphite</div>
+            <div class="color-role">Body text. Readable, softer than pure black.</div>
+          </div>
+        </div>
+        <div class="color-card">
+          <div class="color-swatch" style="background:var(--mist);"></div>
+          <div class="color-info">
+            <div class="color-name">Mist</div>
+            <div class="color-hex">#E2DFD9</div>
+            <div class="color-var">--mist</div>
+            <div class="color-role">Dividers, borders, subtle separations.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="section">
+      <div class="section-label">Typography</div>
+
+      <div class="type-specimen">
+        <div class="type-block">
+          <div class="type-label">Display — Newsreader</div>
+          <div class="type-display type-h1">Regulatory intelligence,<br>redefined.</div>
+          <div class="type-meta">
+            <span>Newsreader</span>
+            <span>400 weight</span>
+            <span>Headings, hero text, statements</span>
+          </div>
+        </div>
+
+        <div class="type-block">
+          <div class="type-label">Heading Scale</div>
+          <h1 class="type-display type-h1">H1 — The future of regulatory writing</h1>
+          <h2 class="type-display type-h2">H2 — Expert-validated, AI-accelerated</h2>
+          <h3 class="type-display type-h3">H3 — From first draft to final submission</h3>
+        </div>
+
+        <div class="type-block">
+          <div class="type-label">Body — DM Sans</div>
+          <p class="type-body type-p">Acriba combines proprietary AI tools with 30 years of pharmaceutical regulatory expertise. We produce investigator brochures, clinical protocols, and IND packages at a fraction of the time and cost of traditional CROs — without compromising on quality or compliance.</p>
+          <br>
+          <p class="type-body type-small">DM Sans 300–700 · Body copy, navigation, UI elements, metadata</p>
+          <div class="type-meta">
+            <span>DM Sans</span>
+            <span>300–700 weight</span>
+            <span>Body, UI, navigation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo Specimens -->
+    <div class="section">
+      <div class="section-label">Logo Treatments</div>
+      <p style="max-width:600px;color:var(--steel);margin-bottom:1rem;">The Acriba wordmark uses Newsreader at 400 weight with 0.06em letter-spacing. Minimum clear space: 1× the height of the "A".</p>
+
+      <div class="logo-specimens">
+        <div class="logo-box light">
+          <span class="logo-text dark-text">Acriba</span>
+        </div>
+        <div class="logo-box dark">
+          <span class="logo-text light-text">Acriba</span>
+        </div>
+        <div class="logo-box teal">
+          <span class="logo-text amber-text">Acriba</span>
+        </div>
+        <div class="logo-box sand">
+          <span class="logo-text dark-text">Acriba</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voice & Tone -->
+    <div class="section">
+      <div class="section-label">Voice & Tone</div>
+      <div class="type-block">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
+          <div>
+            <div class="type-label">We are</div>
+            <ul style="list-style:none;line-height:2;">
+              <li>✦ Precise, not verbose</li>
+              <li>✦ Authoritative, not arrogant</li>
+              <li>✦ Innovative, not gimmicky</li>
+              <li>✦ Expert, not academic</li>
+            </ul>
+          </div>
+          <div>
+            <div class="type-label">We avoid</div>
+            <ul style="list-style:none;line-height:2;">
+              <li>✗ Marketing fluff & buzzwords</li>
+              <li>✗ Overpromising or hype</li>
+              <li>✗ Jargon for jargon's sake</li>
+              <li>✗ Generic corporate tone</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="background:var(--midnight);padding:3rem;text-align:center;margin-top:4rem;">
+    <span style="font-family:var(--font-display);font-size:2rem;color:var(--ivory);letter-spacing:0.06em;">Acriba</span>
+    <p style="color:var(--steel);font-size:0.85rem;margin-top:0.5rem;">Brand Book v1.0 — March 2026</p>
+  </div>
+
+</body>
+</html>
