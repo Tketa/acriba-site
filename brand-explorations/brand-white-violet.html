@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acriba — White + Violet Variations</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: #F5F5F8; color: #1E1B4B; }
+    
+    .header { text-align: center; padding: 60px 24px 20px; }
+    .header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; margin-bottom: 8px; font-weight: 700; }
+    .header p { color: #6B7280; font-size: 0.95rem; max-width: 500px; margin: 0 auto; }
+    
+    .proposal { margin: 0 auto 40px; max-width: 1000px; padding: 0 24px; }
+    .proposal-tag { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+    .proposal-tag .num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.8rem; }
+    .proposal-title { font-size: 1.6rem; margin-bottom: 4px; font-weight: 700; }
+    .proposal-sub { color: #6B7280; font-size: 0.85rem; margin-bottom: 6px; }
+    .proposal-why { font-size: 0.85rem; color: #4B5563; margin-bottom: 20px; padding: 12px 16px; border-left: 3px solid; border-radius: 0 8px 8px 0; background: #F5F5F7; }
+    
+    .hero-mock { border-radius: 14px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.08); margin-bottom: 16px; }
+    .hero-nav { display: flex; justify-content: space-between; align-items: center; padding: 14px 32px; }
+    .hero-nav .logo { font-weight: 700; font-size: 1.25rem; display: flex; align-items: center; gap: 7px; }
+    .hero-nav .nav-links { display: flex; gap: 20px; font-size: 0.82rem; align-items: center; }
+    .hero-content { padding: 52px 32px 56px; position: relative; overflow: hidden; }
+    .hero-tagline { font-size: 2.6rem; line-height: 1.1; margin-bottom: 14px; max-width: 560px; font-weight: 700; }
+    .hero-sub { font-size: 1rem; margin-bottom: 24px; max-width: 460px; line-height: 1.6; }
+    .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .hero-btn { padding: 11px 22px; border-radius: 8px; font-weight: 600; font-size: 0.88rem; text-decoration: none; display: inline-block; border: 2px solid transparent; }
+    
+    .pill { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; margin-bottom: 12px; }
+    
+    .palette-strip { display: flex; border-radius: 8px; overflow: hidden; margin: 12px 0; height: 44px; }
+    .palette-strip div { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-family: monospace; }
+    
+    .bottom-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+    .stats-mock { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 20px; border-radius: 10px; text-align: center; }
+    .stat-num { font-size: 1.8rem; font-weight: 700; }
+    .stat-label { font-size: 0.68rem; margin-top: 2px; }
+    
+    .cards-mock { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .card-mock { border-radius: 10px; padding: 16px; }
+    .card-mock h5 { font-size: 0.85rem; margin-bottom: 4px; font-weight: 600; }
+    .card-mock p { font-size: 0.75rem; line-height: 1.45; }
+    
+    .quill-float { position: absolute; right: 32px; top: 50%; transform: translateY(-50%); }
+    
+    .sep { height: 1px; max-width: 1000px; margin: 48px auto; background: linear-gradient(to right, transparent, #D1D5DB, transparent); }
+    
+    .vote { max-width: 1000px; margin: 40px auto 80px; padding: 0 24px; text-align: center; }
+    .vote h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; margin-bottom: 10px; font-weight: 700; }
+    .vote p { color: #6B7280; max-width: 450px; margin: 0 auto 20px; font-size: 0.9rem; }
+    
+    @media (max-width: 768px) {
+      .hero-tagline { font-size: 1.8rem; }
+      .hero-content { padding: 32px 20px 36px; }
+      .hero-nav { padding: 12px 20px; }
+      .hero-nav .nav-links { display: none; }
+      .cards-mock { grid-template-columns: 1fr; }
+      .stats-mock { grid-template-columns: repeat(2, 1fr); }
+      .bottom-row { grid-template-columns: 1fr; }
+      .quill-float { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Fond blanc + Violet — 4 variations</h1>
+    <p>Palette indigo/violet de tes slides, fond blanc, sans-serif crisp.</p>
+  </div>
+
+  <!-- ============================== -->
+  <!-- A: PURE INDIGO -->
+  <!-- ============================== -->
+  <div class="proposal">
+    <div class="proposal-tag">
+      <div class="num" style="background: #1A1464; color: white;">A</div>
+      <span style="font-weight: 600; font-size: 0.85rem; color: #1A1464;">Pure Indigo</span>
+    </div>
+    <div class="proposal-title" style="font-family: 'Inter', sans-serif; color: #1A1464;">Le plus fidèle à ton deck</div>
+    <div class="proposal-sub">Inter · Indigo #1A1464 + Violet accent #4F46E5 · Fond blanc pur</div>
+    
+    <div class="proposal-why" style="border-color: #1A1464; background: #FAFAFF;">
+      <strong>L'idée :</strong> On reprend quasi à l'identique les couleurs de ton deck. Indigo sombre pour les titres, violet pour les accents/boutons, fond blanc propre. Inter est la typo par défaut du web — invisible, ultra-lisible, pro. Aucun risque, 100% crédible. C'est ton deck en version web.
+    </div>
+    
+    <div class="hero-mock">
+      <div class="hero-nav" style="background: #F5F5F7; border-bottom: 1px solid #EBEBF0;">
+        <div class="logo" style="font-family: 'Inter', sans-serif; color: #1A1464; font-weight: 800;">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M15 2.5C13.5 5, 11 9, 6.5 14C5.5 15, 4.5 15.5, 4 16L5 17C5.5 16.5, 8 14, 10.5 10C13 6, 14.5 3.5, 15 2.5Z" fill="#1A1464"/>
+            <path d="M4 16L3 18.5L5 17" fill="#4F46E5" opacity="0.7"/>
+          </svg>
+          Acriba
+        </div>
+        <div class="nav-links" style="color: #6B7280;">
+          <span>Services</span><span>Process</span><span>Team</span>
+          <span style="padding: 7px 16px; background: #1A1464; border-radius: 6px; color: white;">Contact</span>
+        </div>
+      </div>
+      <div class="hero-content" style="background: #F5F5F7;">
+        <svg class="quill-float" width="240" height="240" viewBox="0 0 80 80" fill="none" style="opacity: 0.04;">
+          <path d="M60 8C55 18, 45 33, 25 53C22 56, 18 58, 15 60L18 63C20 61, 30 53, 40 38C50 23, 58 13, 60 8Z" fill="#1A1464"/>
+        </svg>
+        <div class="pill" style="background: #EEEDF5; color: #1A1464;">AI-Powered Regulatory Writing</div>
+        <div class="hero-tagline" style="font-family: 'Inter', sans-serif; color: #1A1464; letter-spacing: -0.03em;">
+          Accelerating drug<br>development with <span style="color: #4F46E5;">precision.</span>
+        </div>
+        <div class="hero-sub" style="color: #6B7280;">Combining 30+ years of pharma expertise with proprietary AI to deliver regulatory documents faster and at lower cost.</div>
+        <div class="hero-btns">
+          <a class="hero-btn" style="background: #1A1464; color: white;">Get in Touch →</a>
+          <a class="hero-btn" style="border-color: #1A1464; color: #1A1464;">View Case Study</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="palette-strip">
+      <div style="background: #1A1464; color: rgba(255,255,255,0.8);">#1A1464</div>
+      <div style="background: #4F46E5; color: white;">#4F46E5</div>
+      <div style="background: #8B83F0; color: white;">#8B83F0</div>
+      <div style="background: #EEEDF5; color: #1A1464;">#EEEDF5</div>
+      <div style="background: #F5F5F7; color: #999; border: 1px solid #eee;">#FFFFFF</div>
+    </div>
+    
+    <div class="stats-mock" style="background: #F8F8FC; border: 1px solid #EBEBF0;">
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Inter', sans-serif;">30</div><div class="stat-label" style="color: #6B7280;">Days Delivery</div></div>
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Inter', sans-serif;">50%</div><div class="stat-label" style="color: #6B7280;">Cost Savings</div></div>
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Inter', sans-serif;">15</div><div class="stat-label" style="color: #6B7280;">Docs Delivered</div></div>
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Inter', sans-serif;">100%</div><div class="stat-label" style="color: #6B7280;">Expert Reviewed</div></div>
+    </div>
+
+    <div class="cards-mock">
+      <div class="card-mock" style="background: white; border: 1px solid #EBEBF0;">
+        <h5 style="color: #1A1464; font-family: 'Inter', sans-serif;">IB / IMPD</h5>
+        <p style="color: #6B7280;">Investigator's Brochure and IMPD preparation</p>
+      </div>
+      <div class="card-mock" style="background: #F5F5F7; border: 1px solid #EBEBF0;">
+        <h5 style="color: #1A1464; font-family: 'Inter', sans-serif;">eCTD Modules</h5>
+        <p style="color: #6B7280;">IND, MAA, NDA submission packages</p>
+      </div>
+      <div class="card-mock" style="background: #F5F5F7; border: 1px solid #EBEBF0;">
+        <h5 style="color: #1A1464; font-family: 'Inter', sans-serif;">CSR & Protocol</h5>
+        <p style="color: #6B7280;">Clinical Study Reports and protocols</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ============================== -->
+  <!-- B: SOFT VIOLET -->
+  <!-- ============================== -->
+  <div class="proposal">
+    <div class="proposal-tag">
+      <div class="num" style="background: #6D5CFF; color: white;">B</div>
+      <span style="font-weight: 600; font-size: 0.85rem; color: #6D5CFF;">Soft Violet</span>
+    </div>
+    <div class="proposal-title" style="font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1464;">Plus de personnalité, plus doux</div>
+    <div class="proposal-sub">Plus Jakarta Sans · Violet lumineux #6D5CFF + lavande · Sections lavande alternées</div>
+    
+    <div class="proposal-why" style="border-color: #6D5CFF; background: #F9F8FF;">
+      <strong>L'idée :</strong> On adoucit l'indigo dur avec un violet plus lumineux (#6D5CFF) — plus friendly, plus "approachable". Les sections alternent blanc et lavande pâle pour du rythme. Jakarta Sans est ronde et accueillante — ça dit "on est experts mais on est sympa". Plus Notion/Figma que McKinsey.
+    </div>
+    
+    <div class="hero-mock">
+      <div class="hero-nav" style="background: #F5F5F7; border-bottom: 1px solid #EBEBF0;">
+        <div class="logo" style="font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1464; font-weight: 800;">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M15 2.5C13.5 5, 11 9, 6.5 14C5.5 15, 4.5 15.5, 4 16L5 17C5.5 16.5, 8 14, 10.5 10C13 6, 14.5 3.5, 15 2.5Z" fill="#6D5CFF"/>
+            <path d="M4 16L3 18.5L5 17" fill="#6D5CFF" opacity="0.5"/>
+          </svg>
+          Acriba
+        </div>
+        <div class="nav-links" style="color: #6B7280;">
+          <span>Services</span><span>Process</span><span>Team</span>
+          <span style="padding: 7px 16px; background: #6D5CFF; border-radius: 8px; color: white;">Contact</span>
+        </div>
+      </div>
+      <div class="hero-content" style="background: #F5F5F7;">
+        <svg class="quill-float" width="260" height="260" viewBox="0 0 80 80" fill="none" style="opacity: 0.05;">
+          <path d="M60 8C55 18, 45 33, 25 53C22 56, 18 58, 15 60L18 63C20 61, 30 53, 40 38C50 23, 58 13, 60 8Z" fill="#6D5CFF"/>
+        </svg>
+        <div class="pill" style="background: #F0EEFF; color: #6D5CFF;">✦ AI + Pharma Expertise</div>
+        <div class="hero-tagline" style="font-family: 'Plus Jakarta Sans', sans-serif; color: #1A1464;">
+          Regulatory documents,<br><span style="color: #6D5CFF;">done right.</span>
+        </div>
+        <div class="hero-sub" style="color: #6B7280;">AI-powered regulatory writing backed by 30+ years of drug development expertise. From raw data to submission in weeks.</div>
+        <div class="hero-btns">
+          <a class="hero-btn" style="background: #6D5CFF; color: white; border-radius: 10px;">Get in Touch →</a>
+          <a class="hero-btn" style="border-color: #D4D0F8; color: #1A1464; border-radius: 10px;">Case Study</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="palette-strip">
+      <div style="background: #1A1464; color: rgba(255,255,255,0.8);">#1A1464</div>
+      <div style="background: #6D5CFF; color: white;">#6D5CFF</div>
+      <div style="background: #A78BFA; color: white;">#A78BFA</div>
+      <div style="background: #F0EEFF; color: #1A1464;">#F0EEFF</div>
+      <div style="background: #F5F5F7; color: #999; border: 1px solid #eee;">#FFFFFF</div>
+    </div>
+    
+    <div class="stats-mock" style="background: #F0EEFF;">
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Plus Jakarta Sans', sans-serif;">30</div><div class="stat-label" style="color: #6D5CFF;">Days Delivery</div></div>
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Plus Jakarta Sans', sans-serif;">50%</div><div class="stat-label" style="color: #6D5CFF;">Cost Savings</div></div>
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Plus Jakarta Sans', sans-serif;">15</div><div class="stat-label" style="color: #6D5CFF;">Docs Delivered</div></div>
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Plus Jakarta Sans', sans-serif;">100%</div><div class="stat-label" style="color: #6D5CFF;">Expert Reviewed</div></div>
+    </div>
+
+    <div class="cards-mock">
+      <div class="card-mock" style="background: #F5F5F7; border: 1px solid #E8E6F5; border-radius: 12px;">
+        <h5 style="color: #1A1464; font-family: 'Plus Jakarta Sans', sans-serif;">IB / IMPD</h5>
+        <p style="color: #6B7280;">Investigator's Brochure and IMPD preparation</p>
+      </div>
+      <div class="card-mock" style="background: #F5F5F7; border: 1px solid #E8E6F5; border-radius: 12px;">
+        <h5 style="color: #1A1464; font-family: 'Plus Jakarta Sans', sans-serif;">eCTD Modules</h5>
+        <p style="color: #6B7280;">IND, MAA, NDA submission packages</p>
+      </div>
+      <div class="card-mock" style="background: #F5F5F7; border: 1px solid #E8E6F5; border-radius: 12px;">
+        <h5 style="color: #1A1464; font-family: 'Plus Jakarta Sans', sans-serif;">CSR & Protocol</h5>
+        <p style="color: #6B7280;">Clinical Study Reports and protocols</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ============================== -->
+  <!-- C: STRUCTURED -->
+  <!-- ============================== -->
+  <div class="proposal">
+    <div class="proposal-tag">
+      <div class="num" style="background: #3A2DC8; color: white;">C</div>
+      <span style="font-weight: 600; font-size: 0.85rem; color: #3A2DC8;">Structured</span>
+    </div>
+    <div class="proposal-title" style="font-family: 'Space Grotesk', sans-serif; color: #1A1464;">Grid rigoureux, accent lines</div>
+    <div class="proposal-sub">Space Grotesk · Indigo #1A1464 + accent vif #3A2DC8 · Lignes d'accent à gauche des cartes</div>
+    
+    <div class="proposal-why" style="border-color: #3A2DC8; background: #F8F7FF;">
+      <strong>L'idée :</strong> L'accent est sur la structure — des lignes verticales colorées à gauche des cartes (comme dans ton deck sur la slide sécurité), des grilles bien alignées. Le #3A2DC8 de ton deck est l'accent principal. Space Grotesk est géométrique et précise — ça colle parfaitement avec "akríbeia" (précision). Le site respire l'organisation et la rigueur. Pour les gens qui lisent des CTD toute la journée.
+    </div>
+    
+    <div class="hero-mock">
+      <div class="hero-nav" style="background: #F5F5F7; border-bottom: 1px solid #EBEBF0;">
+        <div class="logo" style="font-family: 'Space Grotesk', sans-serif; color: #1A1464; font-weight: 700;">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M15 2.5C13.5 5, 11 9, 6.5 14C5.5 15, 4.5 15.5, 4 16L5 17C5.5 16.5, 8 14, 10.5 10C13 6, 14.5 3.5, 15 2.5Z" fill="#3A2DC8"/>
+            <path d="M4 16L3 18.5L5 17" fill="#3A2DC8" opacity="0.5"/>
+          </svg>
+          Acriba
+        </div>
+        <div class="nav-links" style="color: #6B7280;">
+          <span>Services</span><span>Process</span><span>Team</span>
+          <span style="padding: 7px 16px; background: #3A2DC8; border-radius: 6px; color: white;">Contact</span>
+        </div>
+      </div>
+      <div class="hero-content" style="background: #F5F5F7; border-left: 4px solid #3A2DC8; margin: 0;">
+        <svg class="quill-float" width="220" height="220" viewBox="0 0 80 80" fill="none" style="opacity: 0.03;">
+          <path d="M60 8C55 18, 45 33, 25 53C22 56, 18 58, 15 60L18 63C20 61, 30 53, 40 38C50 23, 58 13, 60 8Z" fill="#3A2DC8"/>
+        </svg>
+        <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: #3A2DC8; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;"><span style="width: 24px; height: 2px; background: #3A2DC8; display: block;"></span>AI-Powered Regulatory Writing</div>
+        <div class="hero-tagline" style="font-family: 'Space Grotesk', sans-serif; color: #1A1464; letter-spacing: -0.02em;">
+          Precision regulatory<br>writing, <span style="color: #3A2DC8;">at scale.</span>
+        </div>
+        <div class="hero-sub" style="color: #6B7280;">Proprietary AI combined with 30+ years of drug development expertise. IND, IMPD, eCTD — delivered in weeks.</div>
+        <div class="hero-btns">
+          <a class="hero-btn" style="background: #3A2DC8; color: white;">Get in Touch →</a>
+          <a class="hero-btn" style="border-color: #3A2DC8; color: #3A2DC8;">Case Study</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="palette-strip">
+      <div style="background: #1A1464; color: rgba(255,255,255,0.8);">#1A1464</div>
+      <div style="background: #3A2DC8; color: white;">#3A2DC8</div>
+      <div style="background: #7C6FF0; color: white;">#7C6FF0</div>
+      <div style="background: #EDEDFA; color: #1A1464;">#EDEDFA</div>
+      <div style="background: #F5F5F7; color: #999; border: 1px solid #eee;">#FFF</div>
+    </div>
+    
+    <div class="stats-mock" style="background: #F5F5F7; border: 1px solid #EBEBF0;">
+      <div style="border-left: 3px solid #3A2DC8; padding-left: 12px;"><div class="stat-num" style="color: #1A1464; font-family: 'Space Grotesk', sans-serif;">30</div><div class="stat-label" style="color: #6B7280;">Days Delivery</div></div>
+      <div style="border-left: 3px solid #3A2DC8; padding-left: 12px;"><div class="stat-num" style="color: #1A1464; font-family: 'Space Grotesk', sans-serif;">50%</div><div class="stat-label" style="color: #6B7280;">Cost Savings</div></div>
+      <div style="border-left: 3px solid #3A2DC8; padding-left: 12px;"><div class="stat-num" style="color: #1A1464; font-family: 'Space Grotesk', sans-serif;">15</div><div class="stat-label" style="color: #6B7280;">Docs Delivered</div></div>
+      <div style="border-left: 3px solid #3A2DC8; padding-left: 12px;"><div class="stat-num" style="color: #1A1464; font-family: 'Space Grotesk', sans-serif;">100%</div><div class="stat-label" style="color: #6B7280;">Expert Reviewed</div></div>
+    </div>
+
+    <div class="cards-mock">
+      <div class="card-mock" style="background: #F5F5F7; border: 1px solid #EBEBF0; border-left: 3px solid #3A2DC8;">
+        <h5 style="color: #1A1464; font-family: 'Space Grotesk', sans-serif;">IB / IMPD</h5>
+        <p style="color: #6B7280;">Investigator's Brochure and IMPD preparation</p>
+      </div>
+      <div class="card-mock" style="background: #F5F5F7; border: 1px solid #EBEBF0; border-left: 3px solid #7C6FF0;">
+        <h5 style="color: #1A1464; font-family: 'Space Grotesk', sans-serif;">eCTD Modules</h5>
+        <p style="color: #6B7280;">IND, MAA, NDA submission packages</p>
+      </div>
+      <div class="card-mock" style="background: #F5F5F7; border: 1px solid #EBEBF0; border-left: 3px solid #3A2DC8;">
+        <h5 style="color: #1A1464; font-family: 'Space Grotesk', sans-serif;">CSR & Protocol</h5>
+        <p style="color: #6B7280;">Clinical Study Reports and protocols</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ============================== -->
+  <!-- D: MINIMAL SHARP -->
+  <!-- ============================== -->
+  <div class="proposal">
+    <div class="proposal-tag">
+      <div class="num" style="background: #1A1464; color: #C4B5FD;">D</div>
+      <span style="font-weight: 600; font-size: 0.85rem; color: #1A1464;">Minimal Sharp</span>
+    </div>
+    <div class="proposal-title" style="font-family: 'Sora', sans-serif; color: #1A1464;">Maximum de blanc, minimum de bruit</div>
+    <div class="proposal-sub">Sora · Indigo ultra-sobre · Presque monochrome, violet juste en micro-doses</div>
+    
+    <div class="proposal-why" style="border-color: #1A1464; background: #FAFAFF;">
+      <strong>L'idée :</strong> Le plus épuré. Fond blanc immaculé, beaucoup d'espace, le violet n'apparaît qu'en touches subtiles (bouton, accent, pill). Sora est une typo géométrique japonaise — très zen, très clean, très "confiance silencieuse". Ça dit "notre travail parle de lui-même". Inspiré Linear/Anthropic. Pour ceux qui pensent que le meilleur design est invisible.
+    </div>
+    
+    <div class="hero-mock">
+      <div class="hero-nav" style="background: #F5F5F7; border-bottom: 1px solid #F0F0F5;">
+        <div class="logo" style="font-family: 'Sora', sans-serif; color: #1A1464; font-weight: 700; letter-spacing: -0.02em;">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none">
+            <path d="M15 2.5C13.5 5, 11 9, 6.5 14C5.5 15, 4.5 15.5, 4 16L5 17C5.5 16.5, 8 14, 10.5 10C13 6, 14.5 3.5, 15 2.5Z" fill="#1A1464" opacity="0.7"/>
+            <path d="M4 16L3 18.5L5 17" fill="#1A1464" opacity="0.3"/>
+          </svg>
+          Acriba
+        </div>
+        <div class="nav-links" style="color: #9CA3AF;">
+          <span>Services</span><span>Process</span><span>Team</span>
+          <span style="padding: 7px 16px; background: #1A1464; border-radius: 6px; color: white;">Contact</span>
+        </div>
+      </div>
+      <div class="hero-content" style="background: #F5F5F7; min-height: 300px; display: flex; flex-direction: column; justify-content: center; padding: 64px 32px;">
+        <div class="hero-tagline" style="font-family: 'Sora', sans-serif; color: #1A1464; letter-spacing: -0.03em; font-size: 3rem;">
+          Regulatory writing.<br><span style="color: #8B83F0;">Reimagined.</span>
+        </div>
+        <div class="hero-sub" style="color: #9CA3AF; max-width: 420px;">AI-powered precision combined with three decades of pharma regulatory expertise.</div>
+        <div class="hero-btns">
+          <a class="hero-btn" style="background: #1A1464; color: white;">Get in Touch →</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="palette-strip">
+      <div style="background: #1A1464; color: rgba(255,255,255,0.8);">#1A1464</div>
+      <div style="background: #8B83F0; color: white;">#8B83F0</div>
+      <div style="background: #C4B5FD; color: #1A1464;">#C4B5FD</div>
+      <div style="background: #F5F3FF; color: #1A1464;">#F5F3FF</div>
+      <div style="background: #F5F5F7; color: #999; border: 1px solid #eee;">#FFF</div>
+    </div>
+    
+    <div class="stats-mock" style="background: #F5F5F7;">
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Sora', sans-serif; font-weight: 700;">30</div><div class="stat-label" style="color: #C4B5FD;">Days</div></div>
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Sora', sans-serif; font-weight: 700;">50%</div><div class="stat-label" style="color: #C4B5FD;">Savings</div></div>
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Sora', sans-serif; font-weight: 700;">15</div><div class="stat-label" style="color: #C4B5FD;">Documents</div></div>
+      <div><div class="stat-num" style="color: #1A1464; font-family: 'Sora', sans-serif; font-weight: 700;">100%</div><div class="stat-label" style="color: #C4B5FD;">Reviewed</div></div>
+    </div>
+
+    <div class="cards-mock">
+      <div class="card-mock" style="background: #F9F8FF; border-radius: 10px;">
+        <h5 style="color: #1A1464; font-family: 'Sora', sans-serif;">IB / IMPD</h5>
+        <p style="color: #9CA3AF;">Investigator's Brochure and IMPD</p>
+      </div>
+      <div class="card-mock" style="background: #F9F8FF; border-radius: 10px;">
+        <h5 style="color: #1A1464; font-family: 'Sora', sans-serif;">eCTD Modules</h5>
+        <p style="color: #9CA3AF;">IND, MAA, NDA packages</p>
+      </div>
+      <div class="card-mock" style="background: #F9F8FF; border-radius: 10px;">
+        <h5 style="color: #1A1464; font-family: 'Sora', sans-serif;">CSR & Protocol</h5>
+        <p style="color: #9CA3AF;">Study Reports and protocols</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- VOTE -->
+  <div class="vote">
+    <h2>Laquelle ?</h2>
+    <p>Ou mix : "la typo du D, les accent lines du C, le violet du B".</p>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 520px; margin: 0 auto;">
+      <div style="background: #F5F5F7; border: 2px solid #1A1464; padding: 16px 8px; border-radius: 10px; text-align: center;">
+        <div style="font-weight: 700; color: #1A1464; font-size: 1.2rem; font-family: 'Inter', sans-serif;">A</div>
+        <div style="font-size: 0.65rem; color: #6B7280; margin-top: 4px;">Pure<br>Indigo</div>
+      </div>
+      <div style="background: #F5F5F7; border: 2px solid #6D5CFF; padding: 16px 8px; border-radius: 10px; text-align: center;">
+        <div style="font-weight: 700; color: #6D5CFF; font-size: 1.2rem; font-family: 'Plus Jakarta Sans', sans-serif;">B</div>
+        <div style="font-size: 0.65rem; color: #6B7280; margin-top: 4px;">Soft<br>Violet</div>
+      </div>
+      <div style="background: #F5F5F7; border: 2px solid #3A2DC8; padding: 16px 8px; border-radius: 10px; text-align: center;">
+        <div style="font-weight: 700; color: #3A2DC8; font-size: 1.2rem; font-family: 'Space Grotesk', sans-serif;">C</div>
+        <div style="font-size: 0.65rem; color: #6B7280; margin-top: 4px;">Structured</div>
+      </div>
+      <div style="background: #F5F5F7; border: 2px solid #8B83F0; padding: 16px 8px; border-radius: 10px; text-align: center;">
+        <div style="font-weight: 700; color: #1A1464; font-size: 1.2rem; font-family: 'Sora', sans-serif;">D</div>
+        <div style="font-size: 0.65rem; color: #6B7280; margin-top: 4px;">Minimal<br>Sharp</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acriba — Background Variations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #E5E5EA; color: #1A1464; }
+    
+    .header { text-align: center; padding: 48px 24px 16px; }
+    .header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 6px; }
+    .header p { color: #6B7280; font-size: 0.9rem; max-width: 500px; margin: 0 auto; }
+    
+    .grid { max-width: 1100px; margin: 32px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    
+    .variant { border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .variant-label { padding: 12px 20px; background: white; display: flex; justify-content: space-between; align-items: center; }
+    .variant-label .name { font-weight: 700; font-size: 0.9rem; }
+    .variant-label .hex { font-family: monospace; font-size: 0.75rem; color: #6B7280; }
+    .variant-label .desc { font-size: 0.72rem; color: #9CA3AF; }
+    
+    .variant-hero { padding: 36px 28px; min-height: 280px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+    .variant-hero .pill { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.68rem; font-weight: 600; margin-bottom: 10px; width: fit-content; }
+    .variant-hero h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; line-height: 1.15; margin-bottom: 10px; font-weight: 700; letter-spacing: -0.02em; }
+    .variant-hero p { font-size: 0.85rem; color: #6B7280; margin-bottom: 20px; max-width: 380px; line-height: 1.55; }
+    .variant-hero .btn { display: inline-block; padding: 10px 20px; border-radius: 8px; font-weight: 600; font-size: 0.82rem; }
+    
+    .variant-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 0 28px 28px; }
+    .variant-cards .card { padding: 14px; border-radius: 8px; }
+    .variant-cards .card h5 { font-size: 0.75rem; font-weight: 600; margin-bottom: 3px; }
+    .variant-cards .card p { font-size: 0.65rem; line-height: 1.4; }
+    
+    .variant-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; padding: 0 28px 24px; text-align: center; }
+    .variant-stats .num { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; }
+    .variant-stats .lbl { font-size: 0.6rem; margin-top: 2px; }
+    
+    /* Nav mock */
+    .variant-nav { display: flex; justify-content: space-between; align-items: center; padding: 12px 28px; }
+    .variant-nav .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 6px; }
+    .variant-nav .links { display: flex; gap: 16px; font-size: 0.75rem; align-items: center; }
+    .variant-nav .links .cta { padding: 6px 14px; border-radius: 6px; font-weight: 600; }
+    
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: 1fr; }
+      .variant-cards { grid-template-columns: 1fr; }
+      .variant-hero h2 { font-size: 1.4rem; }
+      .variant-nav .links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>6 teintes de fond × violet Acriba</h1>
+    <p>Même contenu, même violet. Seul le fond change. Regarde ce qui te plaît le plus.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- 1: DECK ORIGINAL #F5F5F7 -->
+    <div class="variant">
+      <div class="variant-label">
+        <div>
+          <div class="name">1. Deck Original</div>
+          <div class="desc">Gris neutre très clair — ton fond actuel</div>
+        </div>
+        <div class="hex">#F5F5F7</div>
+      </div>
+      <div class="variant-nav" style="background: #F5F5F7; border-bottom: 1px solid #E5E5EA;">
+        <div class="logo" style="color: #1A1464;">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M15 2.5C13.5 5,11 9,6.5 14C5.5 15,4.5 15.5,4 16L5 17C5.5 16.5,8 14,10.5 10C13 6,14.5 3.5,15 2.5Z" fill="#3A2DC8"/><path d="M4 16L3 18.5L5 17" fill="#3A2DC8" opacity="0.5"/></svg>
+          Acriba
+        </div>
+        <div class="links" style="color: #6B7280;"><span>Services</span><span>Process</span><span class="cta" style="background: #1A1464; color: white;">Contact</span></div>
+      </div>
+      <div class="variant-hero" style="background: #F5F5F7;">
+        <div class="pill" style="background: #EAEAF2; color: #3A2DC8;">AI-Powered Regulatory Writing</div>
+        <h2 style="color: #1A1464;">Precision regulatory writing, <span style="color: #3A2DC8;">at scale.</span></h2>
+        <p>Combining 30+ years of pharma expertise with proprietary AI technology.</p>
+        <div><span class="btn" style="background: #1A1464; color: white;">Get in Touch →</span></div>
+      </div>
+      <div class="variant-stats" style="background: #F5F5F7;">
+        <div><div class="num" style="color: #3A2DC8;">30</div><div class="lbl" style="color: #6B7280;">Days</div></div>
+        <div><div class="num" style="color: #3A2DC8;">50%</div><div class="lbl" style="color: #6B7280;">Savings</div></div>
+        <div><div class="num" style="color: #3A2DC8;">15</div><div class="lbl" style="color: #6B7280;">Docs</div></div>
+        <div><div class="num" style="color: #3A2DC8;">100%</div><div class="lbl" style="color: #6B7280;">Reviewed</div></div>
+      </div>
+      <div class="variant-cards" style="background: #F5F5F7;">
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">IB / IMPD</h5><p style="color: #6B7280;">Investigator's Brochure</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">eCTD</h5><p style="color: #6B7280;">IND / MAA / NDA</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">CSR</h5><p style="color: #6B7280;">Study Reports</p></div>
+      </div>
+    </div>
+
+    <!-- 2: WARM IVORY #FAF9F6 -->
+    <div class="variant">
+      <div class="variant-label">
+        <div>
+          <div class="name">2. Warm Ivory</div>
+          <div class="desc">Crème très léger — plus chaleureux, organique</div>
+        </div>
+        <div class="hex">#FAF9F6</div>
+      </div>
+      <div class="variant-nav" style="background: #FAF9F6; border-bottom: 1px solid #EAE8E2;">
+        <div class="logo" style="color: #1A1464;">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M15 2.5C13.5 5,11 9,6.5 14C5.5 15,4.5 15.5,4 16L5 17C5.5 16.5,8 14,10.5 10C13 6,14.5 3.5,15 2.5Z" fill="#3A2DC8"/><path d="M4 16L3 18.5L5 17" fill="#3A2DC8" opacity="0.5"/></svg>
+          Acriba
+        </div>
+        <div class="links" style="color: #6B7280;"><span>Services</span><span>Process</span><span class="cta" style="background: #1A1464; color: white;">Contact</span></div>
+      </div>
+      <div class="variant-hero" style="background: #FAF9F6;">
+        <div class="pill" style="background: #F0EDE6; color: #3A2DC8;">AI-Powered Regulatory Writing</div>
+        <h2 style="color: #1A1464;">Precision regulatory writing, <span style="color: #3A2DC8;">at scale.</span></h2>
+        <p>Combining 30+ years of pharma expertise with proprietary AI technology.</p>
+        <div><span class="btn" style="background: #1A1464; color: white;">Get in Touch →</span></div>
+      </div>
+      <div class="variant-stats" style="background: #FAF9F6;">
+        <div><div class="num" style="color: #3A2DC8;">30</div><div class="lbl" style="color: #6B7280;">Days</div></div>
+        <div><div class="num" style="color: #3A2DC8;">50%</div><div class="lbl" style="color: #6B7280;">Savings</div></div>
+        <div><div class="num" style="color: #3A2DC8;">15</div><div class="lbl" style="color: #6B7280;">Docs</div></div>
+        <div><div class="num" style="color: #3A2DC8;">100%</div><div class="lbl" style="color: #6B7280;">Reviewed</div></div>
+      </div>
+      <div class="variant-cards" style="background: #FAF9F6;">
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">IB / IMPD</h5><p style="color: #6B7280;">Investigator's Brochure</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">eCTD</h5><p style="color: #6B7280;">IND / MAA / NDA</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">CSR</h5><p style="color: #6B7280;">Study Reports</p></div>
+      </div>
+    </div>
+
+    <!-- 3: COOL BLUE TINT #F7F8FC -->
+    <div class="variant">
+      <div class="variant-label">
+        <div>
+          <div class="name">3. Cool Blue Tint</div>
+          <div class="desc">Pointe de bleu — tech, sérieux, clinique</div>
+        </div>
+        <div class="hex">#F7F8FC</div>
+      </div>
+      <div class="variant-nav" style="background: #F7F8FC; border-bottom: 1px solid #E6E8F0;">
+        <div class="logo" style="color: #1A1464;">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M15 2.5C13.5 5,11 9,6.5 14C5.5 15,4.5 15.5,4 16L5 17C5.5 16.5,8 14,10.5 10C13 6,14.5 3.5,15 2.5Z" fill="#3A2DC8"/><path d="M4 16L3 18.5L5 17" fill="#3A2DC8" opacity="0.5"/></svg>
+          Acriba
+        </div>
+        <div class="links" style="color: #6B7280;"><span>Services</span><span>Process</span><span class="cta" style="background: #1A1464; color: white;">Contact</span></div>
+      </div>
+      <div class="variant-hero" style="background: #F7F8FC;">
+        <div class="pill" style="background: #EAECF5; color: #3A2DC8;">AI-Powered Regulatory Writing</div>
+        <h2 style="color: #1A1464;">Precision regulatory writing, <span style="color: #3A2DC8;">at scale.</span></h2>
+        <p>Combining 30+ years of pharma expertise with proprietary AI technology.</p>
+        <div><span class="btn" style="background: #1A1464; color: white;">Get in Touch →</span></div>
+      </div>
+      <div class="variant-stats" style="background: #F7F8FC;">
+        <div><div class="num" style="color: #3A2DC8;">30</div><div class="lbl" style="color: #6B7280;">Days</div></div>
+        <div><div class="num" style="color: #3A2DC8;">50%</div><div class="lbl" style="color: #6B7280;">Savings</div></div>
+        <div><div class="num" style="color: #3A2DC8;">15</div><div class="lbl" style="color: #6B7280;">Docs</div></div>
+        <div><div class="num" style="color: #3A2DC8;">100%</div><div class="lbl" style="color: #6B7280;">Reviewed</div></div>
+      </div>
+      <div class="variant-cards" style="background: #F7F8FC;">
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">IB / IMPD</h5><p style="color: #6B7280;">Investigator's Brochure</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">eCTD</h5><p style="color: #6B7280;">IND / MAA / NDA</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">CSR</h5><p style="color: #6B7280;">Study Reports</p></div>
+      </div>
+    </div>
+
+    <!-- 4: LAVENDER WHISPER #F8F7FC -->
+    <div class="variant">
+      <div class="variant-label">
+        <div>
+          <div class="name">4. Lavender Whisper</div>
+          <div class="desc">Pointe de violet — cohérent avec la marque indigo</div>
+        </div>
+        <div class="hex">#F8F7FC</div>
+      </div>
+      <div class="variant-nav" style="background: #F8F7FC; border-bottom: 1px solid #ECEAF5;">
+        <div class="logo" style="color: #1A1464;">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M15 2.5C13.5 5,11 9,6.5 14C5.5 15,4.5 15.5,4 16L5 17C5.5 16.5,8 14,10.5 10C13 6,14.5 3.5,15 2.5Z" fill="#3A2DC8"/><path d="M4 16L3 18.5L5 17" fill="#3A2DC8" opacity="0.5"/></svg>
+          Acriba
+        </div>
+        <div class="links" style="color: #6B7280;"><span>Services</span><span>Process</span><span class="cta" style="background: #1A1464; color: white;">Contact</span></div>
+      </div>
+      <div class="variant-hero" style="background: #F8F7FC;">
+        <div class="pill" style="background: #EDEBF7; color: #3A2DC8;">AI-Powered Regulatory Writing</div>
+        <h2 style="color: #1A1464;">Precision regulatory writing, <span style="color: #3A2DC8;">at scale.</span></h2>
+        <p>Combining 30+ years of pharma expertise with proprietary AI technology.</p>
+        <div><span class="btn" style="background: #1A1464; color: white;">Get in Touch →</span></div>
+      </div>
+      <div class="variant-stats" style="background: #F8F7FC;">
+        <div><div class="num" style="color: #3A2DC8;">30</div><div class="lbl" style="color: #6B7280;">Days</div></div>
+        <div><div class="num" style="color: #3A2DC8;">50%</div><div class="lbl" style="color: #6B7280;">Savings</div></div>
+        <div><div class="num" style="color: #3A2DC8;">15</div><div class="lbl" style="color: #6B7280;">Docs</div></div>
+        <div><div class="num" style="color: #3A2DC8;">100%</div><div class="lbl" style="color: #6B7280;">Reviewed</div></div>
+      </div>
+      <div class="variant-cards" style="background: #F8F7FC;">
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">IB / IMPD</h5><p style="color: #6B7280;">Investigator's Brochure</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">eCTD</h5><p style="color: #6B7280;">IND / MAA / NDA</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">CSR</h5><p style="color: #6B7280;">Study Reports</p></div>
+      </div>
+    </div>
+
+    <!-- 5: MINT FROST #F6FAF9 -->
+    <div class="variant">
+      <div class="variant-label">
+        <div>
+          <div class="name">5. Mint Frost</div>
+          <div class="desc">Pointe de vert/menthe — frais, science, santé</div>
+        </div>
+        <div class="hex">#F6FAF9</div>
+      </div>
+      <div class="variant-nav" style="background: #F6FAF9; border-bottom: 1px solid #E4EDEB;">
+        <div class="logo" style="color: #1A1464;">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M15 2.5C13.5 5,11 9,6.5 14C5.5 15,4.5 15.5,4 16L5 17C5.5 16.5,8 14,10.5 10C13 6,14.5 3.5,15 2.5Z" fill="#3A2DC8"/><path d="M4 16L3 18.5L5 17" fill="#3A2DC8" opacity="0.5"/></svg>
+          Acriba
+        </div>
+        <div class="links" style="color: #6B7280;"><span>Services</span><span>Process</span><span class="cta" style="background: #1A1464; color: white;">Contact</span></div>
+      </div>
+      <div class="variant-hero" style="background: #F6FAF9;">
+        <div class="pill" style="background: #E6F0EE; color: #3A2DC8;">AI-Powered Regulatory Writing</div>
+        <h2 style="color: #1A1464;">Precision regulatory writing, <span style="color: #3A2DC8;">at scale.</span></h2>
+        <p>Combining 30+ years of pharma expertise with proprietary AI technology.</p>
+        <div><span class="btn" style="background: #1A1464; color: white;">Get in Touch →</span></div>
+      </div>
+      <div class="variant-stats" style="background: #F6FAF9;">
+        <div><div class="num" style="color: #3A2DC8;">30</div><div class="lbl" style="color: #6B7280;">Days</div></div>
+        <div><div class="num" style="color: #3A2DC8;">50%</div><div class="lbl" style="color: #6B7280;">Savings</div></div>
+        <div><div class="num" style="color: #3A2DC8;">15</div><div class="lbl" style="color: #6B7280;">Docs</div></div>
+        <div><div class="num" style="color: #3A2DC8;">100%</div><div class="lbl" style="color: #6B7280;">Reviewed</div></div>
+      </div>
+      <div class="variant-cards" style="background: #F6FAF9;">
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">IB / IMPD</h5><p style="color: #6B7280;">Investigator's Brochure</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">eCTD</h5><p style="color: #6B7280;">IND / MAA / NDA</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">CSR</h5><p style="color: #6B7280;">Study Reports</p></div>
+      </div>
+    </div>
+
+    <!-- 6: SNOW #FAFAFA -->
+    <div class="variant">
+      <div class="variant-label">
+        <div>
+          <div class="name">6. Snow</div>
+          <div class="desc">Presque blanc, neutre parfait — zéro teinte</div>
+        </div>
+        <div class="hex">#FAFAFA</div>
+      </div>
+      <div class="variant-nav" style="background: #FAFAFA; border-bottom: 1px solid #EBEBEB;">
+        <div class="logo" style="color: #1A1464;">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M15 2.5C13.5 5,11 9,6.5 14C5.5 15,4.5 15.5,4 16L5 17C5.5 16.5,8 14,10.5 10C13 6,14.5 3.5,15 2.5Z" fill="#3A2DC8"/><path d="M4 16L3 18.5L5 17" fill="#3A2DC8" opacity="0.5"/></svg>
+          Acriba
+        </div>
+        <div class="links" style="color: #6B7280;"><span>Services</span><span>Process</span><span class="cta" style="background: #1A1464; color: white;">Contact</span></div>
+      </div>
+      <div class="variant-hero" style="background: #FAFAFA;">
+        <div class="pill" style="background: #EEEEEE; color: #3A2DC8;">AI-Powered Regulatory Writing</div>
+        <h2 style="color: #1A1464;">Precision regulatory writing, <span style="color: #3A2DC8;">at scale.</span></h2>
+        <p>Combining 30+ years of pharma expertise with proprietary AI technology.</p>
+        <div><span class="btn" style="background: #1A1464; color: white;">Get in Touch →</span></div>
+      </div>
+      <div class="variant-stats" style="background: #FAFAFA;">
+        <div><div class="num" style="color: #3A2DC8;">30</div><div class="lbl" style="color: #6B7280;">Days</div></div>
+        <div><div class="num" style="color: #3A2DC8;">50%</div><div class="lbl" style="color: #6B7280;">Savings</div></div>
+        <div><div class="num" style="color: #3A2DC8;">15</div><div class="lbl" style="color: #6B7280;">Docs</div></div>
+        <div><div class="num" style="color: #3A2DC8;">100%</div><div class="lbl" style="color: #6B7280;">Reviewed</div></div>
+      </div>
+      <div class="variant-cards" style="background: #FAFAFA;">
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">IB / IMPD</h5><p style="color: #6B7280;">Investigator's Brochure</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">eCTD</h5><p style="color: #6B7280;">IND / MAA / NDA</p></div>
+        <div class="card" style="background: white;"><h5 style="color: #1A1464;">CSR</h5><p style="color: #6B7280;">Study Reports</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; padding: 40px 24px 80px; max-width: 600px; margin: 0 auto;">
+    <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; margin-bottom: 8px;">Récap des teintes</h2>
+    <div style="display: grid; grid-template-columns: repeat(6,1fr); gap: 8px; margin: 20px 0;">
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #F5F5F7; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 6px;"></div>
+        <div style="font-size: 0.65rem; font-weight: 600;">1. Deck</div>
+        <div style="font-size: 0.6rem; color: #999; font-family: monospace;">#F5F5F7</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #FAF9F6; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 6px;"></div>
+        <div style="font-size: 0.65rem; font-weight: 600;">2. Ivory</div>
+        <div style="font-size: 0.6rem; color: #999; font-family: monospace;">#FAF9F6</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #F7F8FC; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 6px;"></div>
+        <div style="font-size: 0.65rem; font-weight: 600;">3. Blue</div>
+        <div style="font-size: 0.6rem; color: #999; font-family: monospace;">#F7F8FC</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #F8F7FC; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 6px;"></div>
+        <div style="font-size: 0.65rem; font-weight: 600;">4. Lavender</div>
+        <div style="font-size: 0.6rem; color: #999; font-family: monospace;">#F8F7FC</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #F6FAF9; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 6px;"></div>
+        <div style="font-size: 0.65rem; font-weight: 600;">5. Mint</div>
+        <div style="font-size: 0.6rem; color: #999; font-family: monospace;">#F6FAF9</div>
+      </div>
+      <div style="text-align: center;">
+        <div style="width: 100%; aspect-ratio: 1; background: #FAFAFA; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 6px;"></div>
+        <div style="font-size: 0.65rem; font-weight: 600;">6. Snow</div>
+        <div style="font-size: 0.6rem; color: #999; font-family: monospace;">#FAFAFA</div>
+      </div>
+    </div>
+    <p style="color: #6B7280; font-size: 0.85rem;">Mon reco : <strong>4. Lavender Whisper (#F8F7FC)</strong> — renforce subtilement la cohérence avec l'indigo/violet sans être visible consciemment.</p>
+  </div>
+
+</body>
+</html>

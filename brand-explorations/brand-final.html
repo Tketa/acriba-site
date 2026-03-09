@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acriba — Brand Book Final</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #F5F5F7; color: #1A1464; }
+    .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+    
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 4px; }
+    h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: -0.01em; margin: 48px 0 20px; padding-bottom: 12px; border-bottom: 2px solid #1A1464; }
+    h3 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: #3A2DC8; margin-bottom: 16px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+    h3 span.line { width: 32px; height: 2px; background: #3A2DC8; display: block; }
+    p { color: #4B5563; line-height: 1.6; margin-bottom: 12px; font-size: 0.9rem; }
+    .subtitle { color: #6B7280; font-size: 0.9rem; margin-bottom: 40px; }
+    
+    /* Design Principles */
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid #E5E5EA; margin: 20px 0; }
+    .principle { padding: 24px; border-right: 1px solid #E5E5EA; }
+    .principle:last-child { border-right: none; }
+    .principle strong { font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem; display: block; margin-bottom: 6px; color: #1A1464; }
+    .principle span { font-size: 0.78rem; color: #6B7280; line-height: 1.5; }
+    
+    /* Color swatches */
+    .swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin: 20px 0; border: 1px solid #E5E5EA; }
+    .swatch { }
+    .swatch-color { height: 80px; display: flex; align-items: flex-end; padding: 8px 12px; }
+    .swatch-color code { font-size: 0.65rem; padding: 2px 6px; background: rgba(255,255,255,0.85); color: #333; }
+    .swatch-info { padding: 10px 12px; background: white; border-top: 1px solid #E5E5EA; }
+    .swatch-name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.78rem; }
+    .swatch-var { font-family: monospace; font-size: 0.65rem; color: #6B7280; }
+    .swatch-role { font-size: 0.68rem; color: #9CA3AF; margin-top: 2px; }
+    
+    /* Typography specimens */
+    .type-row { display: grid; grid-template-columns: 200px 1fr; gap: 0; border: 1px solid #E5E5EA; margin: 12px 0; }
+    .type-meta { padding: 20px; background: white; border-right: 1px solid #E5E5EA; }
+    .type-meta .name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem; color: #1A1464; }
+    .type-meta .detail { font-size: 0.7rem; color: #6B7280; margin-top: 4px; }
+    .type-preview { padding: 20px; background: #F5F5F7; }
+    
+    /* Component showcase */
+    .components { margin: 20px 0; }
+    .comp-section { margin: 24px 0; }
+    .comp-label { font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; font-weight: 600; color: #6B7280; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+    
+    .btn-row { display: flex; gap: 0; flex-wrap: wrap; }
+    .btn { padding: 12px 24px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem; display: inline-block; }
+    .btn-sm { padding: 8px 16px; font-size: 0.78rem; }
+    .btn-lg { padding: 14px 32px; font-size: 0.9rem; }
+    
+    /* Card styles */
+    .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid #E5E5EA; }
+    .card { padding: 24px; border-right: 1px solid #E5E5EA; background: white; }
+    .card:last-child { border-right: none; }
+    .card-accent { border-left: 3px solid #3A2DC8; }
+    .card h5 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.9rem; color: #1A1464; margin-bottom: 6px; }
+    .card p { font-size: 0.78rem; color: #6B7280; margin: 0; }
+    
+    /* Stats */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid #E5E5EA; }
+    .stat { padding: 24px; border-right: 1px solid #E5E5EA; background: white; border-left: 3px solid #3A2DC8; }
+    .stat:last-child { border-right: none; }
+    .stat:nth-child(3), .stat:nth-child(4) { border-left-color: #7C6FF0; }
+    .stat .num { font-family: 'Space Grotesk', sans-serif; font-size: 2.8rem; font-weight: 700; color: #1A1464; letter-spacing: -0.04em; line-height: 1; }
+    .stat .label { font-size: 0.68rem; color: #3A2DC8; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px; }
+    .stat .desc { font-size: 0.68rem; color: #9CA3AF; margin-top: 4px; }
+    
+    /* Section label component */
+    .section-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: #3A2DC8; font-weight: 600; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .section-label .line { width: 32px; height: 2px; background: #3A2DC8; }
+    
+    /* Nav component */
+    .nav-demo { display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; border: 1px solid #E5E5EA; margin: 12px 0; background: white; border-bottom: 2px solid #1A1464; }
+    .nav-demo .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #1A1464; font-size: 1.15rem; display: flex; align-items: center; gap: 8px; }
+    .nav-demo .links { display: flex; gap: 20px; font-size: 0.8rem; color: #6B7280; align-items: center; }
+    
+    /* Full hero demo */
+    .hero-demo { margin: 24px 0; border: 1px solid #E5E5EA; overflow: hidden; }
+    
+    /* Do / Don't */
+    .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+    .do-box, .dont-box { padding: 20px; }
+    .do-box { background: #F0FFF4; border-left: 3px solid #22C55E; }
+    .dont-box { background: #FFF5F5; border-left: 3px solid #EF4444; }
+    .do-box strong, .dont-box strong { font-size: 0.8rem; display: block; margin-bottom: 8px; }
+    .do-box ul, .dont-box ul { font-size: 0.78rem; color: #4B5563; padding-left: 16px; line-height: 1.8; }
+    
+    @media (max-width: 768px) {
+      .principles, .card-grid { grid-template-columns: 1fr; }
+      .principles .principle, .card-grid .card { border-right: none; border-bottom: 1px solid #E5E5EA; }
+      .swatches { grid-template-columns: repeat(3, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .type-row { grid-template-columns: 1fr; }
+      .do-dont { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <h3><span class="line"></span> Brand Book</h3>
+  <h1>Acriba</h1>
+  <p class="subtitle">AI-Powered Regulatory Medical Writing · Version 1.0 · Mars 2026</p>
+
+  <!-- PRINCIPLES -->
+  <h2>Design Principles</h2>
+  <div class="principles" style="background: white;">
+    <div class="principle">
+      <strong>Précision</strong>
+      <span>Angles droits, grille stricte, alignement parfait. Chaque pixel a une raison d'être. Comme un dossier CTD.</span>
+    </div>
+    <div class="principle">
+      <strong>Clarté</strong>
+      <span>Beaucoup d'espace. Hiérarchie nette. L'information est structurée, jamais décorée. Le contenu prime.</span>
+    </div>
+    <div class="principle">
+      <strong>Autorité</strong>
+      <span>Sobre et direct. Pas de fioritures, pas de gradients, pas de pills. On parle à des VP Regulatory, pas à des designers.</span>
+    </div>
+  </div>
+
+  <!-- COLORS -->
+  <h2>Palette</h2>
+  <p>5 couleurs. Chacune a un rôle défini. Pas d'exceptions.</p>
+  
+  <div class="swatches">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1A1464;"><code>#1A1464</code></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Deep Indigo</div>
+        <div class="swatch-var">--primary</div>
+        <div class="swatch-role">Titres, nav, footer, boutons</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #3A2DC8;"><code>#3A2DC8</code></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Accent Violet</div>
+        <div class="swatch-var">--accent</div>
+        <div class="swatch-role">Liens, labels, accent lines, hover</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #7C6FF0;"><code>#7C6FF0</code></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Soft Violet</div>
+        <div class="swatch-var">--accent-light</div>
+        <div class="swatch-role">Accents secondaires, borders alternées</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #F5F5F7;"><code>#F5F5F7</code></div>
+      <div class="swatch-info">
+        <div class="swatch-name">Off-White</div>
+        <div class="swatch-var">--bg</div>
+        <div class="swatch-role">Fond de page</div>
+      </div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #FFFFFF; border-bottom: 1px solid #eee;"><code>#FFFFFF</code></div>
+      <div class="swatch-info">
+        <div class="swatch-name">White</div>
+        <div class="swatch-var">--surface</div>
+        <div class="swatch-role">Cartes, conteneurs, nav</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size: 0.8rem; color: #9CA3AF;">Texte body : #4B5563 · Texte secondaire : #6B7280 · Texte muted : #9CA3AF · Borders : #E5E5EA</p>
+
+  <!-- TYPOGRAPHY -->
+  <h2>Typographie</h2>
+  
+  <div class="type-row">
+    <div class="type-meta">
+      <div class="name">Space Grotesk</div>
+      <div class="detail">Headings, boutons, stats<br>Weights: 600, 700</div>
+    </div>
+    <div class="type-preview">
+      <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 2rem; color: #1A1464; letter-spacing: -0.02em; margin-bottom: 8px;">Precision in every document.</div>
+      <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1.2rem; color: #1A1464; margin-bottom: 8px;">Accelerating drug development</div>
+      <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem; color: #1A1464;">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+    </div>
+  </div>
+  
+  <div class="type-row">
+    <div class="type-meta">
+      <div class="name">Inter</div>
+      <div class="detail">Body, descriptions, nav<br>Weights: 400, 500, 600</div>
+    </div>
+    <div class="type-preview">
+      <div style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #4B5563; line-height: 1.7; margin-bottom: 8px;">We are a consulting and operating firm using the latest advancements in AI coupled with subject-matter experts in pharma (non-clinical, clinical, CMC, regulatory) to accelerate and reduce the cost of drug development.</div>
+      <div style="font-family: 'Inter', sans-serif; font-size: 0.78rem; color: #6B7280;">Combining proprietary AI with 30+ years of pharma regulatory expertise.</div>
+    </div>
+  </div>
+
+  <!-- FORME -->
+  <h2>Forme & Espacement</h2>
+  
+  <div class="do-dont">
+    <div class="do-box">
+      <strong>✅ Faire</strong>
+      <ul>
+        <li>Border-radius : <strong>0px</strong> (boutons, cartes, images)</li>
+        <li>Bordures fines 1px #E5E5EA pour structurer</li>
+        <li>Accent lines à gauche (3px solid #3A2DC8)</li>
+        <li>Ligne sous la nav (2px solid #1A1464)</li>
+        <li>Section labels : UPPERCASE + trait horizontal</li>
+        <li>Espacement large entre sections (64-80px)</li>
+        <li>Grille stricte, pas de centrage sauf CTA</li>
+      </ul>
+    </div>
+    <div class="dont-box">
+      <strong>❌ Ne pas faire</strong>
+      <ul>
+        <li>Pas de border-radius > 4px</li>
+        <li>Pas de pills (rounded-full)</li>
+        <li>Pas de box-shadow diffus (ombre douce)</li>
+        <li>Pas de gradients</li>
+        <li>Pas de centrage de hero</li>
+        <li>Pas d'emojis dans le contenu</li>
+        <li>Pas de fonds colorés (lavande, etc.)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COMPONENTS -->
+  <h2>Composants</h2>
+
+  <!-- Nav -->
+  <div class="comp-section">
+    <div class="comp-label">Navigation</div>
+    <div class="nav-demo">
+      <div class="logo">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M15 2.5C13.5 5,11 9,6.5 14C5.5 15,4.5 15.5,4 16L5 17C5.5 16.5,8 14,10.5 10C13 6,14.5 3.5,15 2.5Z" fill="#1A1464"/><path d="M4 16L3 18.5L5 17" fill="#3A2DC8" opacity="0.5"/></svg>
+        Acriba
+      </div>
+      <div class="links">
+        <span>Services</span><span>Process</span><span>Team</span>
+        <span style="padding: 8px 20px; background: #1A1464; color: white; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.8rem;">CONTACT</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="comp-section">
+    <div class="comp-label">Boutons</div>
+    <div style="margin: 12px 0;">
+      <div style="display: flex; gap: 0; margin-bottom: 12px;">
+        <div class="btn" style="background: #1A1464; color: white;">Get in Touch →</div>
+        <div class="btn" style="border: 2px solid #1A1464; color: #1A1464; margin-left: -2px;">Case Study</div>
+      </div>
+      <div style="display: flex; gap: 0; margin-bottom: 12px;">
+        <div class="btn btn-sm" style="background: #3A2DC8; color: white;">Learn More →</div>
+        <div class="btn btn-sm" style="border: 1.5px solid #3A2DC8; color: #3A2DC8; margin-left: -1.5px;">Details</div>
+      </div>
+      <div style="display: flex; gap: 0; padding: 16px; background: #1A1464;">
+        <div class="btn" style="background: white; color: #1A1464;">Get in Touch →</div>
+        <div class="btn" style="border: 2px solid rgba(255,255,255,0.3); color: white; margin-left: -2px;">Our Process</div>
+      </div>
+    </div>
+    <p style="font-size: 0.75rem; color: #9CA3AF;">Boutons collés (gap: 0, margin négatif). Jamais de border-radius. Primary + secondary toujours en paire.</p>
+  </div>
+
+  <!-- Section Label -->
+  <div class="comp-section">
+    <div class="comp-label">Section Labels</div>
+    <div style="padding: 20px; background: white; border: 1px solid #E5E5EA; margin: 12px 0;">
+      <div class="section-label"><span class="line"></span> AI-Powered Regulatory Writing</div>
+      <div style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; color: #1A1464; letter-spacing: -0.02em;">Section title goes here.</div>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="comp-section">
+    <div class="comp-label">Cartes Services</div>
+    <div class="card-grid">
+      <div class="card card-accent">
+        <h5>IB / IMPD</h5>
+        <p>Investigator's Brochure and Investigational Medicinal Product Dossier</p>
+      </div>
+      <div class="card card-accent">
+        <h5>eCTD Modules</h5>
+        <p>Complete IND, MAA, NDA submission packages</p>
+      </div>
+      <div class="card card-accent">
+        <h5>CSR & Protocol</h5>
+        <p>Clinical Study Reports and study protocols</p>
+      </div>
+    </div>
+    <p style="font-size: 0.75rem; color: #9CA3AF; margin-top: 8px;">Grille sans gap. Bordures entre les cellules. Accent line 3px à gauche. Fond blanc.</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="comp-section">
+    <div class="comp-label">Stats (Case Study)</div>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="num">30</div>
+        <div class="label">Days to delivery</div>
+        <div class="desc">vs 3+ months traditional</div>
+      </div>
+      <div class="stat">
+        <div class="num">50<span style="font-size: 1.2rem;">%</span></div>
+        <div class="label">Cost savings</div>
+        <div class="desc">vs competitive quotes</div>
+      </div>
+      <div class="stat">
+        <div class="num">15</div>
+        <div class="label">Documents</div>
+        <div class="desc">eCTD modules 2.4, 2.5, 2.7</div>
+      </div>
+      <div class="stat">
+        <div class="num">100<span style="font-size: 1.2rem;">%</span></div>
+        <div class="label">Expert reviewed</div>
+        <div class="desc">by drug development CxO</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Process Steps -->
+  <div class="comp-section">
+    <div class="comp-label">Process Steps</div>
+    <div style="border: 1px solid #E5E5EA; background: white;">
+      <div style="display: grid; grid-template-columns: 48px 1fr; border-bottom: 1px solid #E5E5EA;">
+        <div style="background: #1A1464; color: white; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.9rem;">01</div>
+        <div style="padding: 16px 20px;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: #1A1464; font-size: 0.88rem;">Kickoff</div>
+          <div style="font-size: 0.78rem; color: #6B7280;">Alignment on document structure, guidelines and regulatory writing strategy</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 48px 1fr; border-bottom: 1px solid #E5E5EA;">
+        <div style="background: #1A1464; color: white; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.9rem;">02</div>
+        <div style="padding: 16px 20px;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: #1A1464; font-size: 0.88rem;">Ingest & AI Transform</div>
+          <div style="font-size: 0.78rem; color: #6B7280;">Transform PDFs into structured, intelligent documents</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 48px 1fr; border-bottom: 1px solid #E5E5EA;">
+        <div style="background: #3A2DC8; color: white; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.9rem;">03</div>
+        <div style="padding: 16px 20px;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: #1A1464; font-size: 0.88rem;">Draft & Generate with AI</div>
+          <div style="font-size: 0.78rem; color: #6B7280;">Combining parsed data with regulatory guidelines (ICH M4 CTD)</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 48px 1fr;">
+        <div style="background: #3A2DC8; color: white; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.9rem;">04</div>
+        <div style="padding: 16px 20px;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; color: #1A1464; font-size: 0.88rem;">Review & QC by Expert</div>
+          <div style="font-size: 0.78rem; color: #6B7280;">Validation by drug development CxO, data verification</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL HERO DEMO -->
+  <h2>Hero — Assemblage complet</h2>
+  
+  <div class="hero-demo">
+    <!-- Nav -->
+    <div style="background: white; display: flex; justify-content: space-between; align-items: center; padding: 14px 32px; border-bottom: 2px solid #1A1464;">
+      <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #1A1464; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M15 2.5C13.5 5,11 9,6.5 14C5.5 15,4.5 15.5,4 16L5 17C5.5 16.5,8 14,10.5 10C13 6,14.5 3.5,15 2.5Z" fill="#1A1464"/><path d="M4 16L3 18.5L5 17" fill="#3A2DC8" opacity="0.5"/></svg>
+        Acriba
+      </div>
+      <div style="display: flex; gap: 24px; font-size: 0.8rem; color: #6B7280; align-items: center; font-family: 'Inter', sans-serif;">
+        <span>Services</span><span>Process</span><span>Team</span>
+        <span style="padding: 8px 20px; background: #1A1464; color: white; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.8rem;">CONTACT</span>
+      </div>
+    </div>
+    <!-- Hero content -->
+    <div style="background: #F5F5F7; padding: 64px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+      <div>
+        <div style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: #3A2DC8; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; font-family: 'Space Grotesk', sans-serif;"><span style="width: 32px; height: 2px; background: #3A2DC8; display: block;"></span>AI Regulatory Writing</div>
+        <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2.6rem; font-weight: 700; color: #1A1464; line-height: 1.08; margin-bottom: 16px; letter-spacing: -0.03em;">Precision in<br>every document.</div>
+        <div style="font-size: 0.9rem; color: #6B7280; line-height: 1.6; margin-bottom: 28px; max-width: 400px; font-family: 'Inter', sans-serif;">Proprietary AI combined with 30+ years of drug development expertise. IND, IMPD, eCTD — delivered in weeks, not months.</div>
+        <div style="display: flex; gap: 0;">
+          <span style="padding: 12px 24px; background: #1A1464; color: white; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem;">Get in Touch →</span>
+          <span style="padding: 12px 24px; border: 2px solid #1A1464; color: #1A1464; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem; margin-left: -2px;">Case Study</span>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px;">
+        <div style="background: white; padding: 24px; border-left: 3px solid #3A2DC8;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: #1A1464; letter-spacing: -0.03em;">30</div>
+          <div style="font-size: 0.68rem; color: #3A2DC8; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px;">Days delivery</div>
+        </div>
+        <div style="background: white; padding: 24px; border-left: 3px solid #3A2DC8;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: #1A1464; letter-spacing: -0.03em;">50%</div>
+          <div style="font-size: 0.68rem; color: #3A2DC8; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px;">Cost savings</div>
+        </div>
+        <div style="background: white; padding: 24px; border-left: 3px solid #7C6FF0;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: #1A1464; letter-spacing: -0.03em;">15</div>
+          <div style="font-size: 0.68rem; color: #3A2DC8; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px;">Documents</div>
+        </div>
+        <div style="background: white; padding: 24px; border-left: 3px solid #7C6FF0;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: #1A1464; letter-spacing: -0.03em;">100%</div>
+          <div style="font-size: 0.68rem; color: #3A2DC8; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px;">Expert reviewed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="margin-top: 48px; padding: 40px 0; border-top: 2px solid #1A1464; text-align: center;">
+    <div style="font-family: 'Space Grotesk', sans-serif; font-size: 4rem; font-weight: 700; color: #1A1464; letter-spacing: -0.04em; opacity: 0.08;">Acriba</div>
+    <div style="font-size: 0.75rem; color: #9CA3AF; margin-top: -12px;">Paris · Geneva · brand-final v1.0</div>
+  </div>
+
+</div>
+</body>
+</html>

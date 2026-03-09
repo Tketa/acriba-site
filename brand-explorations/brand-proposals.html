@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acriba — Brand Proposals</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: #F4F4F8; color: #1E1B4B; }
+    
+    .header { text-align: center; padding: 60px 24px 40px; }
+    .header h1 { font-family: 'Newsreader', serif; font-size: 2.5rem; margin-bottom: 8px; }
+    .header p { color: #6B7280; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+    
+    /* Proposal sections */
+    .proposal { margin: 0 auto 48px; max-width: 1000px; padding: 0 24px; }
+    .proposal-number { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; font-weight: 700; font-size: 0.9rem; margin-bottom: 16px; }
+    .proposal-title { font-family: 'Newsreader', serif; font-size: 2rem; margin-bottom: 4px; }
+    .proposal-subtitle { color: #6B7280; font-size: 1rem; margin-bottom: 8px; }
+    .proposal-why { font-size: 0.95rem; color: #4B5563; margin-bottom: 24px; padding: 16px 20px; border-left: 3px solid; border-radius: 0 8px 8px 0; }
+    
+    /* Hero mockups */
+    .hero-mock { border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.12); margin-bottom: 24px; }
+    .hero-content { padding: 60px 40px; min-height: 360px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+    .hero-nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; }
+    .hero-nav .logo { font-weight: 700; font-size: 1.4rem; }
+    .hero-nav .nav-links { display: flex; gap: 24px; font-size: 0.9rem; }
+    .hero-tagline { font-size: 3rem; line-height: 1.15; margin-bottom: 16px; max-width: 600px; }
+    .hero-sub { font-size: 1.15rem; margin-bottom: 32px; max-width: 500px; opacity: 0.8; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-btn { padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; display: inline-block; border: 2px solid transparent; }
+    
+    /* Palette strip */
+    .palette-strip { display: flex; border-radius: 12px; overflow: hidden; margin: 24px 0; height: 60px; }
+    .palette-strip div { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-family: monospace; }
+    
+    /* Cards section mockup */
+    .cards-mock { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+    .card-mock { border-radius: 12px; padding: 24px; }
+    .card-mock .card-icon { font-size: 1.5rem; margin-bottom: 12px; }
+    .card-mock h5 { font-size: 1rem; margin-bottom: 8px; }
+    .card-mock p { font-size: 0.85rem; opacity: 0.7; }
+    
+    /* Quill in hero */
+    .quill-float { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); opacity: 0.08; }
+    
+    /* Stats bar */
+    .stats-mock { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 32px; border-radius: 12px; margin: 24px 0; text-align: center; }
+    .stat-num { font-size: 2.5rem; font-weight: 700; }
+    .stat-label { font-size: 0.8rem; margin-top: 4px; }
+    
+    /* Section labels */
+    .section-label { text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.75rem; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+    .section-label::before { content: ''; width: 32px; height: 2px; display: block; }
+    
+    /* Rationale box */
+    .rationale { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+    .rationale-item { background: white; border-radius: 12px; padding: 20px; }
+    .rationale-item strong { display: block; margin-bottom: 4px; font-size: 0.85rem; }
+    .rationale-item span { font-size: 0.8rem; color: #6B7280; }
+    
+    /* Separator */
+    .sep { height: 1px; max-width: 1000px; margin: 64px auto; background: linear-gradient(to right, transparent, #D1D5DB, transparent); }
+    
+    /* Vote */
+    .vote { max-width: 1000px; margin: 48px auto 80px; padding: 0 24px; text-align: center; }
+    .vote h2 { font-family: 'Newsreader', serif; font-size: 2rem; margin-bottom: 16px; }
+    .vote p { color: #6B7280; max-width: 500px; margin: 0 auto; }
+    
+    @media (max-width: 768px) {
+      .hero-tagline { font-size: 2rem; }
+      .hero-content { padding: 40px 24px; min-height: 280px; }
+      .hero-nav { padding: 16px 24px; }
+      .cards-mock { grid-template-columns: 1fr; }
+      .stats-mock { grid-template-columns: repeat(2, 1fr); }
+      .rationale { grid-template-columns: 1fr; }
+      .hero-nav .nav-links { display: none; }
+      .quill-float { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Acriba — 4 Brand Directions</h1>
+    <p>Chacune raconte une histoire différente. Même contenu, identité différente. Choisis celle qui te ressemble.</p>
+  </div>
+
+  <!-- ============================== -->
+  <!-- PROPOSAL 1: MIDNIGHT AUTHORITY -->
+  <!-- ============================== -->
+  <div class="proposal">
+    <div class="proposal-number" style="background: #12105C; color: #E8A838;">1</div>
+    <div class="proposal-title" style="font-family: 'Newsreader', serif; color: #12105C;">Midnight Authority</div>
+    <div class="proposal-subtitle">Indigo profond + Ambre doré · Newsreader + DM Sans</div>
+    
+    <div class="proposal-why" style="background: #FEF9EE; border-color: #E8A838;">
+      <strong>Pourquoi cette direction ?</strong> Le contraste indigo/ambre évoque les grands cabinets d'avocats ou les banques suisses — confiance, prestige, tradition. L'ambre apporte la chaleur humaine qui manque souvent aux sites pharma. C'est le choix "on est les meilleurs dans notre domaine et on le sait".
+    </div>
+    
+    <div class="hero-mock">
+      <div class="hero-nav" style="background: #0E0C48;">
+        <div class="logo" style="font-family: 'Newsreader', serif; color: white;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="vertical-align: middle; margin-right: 6px;">
+            <path d="M15 2.5C13.5 5, 11 9, 6.5 14C5.5 15, 4.5 15.5, 4 16L5 17C5.5 16.5, 8 14, 10.5 10C13 6, 14.5 3.5, 15 2.5Z" fill="#E8A838" opacity="0.9"/>
+            <path d="M4 16L3 18.5L5 17" fill="#E8A838" opacity="0.6"/>
+          </svg>
+          Acriba
+        </div>
+        <div class="nav-links" style="color: rgba(255,255,255,0.7);">
+          <span>Services</span><span>Process</span><span>Team</span><span style="padding: 8px 16px; border: 1px solid #E8A838; border-radius: 6px; color: #E8A838;">Contact</span>
+        </div>
+      </div>
+      <div class="hero-content" style="background: linear-gradient(160deg, #12105C 0%, #1a1670 50%, #0E0C48 100%);">
+        <svg class="quill-float" width="300" height="300" viewBox="0 0 80 80" fill="none">
+          <path d="M60 8C55 18, 45 33, 25 53C22 56, 18 58, 15 60L18 63C20 61, 30 53, 40 38C50 23, 58 13, 60 8Z" fill="white" stroke="white" stroke-width="0.5"/>
+        </svg>
+        <div class="section-label" style="color: #E8A838;"><span style="display: block; width: 32px; height: 2px; background: #E8A838;"></span> AI-Powered Regulatory Writing</div>
+        <div class="hero-tagline" style="font-family: 'Newsreader', serif; color: white;">
+          Precision in<br><em style="color: #E8A838;">every word.</em>
+        </div>
+        <div class="hero-sub" style="color: #B0AED0;">Accelerating pharmaceutical regulatory documentation through AI and 30+ years of drug development expertise.</div>
+        <div class="hero-btns">
+          <a class="hero-btn" style="background: #E8A838; color: #12105C;">Get in Touch →</a>
+          <a class="hero-btn" style="border-color: rgba(255,255,255,0.3); color: white;">Our Process</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="palette-strip">
+      <div style="background: #12105C; color: rgba(255,255,255,0.8);">#12105C</div>
+      <div style="background: #1a1670; color: rgba(255,255,255,0.8);">#1a1670</div>
+      <div style="background: #4F46E5; color: white;">#4F46E5</div>
+      <div style="background: #E8A838; color: #12105C;">#E8A838</div>
+      <div style="background: #EEEDF5; color: #12105C;">#EEEDF5</div>
+      <div style="background: #FAFAFA; color: #666;">#FAFAFA</div>
+    </div>
+    
+    <div class="stats-mock" style="background: #EEEDF5;">
+      <div><div class="stat-num" style="color: #E8A838; font-family: 'Newsreader', serif;">30</div><div class="stat-label" style="color: #12105C;">Days to Delivery</div></div>
+      <div><div class="stat-num" style="color: #E8A838; font-family: 'Newsreader', serif;">50%</div><div class="stat-label" style="color: #12105C;">Cost Savings</div></div>
+      <div><div class="stat-num" style="color: #E8A838; font-family: 'Newsreader', serif;">15</div><div class="stat-label" style="color: #12105C;">Docs Delivered</div></div>
+      <div><div class="stat-num" style="color: #E8A838; font-family: 'Newsreader', serif;">100%</div><div class="stat-label" style="color: #12105C;">Human Reviewed</div></div>
+    </div>
+    
+    <div class="rationale">
+      <div class="rationale-item"><strong>✅ Forces</strong><span>Premium, distinctif, mémorable. L'ambre crée un ancrage visuel fort. Se démarque de 100% des sites pharma (tous bleus).</span></div>
+      <div class="rationale-item"><strong>⚠️ Limites</strong><span>Pourrait paraître "too much" pour certains biotechs conservateurs. L'ambre est polarisant — on aime ou pas.</span></div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ============================== -->
+  <!-- PROPOSAL 2: CLEAN SCIENCE -->
+  <!-- ============================== -->
+  <div class="proposal">
+    <div class="proposal-number" style="background: #0D9488; color: white;">2</div>
+    <div class="proposal-title" style="font-family: 'Space Grotesk', sans-serif; color: #12105C;">Clean Science</div>
+    <div class="proposal-subtitle">Indigo + Teal · Space Grotesk + Inter</div>
+    
+    <div class="proposal-why" style="background: #F0FDFA; border-color: #0D9488;">
+      <strong>Pourquoi cette direction ?</strong> Le teal est la couleur de l'innovation health-tech. Combiné à l'indigo, ça dit "on est tech ET science". Full sans-serif = startup moderne qui bouge vite. C'est le choix si tu veux que tes prospects biotechs pensent "ces gens sont comme nous — tech-native".
+    </div>
+    
+    <div class="hero-mock">
+      <div class="hero-nav" style="background: white; border-bottom: 1px solid #E5E7EB;">
+        <div class="logo" style="font-family: 'Space Grotesk', sans-serif; color: #12105C; font-weight: 700;">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" style="vertical-align: middle; margin-right: 4px;">
+            <path d="M15 2.5C13.5 5, 11 9, 6.5 14C5.5 15, 4.5 15.5, 4 16L5 17C5.5 16.5, 8 14, 10.5 10C13 6, 14.5 3.5, 15 2.5Z" fill="#0D9488" opacity="0.9"/>
+            <path d="M4 16L3 18.5L5 17" fill="#0D9488" opacity="0.6"/>
+          </svg>
+          acriba
+        </div>
+        <div class="nav-links" style="color: #6B7280;">
+          <span>Services</span><span>Process</span><span>Team</span><span style="padding: 8px 16px; background: #0D9488; border-radius: 6px; color: white;">Contact</span>
+        </div>
+      </div>
+      <div class="hero-content" style="background: #FAFBFC;">
+        <svg class="quill-float" width="280" height="280" viewBox="0 0 80 80" fill="none" style="opacity: 0.04;">
+          <path d="M60 8C55 18, 45 33, 25 53C22 56, 18 58, 15 60L18 63C20 61, 30 53, 40 38C50 23, 58 13, 60 8Z" fill="#12105C" stroke="#12105C" stroke-width="0.5"/>
+        </svg>
+        <div class="section-label" style="color: #0D9488;"><span style="display: block; width: 32px; height: 2px; background: #0D9488;"></span> AI-Powered Regulatory Writing</div>
+        <div class="hero-tagline" style="font-family: 'Space Grotesk', sans-serif; color: #12105C; font-weight: 700;">
+          Regulatory writing,<br><span style="color: #0D9488;">accelerated.</span>
+        </div>
+        <div class="hero-sub" style="color: #6B7280;">AI-powered documentation combined with 30+ years of pharma expertise. Faster, cheaper, better.</div>
+        <div class="hero-btns">
+          <a class="hero-btn" style="background: #0D9488; color: white;">Get in Touch →</a>
+          <a class="hero-btn" style="border-color: #12105C; color: #12105C;">Our Process</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="palette-strip">
+      <div style="background: #12105C; color: rgba(255,255,255,0.8);">#12105C</div>
+      <div style="background: #4F46E5; color: white;">#4F46E5</div>
+      <div style="background: #0D9488; color: white;">#0D9488</div>
+      <div style="background: #5EEAD4; color: #12105C;">#5EEAD4</div>
+      <div style="background: #F0FDFA; color: #12105C;">#F0FDFA</div>
+      <div style="background: #FAFBFC; color: #666;">#FAFBFC</div>
+    </div>
+    
+    <div class="stats-mock" style="background: white; border: 1px solid #E5E7EB;">
+      <div><div class="stat-num" style="color: #0D9488; font-family: 'Space Grotesk', sans-serif;">30</div><div class="stat-label" style="color: #6B7280;">Days to Delivery</div></div>
+      <div><div class="stat-num" style="color: #0D9488; font-family: 'Space Grotesk', sans-serif;">50%</div><div class="stat-label" style="color: #6B7280;">Cost Savings</div></div>
+      <div><div class="stat-num" style="color: #0D9488; font-family: 'Space Grotesk', sans-serif;">15</div><div class="stat-label" style="color: #6B7280;">Docs Delivered</div></div>
+      <div><div class="stat-num" style="color: #0D9488; font-family: 'Space Grotesk', sans-serif;">100%</div><div class="stat-label" style="color: #6B7280;">Human Reviewed</div></div>
+    </div>
+
+    <div class="rationale">
+      <div class="rationale-item"><strong>✅ Forces</strong><span>Moderne, accessible, "tech company". Parle aux biotechs jeunes et aux VCs. Le teal est safe en health-tech.</span></div>
+      <div class="rationale-item"><strong>⚠️ Limites</strong><span>Moins distinctif — beaucoup de health-techs utilisent le teal. Peut manquer de gravitas pour les gros pharmas.</span></div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ============================== -->
+  <!-- PROPOSAL 3: DEEP VIOLET -->
+  <!-- ============================== -->
+  <div class="proposal">
+    <div class="proposal-number" style="background: #6D5CFF; color: white;">3</div>
+    <div class="proposal-title" style="font-family: 'Fraunces', serif; color: #12105C;">Deep Violet</div>
+    <div class="proposal-subtitle">Full indigo-violet monochrome · Fraunces + Plus Jakarta Sans</div>
+    
+    <div class="proposal-why" style="background: #F5F3FF; border-color: #6D5CFF;">
+      <strong>Pourquoi cette direction ?</strong> Le monochrome violet à la Stripe/Figma. Sophistiqué, cohérent, zéro fausse note. Dit "on est une boîte de produit, pas un cabinet de conseil". La typo Fraunces ajoute du caractère sans serif classique — c'est un serif moderne, pas old-school. Pour les fondateurs tech qui font du pharma.
+    </div>
+    
+    <div class="hero-mock">
+      <div class="hero-nav" style="background: #0E0C48;">
+        <div class="logo" style="font-family: 'Fraunces', serif; color: white; font-size: 1.4rem;">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" style="vertical-align: middle; margin-right: 6px;">
+            <path d="M15 2.5C13.5 5, 11 9, 6.5 14C5.5 15, 4.5 15.5, 4 16L5 17C5.5 16.5, 8 14, 10.5 10C13 6, 14.5 3.5, 15 2.5Z" fill="#A78BFA" opacity="0.9"/>
+            <path d="M4 16L3 18.5L5 17" fill="#A78BFA" opacity="0.6"/>
+          </svg>
+          Acriba
+        </div>
+        <div class="nav-links" style="color: rgba(255,255,255,0.6);">
+          <span>Services</span><span>Process</span><span>Team</span><span style="padding: 8px 16px; background: #6D5CFF; border-radius: 6px; color: white;">Contact</span>
+        </div>
+      </div>
+      <div class="hero-content" style="background: linear-gradient(160deg, #12105C, #1E1060, #180F5E);">
+        <svg class="quill-float" width="300" height="300" viewBox="0 0 80 80" fill="none" style="opacity: 0.06;">
+          <path d="M60 8C55 18, 45 33, 25 53C22 56, 18 58, 15 60L18 63C20 61, 30 53, 40 38C50 23, 58 13, 60 8Z" fill="#A78BFA" stroke="#A78BFA" stroke-width="0.5"/>
+        </svg>
+        <div class="section-label" style="color: #A78BFA;"><span style="display: block; width: 32px; height: 2px; background: #A78BFA;"></span> AI-Powered Regulatory Writing</div>
+        <div class="hero-tagline" style="font-family: 'Fraunces', serif; color: white; font-weight: 600;">
+          Where AI meets<br><em style="color: #A78BFA;">regulatory precision.</em>
+        </div>
+        <div class="hero-sub" style="color: #9795C0;">30+ years of drug development expertise, amplified by proprietary AI technology.</div>
+        <div class="hero-btns">
+          <a class="hero-btn" style="background: #6D5CFF; color: white;">Get in Touch →</a>
+          <a class="hero-btn" style="border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.8);">Our Process</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="palette-strip">
+      <div style="background: #12105C; color: rgba(255,255,255,0.8);">#12105C</div>
+      <div style="background: #2E2A8F; color: white;">#2E2A8F</div>
+      <div style="background: #6D5CFF; color: white;">#6D5CFF</div>
+      <div style="background: #A78BFA; color: #12105C;">#A78BFA</div>
+      <div style="background: #EDE9FE; color: #12105C;">#EDE9FE</div>
+      <div style="background: #FAFAFE; color: #666;">#FAFAFE</div>
+    </div>
+    
+    <div class="stats-mock" style="background: #12105C;">
+      <div><div class="stat-num" style="color: #A78BFA; font-family: 'Fraunces', serif;">30</div><div class="stat-label" style="color: #9795C0;">Days to Delivery</div></div>
+      <div><div class="stat-num" style="color: #A78BFA; font-family: 'Fraunces', serif;">50%</div><div class="stat-label" style="color: #9795C0;">Cost Savings</div></div>
+      <div><div class="stat-num" style="color: #A78BFA; font-family: 'Fraunces', serif;">15</div><div class="stat-label" style="color: #9795C0;">Docs Delivered</div></div>
+      <div><div class="stat-num" style="color: #A78BFA; font-family: 'Fraunces', serif;">100%</div><div class="stat-label" style="color: #9795C0;">Human Reviewed</div></div>
+    </div>
+
+    <div class="rationale">
+      <div class="rationale-item"><strong>✅ Forces</strong><span>Élégant, cohérent, "product company". Très Stripe/Figma vibes. Unique dans le pharma. Monochrome = zéro risque de mauvais goût.</span></div>
+      <div class="rationale-item"><strong>⚠️ Limites</strong><span>Peut manquer de chaleur. Le violet intense peut faire "trop tech" pour des interlocuteurs pharma old-school.</span></div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- ============================== -->
+  <!-- PROPOSAL 4: INK & PAPER -->
+  <!-- ============================== -->
+  <div class="proposal">
+    <div class="proposal-number" style="background: #1C1917; color: #D6C8A6;">4</div>
+    <div class="proposal-title" style="font-family: 'Newsreader', serif; color: #1C1917;">Ink & Paper</div>
+    <div class="proposal-subtitle">Noir encre + Crème chaud · Newsreader + DM Sans</div>
+    
+    <div class="proposal-why" style="background: #FEFCF3; border-color: #D6C8A6;">
+      <strong>Pourquoi cette direction ?</strong> Métaphore directe : l'écriture. Noir d'encre, crème de papier, pointe d'or pour l'expertise. Fait penser à un cabinet de stratégie haut de gamme (McKinsey, pas Accenture). La plume prend tout son sens ici. C'est le choix si tu veux que les gens pensent "artisan de la précision" avant "tech company".
+    </div>
+    
+    <div class="hero-mock">
+      <div class="hero-nav" style="background: #1C1917;">
+        <div class="logo" style="font-family: 'Newsreader', serif; color: #FAF8F0; font-size: 1.4rem;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style="vertical-align: middle; margin-right: 6px;">
+            <path d="M15 2.5C13.5 5, 11 9, 6.5 14C5.5 15, 4.5 15.5, 4 16L5 17C5.5 16.5, 8 14, 10.5 10C13 6, 14.5 3.5, 15 2.5Z" fill="#D6C8A6" opacity="0.9"/>
+            <path d="M4 16L3 18.5L5 17" fill="#D6C8A6" opacity="0.6"/>
+          </svg>
+          Acriba
+        </div>
+        <div class="nav-links" style="color: rgba(250,248,240,0.5);">
+          <span>Services</span><span>Process</span><span>Team</span><span style="padding: 8px 16px; border: 1px solid #D6C8A6; border-radius: 6px; color: #D6C8A6;">Contact</span>
+        </div>
+      </div>
+      <div class="hero-content" style="background: linear-gradient(160deg, #1C1917, #292524, #1C1917);">
+        <svg class="quill-float" width="320" height="320" viewBox="0 0 80 80" fill="none" style="opacity: 0.05;">
+          <path d="M60 8C55 18, 45 33, 25 53C22 56, 18 58, 15 60L18 63C20 61, 30 53, 40 38C50 23, 58 13, 60 8Z" fill="#D6C8A6" stroke="#D6C8A6" stroke-width="0.5"/>
+        </svg>
+        <div class="section-label" style="color: #D6C8A6;"><span style="display: block; width: 32px; height: 2px; background: #D6C8A6;"></span> AI-Powered Regulatory Writing</div>
+        <div class="hero-tagline" style="font-family: 'Newsreader', serif; color: #FAF8F0;">
+          The art of<br><em style="color: #D6C8A6;">regulatory precision.</em>
+        </div>
+        <div class="hero-sub" style="color: #A8A29E;">Where 30 years of drug development expertise meets AI. Every document, every data point — precise.</div>
+        <div class="hero-btns">
+          <a class="hero-btn" style="background: #D6C8A6; color: #1C1917;">Get in Touch →</a>
+          <a class="hero-btn" style="border-color: rgba(250,248,240,0.2); color: #FAF8F0;">Our Process</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="palette-strip">
+      <div style="background: #1C1917; color: rgba(255,255,255,0.8);">#1C1917</div>
+      <div style="background: #292524; color: rgba(255,255,255,0.7);">#292524</div>
+      <div style="background: #78716C; color: white;">#78716C</div>
+      <div style="background: #D6C8A6; color: #1C1917;">#D6C8A6</div>
+      <div style="background: #FAF8F0; color: #1C1917;">#FAF8F0</div>
+      <div style="background: #FFFFFF; color: #666;">#FFF</div>
+    </div>
+    
+    <div class="stats-mock" style="background: #FAF8F0; border: 1px solid #E8E0CE;">
+      <div><div class="stat-num" style="color: #1C1917; font-family: 'Newsreader', serif;">30</div><div class="stat-label" style="color: #78716C;">Days to Delivery</div></div>
+      <div><div class="stat-num" style="color: #1C1917; font-family: 'Newsreader', serif;">50%</div><div class="stat-label" style="color: #78716C;">Cost Savings</div></div>
+      <div><div class="stat-num" style="color: #1C1917; font-family: 'Newsreader', serif;">15</div><div class="stat-label" style="color: #78716C;">Docs Delivered</div></div>
+      <div><div class="stat-num" style="color: #1C1917; font-family: 'Newsreader', serif;">100%</div><div class="stat-label" style="color: #78716C;">Human Reviewed</div></div>
+    </div>
+
+    <div class="rationale">
+      <div class="rationale-item"><strong>✅ Forces</strong><span>Ultra-premium, unique, la plume est au centre. Storytelling fort ("l'art de l'écriture réglementaire"). Intemporel. Se démarque de tout le monde.</span></div>
+      <div class="rationale-item"><strong>⚠️ Limites</strong><span>Pourrait faire trop "cabinet de luxe" et pas assez tech. Le noir dominant est risqué sur mobile. Moins immédiatement "pharma".</span></div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- VOTE -->
+  <div class="vote">
+    <h2 style="font-family: 'Newsreader', serif;">Alors, laquelle ?</h2>
+    <p style="margin-bottom: 24px;">Tu peux aussi mixer : "j'aime les couleurs du 1, la typo du 3, le hero du 4". On compose ton identité finale à partir de tes préférences.</p>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 600px; margin: 0 auto;">
+      <div style="background: #12105C; color: #E8A838; padding: 20px; border-radius: 12px; text-align: center; font-weight: 700;">1<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">Midnight<br>Authority</span></div>
+      <div style="background: white; color: #0D9488; padding: 20px; border-radius: 12px; text-align: center; font-weight: 700; border: 1px solid #E5E7EB;">2<br><span style="font-size: 0.75rem; font-weight: 400; color: #6B7280;">Clean<br>Science</span></div>
+      <div style="background: #12105C; color: #A78BFA; padding: 20px; border-radius: 12px; text-align: center; font-weight: 700;">3<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">Deep<br>Violet</span></div>
+      <div style="background: #1C1917; color: #D6C8A6; padding: 20px; border-radius: 12px; text-align: center; font-weight: 700;">4<br><span style="font-size: 0.75rem; font-weight: 400; opacity: 0.8;">Ink &<br>Paper</span></div>
+    </div>
+  </div>
+
+</body>
+</html>
