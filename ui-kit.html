@@ -4,670 +4,475 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acriba — UI Kit</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            indigo: { DEFAULT: '#1A1464', dark: '#110E42' },
+            graphite: { DEFAULT: '#4A4A56', light: '#6B6B78' },
+            offwhite: '#FBFAFF',
+            cream: '#F5F4F0',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body: ['"Inter"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
   <style>
     :root {
-      --midnight:    #0B1D33;
-      --deep-teal:   #0F3D3E;
-      --amber:       #D4A44C;
-      --amber-light: #E8C77B;
-      --sage:        #5B8A72;
-      --steel:       #64748B;
-      --ivory:       #FAF8F5;
-      --sand:        #F0EDE8;
-      --graphite:    #2D2D2D;
-      --mist:        #E2DFD9;
-      --font-display: 'Newsreader', Georgia, serif;
-      --font-body:    'DM Sans', -apple-system, sans-serif;
+      --indigo: #1A1464;
+      --indigo-dark: #110E42;
+      --graphite: #4A4A56;
+      --graphite-light: #6B6B78;
+      --offwhite: #FBFAFF;
+      --white: #FFFFFF;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: var(--font-body);
-      color: var(--graphite);
-      background: var(--ivory);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-
-    /* Header */
-    .kit-header {
-      background: var(--midnight);
-      padding: 4rem 2rem;
-      text-align: center;
-      color: white;
-    }
-    .kit-header h1 {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-    }
-    .kit-header p {
-      color: var(--amber);
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-top: 0.5rem;
-    }
-
-    .section { padding: 4rem 0; border-bottom: 1px solid var(--mist); }
-    .section:last-child { border-bottom: none; }
-    .section-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--steel);
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--mist);
-    }
-
-    .component-row {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-    .component-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--steel);
-      margin-bottom: 0.75rem;
-      font-weight: 500;
-    }
-
-    /* ── Buttons ── */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-body);
-      font-weight: 500;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: all 0.25s ease;
-      text-decoration: none;
-      line-height: 1;
-    }
-    .btn-primary {
-      background: var(--midnight);
-      color: var(--ivory);
-    }
-    .btn-primary:hover {
-      background: var(--deep-teal);
-    }
-    .btn-amber {
-      background: var(--amber);
-      color: var(--midnight);
-    }
-    .btn-amber:hover {
-      background: var(--amber-light);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--midnight);
-      border: 1.5px solid var(--midnight);
-    }
-    .btn-outline:hover {
-      background: var(--midnight);
-      color: var(--ivory);
-    }
-    .btn-ghost {
-      background: transparent;
-      color: var(--amber);
-      border: 1.5px solid var(--amber);
-    }
-    .btn-ghost:hover {
-      background: var(--amber);
-      color: var(--midnight);
-    }
-
-    .btn-lg { padding: 1rem 2rem; font-size: 1rem; }
-    .btn-md { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
-    .btn-sm { padding: 0.5rem 1rem; font-size: 0.8rem; }
-
-    .btn .arrow { transition: transform 0.25s ease; }
-    .btn:hover .arrow { transform: translateX(3px); }
-
-    /* ── Trust Bar ── */
-    .trust-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border: 1px solid var(--mist);
-      border-radius: 12px;
-      overflow: hidden;
-      background: white;
-    }
-    .trust-pillar {
-      padding: 2rem 1.5rem;
-      text-align: center;
-      border-right: 1px solid var(--mist);
-    }
-    .trust-pillar:last-child { border-right: none; }
-    .trust-icon {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .trust-number {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      color: var(--midnight);
-      line-height: 1;
-      margin-bottom: 0.25rem;
-    }
-    .trust-text {
-      font-size: 0.8rem;
-      color: var(--steel);
-      line-height: 1.4;
-    }
-
-    /* ── Section Labels ── */
-    .label-component {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--amber);
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .label-component::before {
-      content: '';
-      width: 32px;
-      height: 1px;
-      background: var(--amber);
-    }
-
-    /* ── Service Cards ── */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    .service-card {
-      background: white;
-      border: 1px solid var(--mist);
-      border-radius: 12px;
-      padding: 2.5rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--amber);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-    .service-card:hover::before {
-      transform: scaleX(1);
-    }
-    .service-card:hover {
-      border-color: var(--amber);
-      box-shadow: 0 8px 32px rgba(11, 29, 51, 0.08);
-    }
-    .card-number {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      color: var(--mist);
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-    .card-title {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      color: var(--midnight);
-      margin-bottom: 0.75rem;
-    }
-    .card-desc {
-      font-size: 0.9rem;
-      color: var(--steel);
-      line-height: 1.6;
-    }
-    .card-tag {
-      display: inline-block;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--sage);
-      background: rgba(91, 138, 114, 0.1);
-      padding: 0.25rem 0.6rem;
-      border-radius: 3px;
-      margin-top: 1rem;
-    }
-
-    /* ── Testimonial ── */
-    .testimonial {
-      background: var(--midnight);
-      border-radius: 12px;
-      padding: 3.5rem;
-      color: white;
-      position: relative;
-    }
-    .testimonial-quote {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 400;
-      line-height: 1.5;
-      font-style: italic;
-      margin-bottom: 2rem;
-    }
-    .testimonial-quote::before {
-      content: '"';
-      font-family: var(--font-display);
-      font-size: 5rem;
-      color: var(--amber);
-      position: absolute;
-      top: 1rem;
-      left: 2.5rem;
-      line-height: 1;
-      opacity: 0.4;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .testimonial-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--deep-teal);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--amber);
-    }
-    .testimonial-name {
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-    .testimonial-role {
-      font-size: 0.8rem;
-      color: var(--steel);
-    }
-
-    /* ── Process Steps ── */
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      position: relative;
-    }
-    .process-step {
-      padding: 2rem;
-      text-align: center;
-      position: relative;
-    }
-    .process-step:not(:last-child)::after {
-      content: '→';
-      position: absolute;
-      right: -0.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 1.5rem;
-      color: var(--amber);
-    }
-    .step-number {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--midnight);
-      color: var(--amber);
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1rem;
-    }
-    .step-title {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      color: var(--midnight);
-      margin-bottom: 0.5rem;
-    }
-    .step-desc {
-      font-size: 0.85rem;
-      color: var(--steel);
-      line-height: 1.5;
-    }
-
-    /* ── Stat Block ── */
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-    .stat-block {
-      background: var(--deep-teal);
-      border-radius: 12px;
-      padding: 2.5rem;
-      text-align: center;
-      color: white;
-    }
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      color: var(--amber);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .stat-label {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.7);
-    }
-
-    /* ── Form Elements ── */
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    .form-label {
-      display: block;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--graphite);
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.03em;
-    }
-    .form-input {
-      width: 100%;
-      padding: 0.875rem 1rem;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      border: 1.5px solid var(--mist);
-      border-radius: 6px;
-      background: white;
-      color: var(--graphite);
-      transition: border-color 0.2s ease;
-      outline: none;
-    }
-    .form-input:focus {
-      border-color: var(--amber);
-    }
-    .form-input::placeholder {
-      color: var(--steel);
-    }
-    textarea.form-input {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    /* ── Nav ── */
-    .nav-demo {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.25rem 2rem;
-      background: white;
-      border: 1px solid var(--mist);
-      border-radius: 12px;
-    }
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--midnight);
-      letter-spacing: 0.04em;
-      text-decoration: none;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.9rem;
-      color: var(--graphite);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--amber); }
-
-    @media (max-width: 768px) {
-      .trust-bar { grid-template-columns: 1fr 1fr; }
-      .trust-pillar:nth-child(2) { border-right: none; }
-      .cards-grid { grid-template-columns: 1fr; }
-      .process-steps { grid-template-columns: 1fr; }
-      .process-step:not(:last-child)::after { display: none; }
-      .stat-grid { grid-template-columns: 1fr; }
-    }
+    body { font-family: 'Inter', sans-serif; }
   </style>
 </head>
-<body>
+<body class="bg-offwhite text-graphite">
 
-  <div class="kit-header">
-    <h1>Acriba</h1>
-    <p>UI Component Kit</p>
+<!-- ═══════════════════════════════════════ -->
+<!-- HEADER                                  -->
+<!-- ═══════════════════════════════════════ -->
+<div class="max-w-5xl mx-auto px-6 pt-20 pb-8 text-center">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-3">UI Kit</p>
+  <h1 class="font-display text-3xl font-bold text-indigo mb-2">Acriba Components</h1>
+  <p class="text-sm text-graphite/60 max-w-md mx-auto">Composants réutilisables. Tailwind + variables CSS. Copiez-collez dans vos pages.</p>
+</div>
+
+<div class="max-w-5xl mx-auto px-6">
+<hr class="border-0 h-px bg-gradient-to-r from-transparent via-graphite/15 to-transparent my-12">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 1. COLOURS                              -->
+<!-- ═══════════════════════════════════════ -->
+<section class="mb-16">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-2">01 — Colours</p>
+  <h2 class="font-display text-xl font-bold text-indigo mb-6">Palette & Variables</h2>
+  
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div>
+      <div class="aspect-square bg-indigo mb-2"></div>
+      <p class="font-display text-xs font-semibold text-indigo">Indigo</p>
+      <p class="font-mono text-[10px] text-graphite/60">#1A1464 · --indigo</p>
+      <p class="text-[10px] text-graphite/50">Titres, nav, CTA, boutons</p>
+    </div>
+    <div>
+      <div class="aspect-square bg-graphite mb-2"></div>
+      <p class="font-display text-xs font-semibold text-indigo">Graphite</p>
+      <p class="font-mono text-[10px] text-graphite/60">#4A4A56 · --graphite</p>
+      <p class="text-[10px] text-graphite/50">Body text, borders, accents</p>
+    </div>
+    <div>
+      <div class="aspect-square bg-offwhite border border-graphite/10 mb-2"></div>
+      <p class="font-display text-xs font-semibold text-indigo">Off-white</p>
+      <p class="font-mono text-[10px] text-graphite/60">#FBFAFF · --offwhite</p>
+      <p class="text-[10px] text-graphite/50">Fonds de page, sections</p>
+    </div>
+    <div>
+      <div class="aspect-square bg-white border border-graphite/10 mb-2"></div>
+      <p class="font-display text-xs font-semibold text-indigo">White</p>
+      <p class="font-mono text-[10px] text-graphite/60">#FFFFFF · --white</p>
+      <p class="text-[10px] text-graphite/50">Cartes, éléments surélevés</p>
+    </div>
   </div>
 
-  <div class="container">
-
-    <!-- Navigation -->
-    <div class="section">
-      <div class="section-label">Navigation</div>
-      <nav class="nav-demo">
-        <a href="#" class="nav-logo">Acriba</a>
-        <ul class="nav-links">
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Process</a></li>
-          <li><a href="#">Team</a></li>
-          <li><a href="#" class="btn btn-amber btn-sm">Get in touch <span class="arrow">→</span></a></li>
-        </ul>
-      </nav>
+  <!-- Combinations -->
+  <h3 class="font-display text-xs font-semibold text-graphite/50 tracking-[0.1em] uppercase mt-10 mb-4">Combinaisons recommandées</h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class="bg-offwhite border border-graphite/10 p-6">
+      <p class="font-display text-sm font-bold text-indigo mb-1">Titre indigo</p>
+      <p class="text-sm text-graphite">Body text graphite sur fond off-white. Usage principal.</p>
     </div>
+    <div class="bg-white border border-graphite/10 p-6">
+      <p class="font-display text-sm font-bold text-indigo mb-1">Carte blanche</p>
+      <p class="text-sm text-graphite">Body text graphite sur fond blanc. Pour les cards.</p>
+    </div>
+    <div class="bg-indigo p-6">
+      <p class="font-display text-sm font-bold text-white mb-1">Titre blanc</p>
+      <p class="text-sm text-white/60">Body text blanc 60% sur fond indigo. Hero, footer.</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Buttons -->
-    <div class="section">
-      <div class="section-label">Buttons</div>
+<hr class="border-0 h-px bg-gradient-to-r from-transparent via-graphite/15 to-transparent my-12">
 
-      <div class="component-label">Primary — Dark</div>
-      <div class="component-row">
-        <button class="btn btn-primary btn-lg">Get in touch <span class="arrow">→</span></button>
-        <button class="btn btn-primary btn-md">Get in touch <span class="arrow">→</span></button>
-        <button class="btn btn-primary btn-sm">Get in touch <span class="arrow">→</span></button>
+<!-- ═══════════════════════════════════════ -->
+<!-- 2. TYPOGRAPHY                           -->
+<!-- ═══════════════════════════════════════ -->
+<section class="mb-16">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-2">02 — Typography</p>
+  <h2 class="font-display text-xl font-bold text-indigo mb-6">Type Scale</h2>
+  
+  <div class="space-y-0">
+    <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 py-4 border-b border-graphite/10">
+      <div class="w-40 flex-shrink-0">
+        <p class="font-display text-xs font-semibold text-indigo">Display</p>
+        <p class="font-mono text-[10px] text-graphite/50">Space Grotesk 700 · 3rem</p>
       </div>
-
-      <div class="component-label">Primary — Amber</div>
-      <div class="component-row">
-        <button class="btn btn-amber btn-lg">Start a project <span class="arrow">→</span></button>
-        <button class="btn btn-amber btn-md">Start a project <span class="arrow">→</span></button>
-        <button class="btn btn-amber btn-sm">Start a project <span class="arrow">→</span></button>
+      <p class="font-display text-5xl font-bold text-indigo leading-none">Acriba</p>
+    </div>
+    
+    <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 py-4 border-b border-graphite/10">
+      <div class="w-40 flex-shrink-0">
+        <p class="font-display text-xs font-semibold text-indigo">H1</p>
+        <p class="font-mono text-[10px] text-graphite/50">Space Grotesk 700 · 2.25rem</p>
       </div>
-
-      <div class="component-label">Secondary — Outline</div>
-      <div class="component-row">
-        <button class="btn btn-outline btn-lg">Learn more</button>
-        <button class="btn btn-outline btn-md">Learn more</button>
-        <button class="btn btn-outline btn-sm">Learn more</button>
+      <p class="font-display text-4xl font-bold text-indigo leading-tight">Regulatory precision</p>
+    </div>
+    
+    <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 py-4 border-b border-graphite/10">
+      <div class="w-40 flex-shrink-0">
+        <p class="font-display text-xs font-semibold text-indigo">H2</p>
+        <p class="font-mono text-[10px] text-graphite/50">Space Grotesk 700 · 1.25rem</p>
       </div>
+      <p class="font-display text-xl font-bold text-indigo">Section heading</p>
+    </div>
+    
+    <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 py-4 border-b border-graphite/10">
+      <div class="w-40 flex-shrink-0">
+        <p class="font-display text-xs font-semibold text-indigo">H3</p>
+        <p class="font-mono text-[10px] text-graphite/50">Space Grotesk 700 · 0.85rem</p>
+      </div>
+      <p class="font-display text-sm font-bold text-indigo">Card title</p>
+    </div>
+    
+    <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 py-4 border-b border-graphite/10">
+      <div class="w-40 flex-shrink-0">
+        <p class="font-display text-xs font-semibold text-indigo">Overline</p>
+        <p class="font-mono text-[10px] text-graphite/50">Space Grotesk 600 · 0.7rem · caps</p>
+      </div>
+      <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase">Regulatory Intelligence</p>
+    </div>
+    
+    <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 py-4 border-b border-graphite/10">
+      <div class="w-40 flex-shrink-0">
+        <p class="font-display text-xs font-semibold text-indigo">Body</p>
+        <p class="font-mono text-[10px] text-graphite/50">Inter 400 · 0.95rem · 1.7</p>
+      </div>
+      <p class="text-[15px] leading-relaxed text-graphite">From IB to IMPD to eCTD — precision documents backed by expert review and proprietary AI tools.</p>
+    </div>
+    
+    <div class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6 py-4">
+      <div class="w-40 flex-shrink-0">
+        <p class="font-display text-xs font-semibold text-indigo">Caption</p>
+        <p class="font-mono text-[10px] text-graphite/50">Inter 400 · 0.75rem</p>
+      </div>
+      <p class="text-xs text-graphite/60">Supporting text and metadata</p>
+    </div>
+  </div>
+</section>
 
-      <div class="component-label">Ghost — On Dark (see on dark bg)</div>
-      <div class="component-row" style="background:var(--midnight);padding:1.5rem;border-radius:8px;">
-        <button class="btn btn-ghost btn-lg">Explore services</button>
-        <button class="btn btn-ghost btn-md">Explore services</button>
-        <button class="btn btn-ghost btn-sm">Explore services</button>
+<hr class="border-0 h-px bg-gradient-to-r from-transparent via-graphite/15 to-transparent my-12">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 3. BUTTONS                              -->
+<!-- ═══════════════════════════════════════ -->
+<section class="mb-16">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-2">03 — Buttons</p>
+  <h2 class="font-display text-xl font-bold text-indigo mb-2">Primary & Ghost</h2>
+  <p class="text-sm text-graphite/60 mb-8">Pas de border-radius. Angles droits = rigueur réglementaire.</p>
+  
+  <!-- On light background -->
+  <h3 class="font-display text-xs font-semibold text-graphite/50 tracking-[0.1em] uppercase mb-4">Sur fond clair</h3>
+  <div class="bg-offwhite border border-graphite/10 p-8 mb-6">
+    <div class="flex flex-wrap items-center gap-4 mb-6">
+      <button class="px-4 py-2 bg-indigo text-white font-display font-semibold text-xs">SMALL</button>
+      <button class="px-7 py-3 bg-indigo text-white font-display font-semibold text-sm">GET STARTED →</button>
+      <button class="px-9 py-4 bg-indigo text-white font-display font-semibold text-base">LARGE CTA →</button>
+    </div>
+    <div class="flex flex-wrap items-center gap-4">
+      <button class="px-4 py-2 border-2 border-indigo text-indigo font-display font-semibold text-xs">SMALL</button>
+      <button class="px-7 py-3 border-2 border-indigo text-indigo font-display font-semibold text-sm">OUR PROCESS</button>
+      <button class="px-9 py-4 border-2 border-indigo text-indigo font-display font-semibold text-base">LEARN MORE</button>
+    </div>
+  </div>
+  
+  <!-- On dark background -->
+  <h3 class="font-display text-xs font-semibold text-graphite/50 tracking-[0.1em] uppercase mb-4">Sur fond sombre</h3>
+  <div class="bg-indigo p-8">
+    <div class="flex flex-wrap items-center gap-4 mb-6">
+      <button class="px-4 py-2 bg-white text-indigo font-display font-semibold text-xs">SMALL</button>
+      <button class="px-7 py-3 bg-white text-indigo font-display font-semibold text-sm">GET STARTED →</button>
+      <button class="px-9 py-4 bg-white text-indigo font-display font-semibold text-base">LARGE CTA →</button>
+    </div>
+    <div class="flex flex-wrap items-center gap-4">
+      <button class="px-4 py-2 border-2 border-white/30 text-white font-display font-semibold text-xs">SMALL</button>
+      <button class="px-7 py-3 border-2 border-white/30 text-white font-display font-semibold text-sm">OUR PROCESS</button>
+      <button class="px-9 py-4 border-2 border-white/30 text-white font-display font-semibold text-base">LEARN MORE</button>
+    </div>
+  </div>
+</section>
+
+<hr class="border-0 h-px bg-gradient-to-r from-transparent via-graphite/15 to-transparent my-12">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 4. SECTION LABELS                       -->
+<!-- ═══════════════════════════════════════ -->
+<section class="mb-16">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-2">04 — Section Labels</p>
+  <h2 class="font-display text-xl font-bold text-indigo mb-2">Overlines</h2>
+  <p class="text-sm text-graphite/60 mb-8">Texte caps + trait horizontal. Structure la page sans effort.</p>
+  
+  <div class="space-y-8">
+    <!-- On light -->
+    <div class="bg-offwhite border border-graphite/10 p-8">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-8 h-0.5 bg-indigo/30"></div>
+        <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase">Regulatory Intelligence</p>
+      </div>
+      <h2 class="font-display text-2xl font-bold text-indigo">AI-powered regulatory writing</h2>
+    </div>
+    
+    <!-- On dark -->
+    <div class="bg-indigo p-8">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-8 h-0.5 bg-white/30"></div>
+        <p class="font-display text-xs font-semibold tracking-[0.15em] text-white/50 uppercase">Our Process</p>
+      </div>
+      <h2 class="font-display text-2xl font-bold text-white">Six steps to submission</h2>
+    </div>
+  </div>
+</section>
+
+<hr class="border-0 h-px bg-gradient-to-r from-transparent via-graphite/15 to-transparent my-12">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 5. CARDS                                -->
+<!-- ═══════════════════════════════════════ -->
+<section class="mb-16">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-2">05 — Cards</p>
+  <h2 class="font-display text-xl font-bold text-indigo mb-2">Service Cards</h2>
+  <p class="text-sm text-graphite/60 mb-8">Fond blanc, border-left graphite 3px. Pas d'ombre, pas de radius.</p>
+  
+  <!-- Standard cards -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+    <div class="bg-white p-7 border-l-[3px] border-graphite">
+      <h3 class="font-display text-sm font-bold text-indigo mb-2">Investigator's Brochure</h3>
+      <p class="text-sm text-graphite leading-relaxed">Complete IB authoring with integrated safety analysis and regulatory compliance.</p>
+    </div>
+    <div class="bg-white p-7 border-l-[3px] border-graphite">
+      <h3 class="font-display text-sm font-bold text-indigo mb-2">IMPD / IND</h3>
+      <p class="text-sm text-graphite leading-relaxed">End-to-end dossier preparation for clinical trial applications across EU and US.</p>
+    </div>
+    <div class="bg-white p-7 border-l-[3px] border-graphite">
+      <h3 class="font-display text-sm font-bold text-indigo mb-2">eCTD Publishing</h3>
+      <p class="text-sm text-graphite leading-relaxed">Structured submissions ready for EMA and FDA portals.</p>
+    </div>
+  </div>
+  
+  <!-- Cards on dark -->
+  <h3 class="font-display text-xs font-semibold text-graphite/50 tracking-[0.1em] uppercase mb-4">Sur fond sombre</h3>
+  <div class="bg-indigo p-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="bg-white/5 p-7 border-l-[3px] border-white/20">
+        <h3 class="font-display text-sm font-bold text-white mb-2">Investigator's Brochure</h3>
+        <p class="text-sm text-white/60 leading-relaxed">Complete IB authoring with integrated safety analysis.</p>
+      </div>
+      <div class="bg-white/5 p-7 border-l-[3px] border-white/20">
+        <h3 class="font-display text-sm font-bold text-white mb-2">IMPD / IND</h3>
+        <p class="text-sm text-white/60 leading-relaxed">End-to-end dossier preparation for CTA.</p>
+      </div>
+      <div class="bg-white/5 p-7 border-l-[3px] border-white/20">
+        <h3 class="font-display text-sm font-bold text-white mb-2">eCTD Publishing</h3>
+        <p class="text-sm text-white/60 leading-relaxed">Structured submissions for EMA and FDA.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Section Labels -->
-    <div class="section">
-      <div class="section-label">Section Labels</div>
-      <div style="display:flex;flex-direction:column;gap:2rem;">
-        <div class="label-component">Our Services</div>
-        <div class="label-component">How It Works</div>
-        <div class="label-component">The Team</div>
-      </div>
+<hr class="border-0 h-px bg-gradient-to-r from-transparent via-graphite/15 to-transparent my-12">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 6. STATS                                -->
+<!-- ═══════════════════════════════════════ -->
+<section class="mb-16">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-2">06 — Stats</p>
+  <h2 class="font-display text-xl font-bold text-indigo mb-2">Key Figures</h2>
+  <p class="text-sm text-graphite/60 mb-8">Les chiffres en grand. Space Grotesk bold. Séparateurs fins.</p>
+  
+  <!-- On light -->
+  <div class="bg-white grid grid-cols-2 md:grid-cols-4 mb-6">
+    <div class="p-8 text-center border-r border-graphite/10">
+      <p class="font-display text-4xl md:text-5xl font-bold text-indigo leading-none">50+</p>
+      <p class="text-[10px] text-graphite/50 uppercase tracking-[0.1em] mt-2">Dossiers</p>
     </div>
-
-    <!-- Trust Bar -->
-    <div class="section">
-      <div class="section-label">Trust Bar</div>
-      <div class="trust-bar">
-        <div class="trust-pillar">
-          <div class="trust-icon">⚗️</div>
-          <div class="trust-number">30+</div>
-          <div class="trust-text">Years Pharma<br>Regulatory Experience</div>
-        </div>
-        <div class="trust-pillar">
-          <div class="trust-icon">⚡</div>
-          <div class="trust-number">10×</div>
-          <div class="trust-text">Faster Document<br>Production</div>
-        </div>
-        <div class="trust-pillar">
-          <div class="trust-icon">🏛️</div>
-          <div class="trust-number">FDA</div>
-          <div class="trust-text">& EMA Submission<br>Ready</div>
-        </div>
-        <div class="trust-pillar">
-          <div class="trust-icon">🤖</div>
-          <div class="trust-number">AI</div>
-          <div class="trust-text">Proprietary Tools<br>Built In-House</div>
-        </div>
-      </div>
+    <div class="p-8 text-center border-r border-graphite/10">
+      <p class="font-display text-4xl md:text-5xl font-bold text-indigo leading-none">3×</p>
+      <p class="text-[10px] text-graphite/50 uppercase tracking-[0.1em] mt-2">Faster</p>
     </div>
-
-    <!-- Service Cards -->
-    <div class="section">
-      <div class="section-label">Service Cards</div>
-      <div class="cards-grid">
-        <div class="service-card">
-          <div class="card-number">01</div>
-          <div class="card-title">Regulatory Document Writing</div>
-          <div class="card-desc">AI-generated first drafts of IBs, IMPDs, protocols, ICFs, and CSRs — reviewed and refined by regulatory experts with decades of experience.</div>
-          <span class="card-tag">AI-Powered</span>
-        </div>
-        <div class="service-card">
-          <div class="card-number">02</div>
-          <div class="card-title">IND Package Preparation</div>
-          <div class="card-desc">Complete IND and CTA submission packages for FDA and EMA. From Module 1 to Module 5, structured for first-time approval.</div>
-          <span class="card-tag">FDA / EMA</span>
-        </div>
-        <div class="service-card">
-          <div class="card-number">03</div>
-          <div class="card-title">Market Research & Site ID</div>
-          <div class="card-desc">Proprietary AI tools to identify optimal clinical trial sites, analyze competitive landscapes, and map patient populations.</div>
-          <span class="card-tag">Intelligence</span>
-        </div>
-        <div class="service-card">
-          <div class="card-number">04</div>
-          <div class="card-title">Drug Repositioning Analysis</div>
-          <div class="card-desc">AI-driven analysis of existing compounds for new therapeutic applications. Identify licensing opportunities before your competitors.</div>
-          <span class="card-tag">Strategic</span>
-        </div>
-      </div>
+    <div class="p-8 text-center border-r border-graphite/10">
+      <p class="font-display text-4xl md:text-5xl font-bold text-indigo leading-none">100%</p>
+      <p class="text-[10px] text-graphite/50 uppercase tracking-[0.1em] mt-2">Approved</p>
     </div>
-
-    <!-- Process Steps -->
-    <div class="section">
-      <div class="section-label">Process Steps</div>
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="step-number">1</div>
-          <div class="step-title">AI Draft</div>
-          <div class="step-desc">Our proprietary AI tools generate comprehensive first drafts from your source data and protocols.</div>
-        </div>
-        <div class="process-step">
-          <div class="step-number">2</div>
-          <div class="step-title">Expert Review</div>
-          <div class="step-desc">Senior regulatory professionals validate every document for accuracy, compliance, and submission readiness.</div>
-        </div>
-        <div class="process-step">
-          <div class="step-number">3</div>
-          <div class="step-title">Client Delivery</div>
-          <div class="step-desc">Submission-ready documents delivered in your preferred format, with full revision support included.</div>
-        </div>
-      </div>
+    <div class="p-8 text-center">
+      <p class="font-display text-4xl md:text-5xl font-bold text-indigo leading-none">30</p>
+      <p class="text-[10px] text-graphite/50 uppercase tracking-[0.1em] mt-2">Days avg</p>
     </div>
-
-    <!-- Stats -->
-    <div class="section">
-      <div class="section-label">Stat Blocks</div>
-      <div class="stat-grid">
-        <div class="stat-block">
-          <div class="stat-number">10×</div>
-          <div class="stat-label">Faster than traditional CROs</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-number">30+</div>
-          <div class="stat-label">Years of regulatory experience</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Expert-reviewed deliverables</div>
-        </div>
-      </div>
+  </div>
+  
+  <!-- On dark -->
+  <div class="bg-indigo grid grid-cols-2 md:grid-cols-4">
+    <div class="p-8 text-center border-r border-white/10">
+      <p class="font-display text-4xl md:text-5xl font-bold text-white leading-none">50+</p>
+      <p class="text-[10px] text-white/40 uppercase tracking-[0.1em] mt-2">Dossiers</p>
     </div>
+    <div class="p-8 text-center border-r border-white/10">
+      <p class="font-display text-4xl md:text-5xl font-bold text-white leading-none">3×</p>
+      <p class="text-[10px] text-white/40 uppercase tracking-[0.1em] mt-2">Faster</p>
+    </div>
+    <div class="p-8 text-center border-r border-white/10">
+      <p class="font-display text-4xl md:text-5xl font-bold text-white leading-none">100%</p>
+      <p class="text-[10px] text-white/40 uppercase tracking-[0.1em] mt-2">Approved</p>
+    </div>
+    <div class="p-8 text-center">
+      <p class="font-display text-4xl md:text-5xl font-bold text-white leading-none">30</p>
+      <p class="text-[10px] text-white/40 uppercase tracking-[0.1em] mt-2">Days avg</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Testimonial -->
-    <div class="section">
-      <div class="section-label">Testimonial / Quote</div>
-      <div class="testimonial">
-        <div class="testimonial-quote">Acriba delivered our Investigator's Brochure in two weeks — a process that typically takes three months. The quality exceeded our expectations.</div>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">MT</div>
-          <div>
-            <div class="testimonial-name">Clinical Director</div>
-            <div class="testimonial-role">UK-based cell therapy biotech</div>
+<hr class="border-0 h-px bg-gradient-to-r from-transparent via-graphite/15 to-transparent my-12">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 7. TRUST BAR                            -->
+<!-- ═══════════════════════════════════════ -->
+<section class="mb-16">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-2">07 — Trust Bar</p>
+  <h2 class="font-display text-xl font-bold text-indigo mb-2">Piliers de confiance</h2>
+  <p class="text-sm text-graphite/60 mb-8">3 items côte à côte, trait vertical à gauche. Réassurance en un coup d'œil.</p>
+  
+  <div class="bg-white grid grid-cols-1 md:grid-cols-3">
+    <div class="p-8 border-l-[3px] border-indigo">
+      <p class="font-display text-sm font-bold text-indigo mb-1">Expert Review</p>
+      <p class="text-sm text-graphite leading-relaxed">Every document reviewed by senior regulatory professionals with 20+ years of experience.</p>
+    </div>
+    <div class="p-8 border-l-[3px] border-graphite">
+      <p class="font-display text-sm font-bold text-indigo mb-1">AI-Augmented</p>
+      <p class="text-sm text-graphite leading-relaxed">Proprietary tools for consistency checks, cross-referencing, and regulatory compliance.</p>
+    </div>
+    <div class="p-8 border-l-[3px] border-indigo">
+      <p class="font-display text-sm font-bold text-indigo mb-1">Data Privacy</p>
+      <p class="text-sm text-graphite leading-relaxed">Zero data retention. Your clinical data never leaves secure processing environments.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="border-0 h-px bg-gradient-to-r from-transparent via-graphite/15 to-transparent my-12">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 8. NAVIGATION                           -->
+<!-- ═══════════════════════════════════════ -->
+<section class="mb-16">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-2">08 — Navigation</p>
+  <h2 class="font-display text-xl font-bold text-indigo mb-2">Navbar</h2>
+  <p class="text-sm text-graphite/60 mb-8">Blanche, border-bottom graphite 2px. Logo en Space Grotesk bold.</p>
+  
+  <!-- Light nav -->
+  <div class="bg-white flex justify-between items-center px-8 py-4 border-b-2 border-graphite/20 mb-6">
+    <span class="font-display font-bold text-indigo text-lg">Acriba</span>
+    <div class="flex items-center gap-6 text-sm text-graphite">
+      <span>Services</span>
+      <span>Process</span>
+      <span>Team</span>
+      <button class="px-5 py-2 bg-indigo text-white font-display font-semibold text-xs">CONTACT</button>
+    </div>
+  </div>
+  
+  <!-- Dark nav (for hero sections) -->
+  <div class="bg-indigo flex justify-between items-center px-8 py-4">
+    <span class="font-display font-bold text-white text-lg">Acriba</span>
+    <div class="flex items-center gap-6 text-sm text-white/70">
+      <span>Services</span>
+      <span>Process</span>
+      <span>Team</span>
+      <button class="px-5 py-2 bg-white text-indigo font-display font-semibold text-xs">CONTACT</button>
+    </div>
+  </div>
+</section>
+
+<hr class="border-0 h-px bg-gradient-to-r from-transparent via-graphite/15 to-transparent my-12">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 9. PROCESS STEPS                        -->
+<!-- ═══════════════════════════════════════ -->
+<section class="mb-16">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-2">09 — Process</p>
+  <h2 class="font-display text-xl font-bold text-indigo mb-2">Step Indicators</h2>
+  <p class="text-sm text-graphite/60 mb-8">Numérotation bold + description. Grille propre.</p>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-white p-7">
+      <p class="font-display text-3xl font-bold text-indigo/20 mb-3">01</p>
+      <h3 class="font-display text-sm font-bold text-indigo mb-2">Scope & Quote</h3>
+      <p class="text-sm text-graphite leading-relaxed">We review your protocol and data package, then deliver a fixed-price quote within 48h.</p>
+    </div>
+    <div class="bg-white p-7">
+      <p class="font-display text-3xl font-bold text-indigo/20 mb-3">02</p>
+      <h3 class="font-display text-sm font-bold text-indigo mb-2">Draft & Review</h3>
+      <p class="text-sm text-graphite leading-relaxed">AI-assisted first draft reviewed by our regulatory experts. You get a clean document in 2 weeks.</p>
+    </div>
+    <div class="bg-white p-7">
+      <p class="font-display text-3xl font-bold text-indigo/20 mb-3">03</p>
+      <h3 class="font-display text-sm font-bold text-indigo mb-2">Submit</h3>
+      <p class="text-sm text-graphite leading-relaxed">Final QC, eCTD formatting if needed, and submission support to EMA or FDA.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="border-0 h-px bg-gradient-to-r from-transparent via-graphite/15 to-transparent my-12">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 10. FOOTER                              -->
+<!-- ═══════════════════════════════════════ -->
+<section class="mb-16">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-2">10 — Footer</p>
+  <h2 class="font-display text-xl font-bold text-indigo mb-6">Site Footer</h2>
+  
+  <div class="bg-indigo px-8 py-12">
+    <div class="flex flex-col md:flex-row justify-between gap-8">
+      <div>
+        <p class="font-display font-bold text-white text-lg mb-2">Acriba</p>
+        <p class="text-sm text-white/40 max-w-xs">AI-powered regulatory writing for pharma. Precision documents, expert-reviewed.</p>
+      </div>
+      <div class="flex gap-16">
+        <div>
+          <p class="font-display text-xs font-semibold text-white/50 uppercase tracking-[0.1em] mb-3">Services</p>
+          <div class="space-y-2 text-sm text-white/40">
+            <p>Investigator's Brochure</p>
+            <p>IMPD / IND</p>
+            <p>eCTD Publishing</p>
+            <p>CSR</p>
+          </div>
+        </div>
+        <div>
+          <p class="font-display text-xs font-semibold text-white/50 uppercase tracking-[0.1em] mb-3">Company</p>
+          <div class="space-y-2 text-sm text-white/40">
+            <p>About</p>
+            <p>Process</p>
+            <p>Contact</p>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Form -->
-    <div class="section">
-      <div class="section-label">Form Elements</div>
-      <div style="max-width:480px;">
-        <div class="form-group">
-          <label class="form-label">Full Name</label>
-          <input type="text" class="form-input" placeholder="Jane Smith">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Work Email</label>
-          <input type="email" class="form-input" placeholder="jane@biotech.com">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Company</label>
-          <input type="text" class="form-input" placeholder="Your company name">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-input" placeholder="Tell us about your project..."></textarea>
-        </div>
-        <button class="btn btn-amber btn-lg" style="width:100%;justify-content:center;">Send message <span class="arrow">→</span></button>
-      </div>
+    <div class="border-t border-white/10 mt-10 pt-6">
+      <p class="text-xs text-white/30">© 2026 Acriba. All rights reserved.</p>
     </div>
-
   </div>
+</section>
 
-  <div style="background:var(--midnight);padding:3rem;text-align:center;margin-top:4rem;">
-    <span style="font-family:var(--font-display);font-size:2rem;color:var(--ivory);letter-spacing:0.06em;">Acriba</span>
-    <p style="color:var(--steel);font-size:0.85rem;margin-top:0.5rem;">UI Kit v1.0</p>
-  </div>
+</div>
+
+<div class="text-center py-12 text-xs text-graphite/30">
+  Acriba UI Kit — v1.0 — Tailwind CSS + CSS Variables — March 2026
+</div>
 
 </body>
 </html>
