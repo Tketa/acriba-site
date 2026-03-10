@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acriba — Hero Copy Vote</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            indigo: { DEFAULT: '#1A1464' },
+            graphite: { DEFAULT: '#4A4A56' },
+            offwhite: '#FBFAFF',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body: ['"Inter"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .option { transition: all 0.2s; cursor: pointer; user-select: none; }
+    .option:hover { background: #F0EFFC; }
+    .option.selected { border-color: #1A1464; background: #F0EFFC; }
+    .rank-badge { min-width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; }
+    .option.ranked .rank-badge { background: #1A1464; color: white; }
+  </style>
+</head>
+<body class="bg-offwhite text-graphite min-h-screen">
+
+<div class="max-w-2xl mx-auto px-6 py-16">
+  <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-2">Hero Copy</p>
+  <h1 class="font-display text-2xl font-bold text-indigo mb-2">Clique dans l'ordre de préférence</h1>
+  <p class="text-sm text-graphite/60 mb-8">1er clic = favori, 2e = second choix, etc. Clique à nouveau pour retirer.</p>
+
+  <div id="options" class="space-y-4">
+    
+    <div class="option p-6 bg-white border-2 border-graphite/10" onclick="toggleRank(this, 0)">
+      <div class="flex items-start gap-4">
+        <div class="rank-badge bg-graphite/10 text-graphite/40 font-display">—</div>
+        <div>
+          <p class="font-display text-lg font-bold text-indigo mb-1">Half the cost. Half the time. Expert-reviewed.</p>
+          <p class="text-sm text-graphite/70">AI-drafted regulatory documents, reviewed by 30 years of MAA/NDA experience. Delivered fast, priced per document.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="option p-6 bg-white border-2 border-graphite/10" onclick="toggleRank(this, 1)">
+      <div class="flex items-start gap-4">
+        <div class="rank-badge bg-graphite/10 text-graphite/40 font-display">—</div>
+        <div>
+          <p class="font-display text-lg font-bold text-indigo mb-1">Regulatory documents in weeks, not months.</p>
+          <p class="text-sm text-graphite/70">AI-drafted, expert-reviewed. IB, IMPD, CSR and more — delivered at half the cost of traditional consultancies.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="option p-6 bg-white border-2 border-graphite/10" onclick="toggleRank(this, 2)">
+      <div class="flex items-start gap-4">
+        <div class="rank-badge bg-graphite/10 text-graphite/40 font-display">—</div>
+        <div>
+          <p class="font-display text-lg font-bold text-indigo mb-1">Stop overpaying for regulatory writing.</p>
+          <p class="text-sm text-graphite/70">Your IMPD, IB, and CSR — AI-drafted, reviewed by senior pharma experts via CXO Swiss. Faster delivery, fixed pricing.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="option p-6 bg-white border-2 border-graphite/10" onclick="toggleRank(this, 3)">
+      <div class="flex items-start gap-4">
+        <div class="rank-badge bg-graphite/10 text-graphite/40 font-display">—</div>
+        <div>
+          <p class="font-display text-lg font-bold text-indigo mb-1">Expert consulting for clinical-stage biotech.</p>
+          <p class="text-sm text-graphite/70">Regulatory writing, business development, and clinical operations — AI-enhanced, expert-reviewed, priced per document.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="option p-6 bg-white border-2 border-graphite/10" onclick="toggleRank(this, 4)">
+      <div class="flex items-start gap-4">
+        <div class="rank-badge bg-graphite/10 text-graphite/40 font-display">—</div>
+        <div>
+          <p class="font-display text-lg font-bold text-indigo mb-1">Compliant submissions. Faster timelines. Lower costs.</p>
+          <p class="text-sm text-graphite/70">AI-drafted documents reviewed by experts who've secured MAA and NDA approvals for three decades.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="result" class="mt-8 p-6 bg-indigo text-white hidden">
+    <p class="font-display text-sm font-semibold mb-2">Ton ranking :</p>
+    <p id="ranking-text" class="text-sm text-white/80"></p>
+  </div>
+</div>
+
+<script>
+  const rankings = [];
+  const options = document.querySelectorAll('.option');
+
+  function toggleRank(el, idx) {
+    const existingPos = rankings.indexOf(idx);
+    
+    if (existingPos !== -1) {
+      // Remove from rankings
+      rankings.splice(existingPos, 1);
+    } else {
+      // Add to rankings
+      rankings.push(idx);
+    }
+    
+    // Update all badges
+    options.forEach((opt, i) => {
+      const badge = opt.querySelector('.rank-badge');
+      const pos = rankings.indexOf(i);
+      if (pos !== -1) {
+        badge.textContent = '#' + (pos + 1);
+        opt.classList.add('ranked', 'selected');
+      } else {
+        badge.textContent = '—';
+        opt.classList.remove('ranked', 'selected');
+      }
+    });
+
+    // Show result
+    const resultDiv = document.getElementById('result');
+    const rankingText = document.getElementById('ranking-text');
+    if (rankings.length > 0) {
+      resultDiv.classList.remove('hidden');
+      const labels = [
+        'Half the cost. Half the time.',
+        'Regulatory documents in weeks, not months.',
+        'Stop overpaying for regulatory writing.',
+        'Expert consulting for clinical-stage biotech.',
+        'Compliant submissions. Faster timelines. Lower costs.'
+      ];
+      rankingText.textContent = rankings.map((r, i) => `#${i+1}: "${labels[r]}"`).join('  →  ');
+    } else {
+      resultDiv.classList.add('hidden');
+    }
+  }
+</script>
+
+</body>
+</html>
