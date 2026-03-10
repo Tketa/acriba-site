@@ -3,1494 +3,339 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acriba — Accelerating Drug Development with AI</title>
-  <meta name="description" content="Acriba combines AI with pharma subject-matter experts to accelerate and reduce the cost of drug development. Regulatory, clinical, non-clinical, and CMC consulting.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&display=swap" rel="stylesheet">
-
+  <title>Acriba — AI-Powered Regulatory Writing for Pharma</title>
+  <meta name="description" content="Precision regulatory documents backed by expert review and proprietary AI tools. IB, IMPD, eCTD, CSR, Protocol Synopsis, Orphan Drug Designation.">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            indigo: { DEFAULT: '#1A1464', dark: '#110E42' },
+            graphite: { DEFAULT: '#4A4A56', light: '#6B6B78' },
+            offwhite: '#FBFAFF',
+            cream: '#F5F4F0',
+          },
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body: ['"Inter"', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
   <style>
     :root {
-      --midnight:    #0B1D33;
-      --deep-teal:   #0F3D3E;
-      --amber:       #D4A44C;
-      --amber-light: #E8C77B;
-      --amber-glow:  rgba(212, 164, 76, 0.12);
-      --sage:        #5B8A72;
-      --steel:       #64748B;
-      --ivory:       #FAF8F5;
-      --sand:        #F0EDE8;
-      --graphite:    #2D2D2D;
-      --mist:        #E2DFD9;
-      --font-display: 'Newsreader', Georgia, serif;
-      --font-body:    'DM Sans', -apple-system, sans-serif;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-body);
-      color: var(--graphite);
-      background: var(--ivory);
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* ═══════════════════════════
-       NAVIGATION
-    ═══════════════════════════ */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 1.25rem 0;
-      transition: all 0.35s ease;
-    }
-    .nav.scrolled {
-      background: rgba(250, 248, 245, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--mist);
-      padding: 0.875rem 0;
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-    }
-    .nav-logo svg {
-      width: 28px;
-      height: 28px;
-      transition: transform 0.3s ease;
-    }
-    .nav-logo:hover svg {
-      transform: rotate(-8deg);
-    }
-    .nav-logo-text {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--ivory);
-      letter-spacing: 0.04em;
-      transition: color 0.35s ease;
-    }
-    .nav.scrolled .nav-logo-text {
-      color: var(--midnight);
-    }
-    .nav.scrolled .nav-logo svg .quill-stroke {
-      stroke: var(--midnight);
-    }
-    .nav-links {
-      display: flex;
-      gap: 2.25rem;
-      align-items: center;
-      list-style: none;
-    }
-    .nav-links a {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-      transition: color 0.2s;
-      font-weight: 400;
-    }
-    .nav.scrolled .nav-links a {
-      color: var(--graphite);
-    }
-    .nav-links a:hover {
-      color: var(--amber);
-    }
-    .nav-cta {
-      background: var(--amber) !important;
-      color: var(--midnight) !important;
-      padding: 0.6rem 1.25rem;
-      border-radius: 4px;
-      font-weight: 500 !important;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: background 0.2s, transform 0.2s !important;
-    }
-    .nav-cta:hover {
-      background: var(--amber-light) !important;
-      transform: translateY(-1px);
-    }
-
-    /* Mobile menu */
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--ivory);
-      margin: 5px 0;
-      transition: all 0.3s;
-    }
-    .nav.scrolled .nav-toggle span {
-      background: var(--midnight);
-    }
-
-    /* ═══════════════════════════
-       HERO
-    ═══════════════════════════ */
-    .hero {
-      background: var(--midnight);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 80%;
-      height: 200%;
-      background: radial-gradient(ellipse at center, rgba(15, 61, 62, 0.4) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--amber), transparent);
-      opacity: 0.3;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 820px;
-      padding: 8rem 0 6rem;
-    }
-    .hero-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--amber);
-      font-weight: 600;
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .hero-label::before {
-      content: '';
-      width: 40px;
-      height: 1px;
-      background: var(--amber);
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.75rem, 5.5vw, 4.25rem);
-      font-weight: 400;
-      color: var(--ivory);
-      line-height: 1.12;
-      margin-bottom: 1.75rem;
-    }
-    .hero h1 em {
-      font-style: italic;
-      color: var(--amber);
-    }
-    .hero-sub {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.7;
-      max-width: 580px;
-      margin-bottom: 2.5rem;
-    }
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* Shared button styles */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: var(--font-body);
-      font-weight: 500;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: all 0.25s ease;
-      text-decoration: none;
-      line-height: 1;
-    }
-    .btn .arrow { transition: transform 0.25s ease; }
-    .btn:hover .arrow { transform: translateX(3px); }
-
-    .btn-primary {
-      background: var(--amber);
-      color: var(--midnight);
-      padding: 1rem 2rem;
-      font-size: 1rem;
-    }
-    .btn-primary:hover {
-      background: var(--amber-light);
-      transform: translateY(-1px);
-    }
-    .btn-outline-light {
-      background: transparent;
-      color: rgba(255,255,255,0.8);
-      border: 1.5px solid rgba(255,255,255,0.25);
-      padding: 1rem 2rem;
-      font-size: 1rem;
-    }
-    .btn-outline-light:hover {
-      border-color: var(--amber);
-      color: var(--amber);
-    }
-    .btn-dark {
-      background: var(--midnight);
-      color: var(--ivory);
-      padding: 1rem 2rem;
-      font-size: 1rem;
-    }
-    .btn-dark:hover {
-      background: var(--deep-teal);
-      transform: translateY(-1px);
-    }
-
-    /* Hero floating quill */
-    .hero-quill {
-      position: absolute;
-      right: 8%;
-      top: 50%;
-      transform: translateY(-50%);
-      opacity: 0.04;
-      z-index: 1;
-    }
-    .hero-quill svg {
-      width: 400px;
-      height: 400px;
-    }
-
-    /* ═══════════════════════════
-       TRUST BAR
-    ═══════════════════════════ */
-    .trust-section {
-      background: white;
-      border-bottom: 1px solid var(--mist);
-    }
-    .trust-bar {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-    .trust-pillar {
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-      border-right: 1px solid var(--mist);
-    }
-    .trust-pillar:last-child { border-right: none; }
-    .trust-number {
-      font-family: var(--font-display);
-      font-size: 2.25rem;
-      color: var(--midnight);
-      line-height: 1;
-      margin-bottom: 0.35rem;
-    }
-    .trust-text {
-      font-size: 0.825rem;
-      color: var(--steel);
-      line-height: 1.45;
-    }
-
-    /* ═══════════════════════════
-       SECTION HELPERS
-    ═══════════════════════════ */
-    .section {
-      padding: 7rem 0;
-    }
-    .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--amber);
-      font-weight: 600;
-      margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .section-label::before {
-      content: '';
-      width: 32px;
-      height: 1px;
-      background: var(--amber);
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 2.75rem);
-      font-weight: 400;
-      color: var(--midnight);
-      line-height: 1.2;
-      margin-bottom: 1.25rem;
-      max-width: 700px;
-    }
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--steel);
-      line-height: 1.7;
-      max-width: 560px;
-      margin-bottom: 3.5rem;
-    }
-
-    .bg-sand { background: var(--sand); }
-    .bg-dark { background: var(--midnight); }
-
-    /* ═══════════════════════════
-       PROBLEM
-    ═══════════════════════════ */
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .problem-list {
-      list-style: none;
-    }
-    .problem-item {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--mist);
-      display: flex;
-      gap: 1.25rem;
-      align-items: flex-start;
-    }
-    .problem-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      background: rgba(212, 164, 76, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1.1rem;
-    }
-    .problem-item h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--midnight);
-      margin-bottom: 0.25rem;
-    }
-    .problem-item p {
-      font-size: 0.9rem;
-      color: var(--steel);
-      line-height: 1.5;
-    }
-    .problem-statement {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      color: var(--midnight);
-      line-height: 1.4;
-      position: relative;
-      padding-left: 2rem;
-    }
-    .problem-statement::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      background: var(--amber);
-      border-radius: 2px;
-    }
-
-    /* ═══════════════════════════
-       SOLUTION
-    ═══════════════════════════ */
-    .solution-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    .solution-pillars {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .solution-pillar {
-      background: white;
-      border: 1px solid var(--mist);
-      border-radius: 12px;
-      padding: 2rem;
-      transition: all 0.3s ease;
-    }
-    .solution-pillar:hover {
-      border-color: var(--amber);
-      box-shadow: 0 4px 24px rgba(11, 29, 51, 0.06);
-    }
-    .pillar-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.75rem;
-    }
-    .pillar-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-    }
-    .pillar-icon.ai { background: var(--amber-glow); }
-    .pillar-icon.expert { background: rgba(91, 138, 114, 0.12); }
-    .pillar-title {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      color: var(--midnight);
-    }
-    .pillar-desc {
-      font-size: 0.9rem;
-      color: var(--steel);
-      line-height: 1.6;
-    }
-    .solution-statement {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      color: var(--midnight);
-      line-height: 1.45;
-    }
-    .solution-statement em {
-      color: var(--amber);
-      font-style: italic;
-    }
-    .solution-detail {
-      font-size: 1rem;
-      color: var(--steel);
-      line-height: 1.7;
-      margin-top: 1.5rem;
-    }
-    .expertise-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 2rem;
-    }
-    .expertise-tag {
-      font-size: 0.75rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--deep-teal);
-      background: rgba(15, 61, 62, 0.08);
-      padding: 0.4rem 0.9rem;
-      border-radius: 4px;
-      font-weight: 500;
-    }
-
-    /* ═══════════════════════════
-       SERVICES
-    ═══════════════════════════ */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-    .service-card {
-      background: white;
-      border: 1px solid var(--mist);
-      border-radius: 12px;
-      padding: 2.75rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--amber);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.35s ease;
-    }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-card:hover {
-      border-color: var(--amber);
-      box-shadow: 0 8px 32px rgba(11, 29, 51, 0.06);
-      transform: translateY(-2px);
-    }
-    .card-number {
-      font-family: var(--font-display);
-      font-size: 3rem;
-      color: var(--mist);
-      line-height: 1;
-      margin-bottom: 1.25rem;
-    }
-    .card-title {
-      font-family: var(--font-display);
-      font-size: 1.35rem;
-      color: var(--midnight);
-      margin-bottom: 0.75rem;
-    }
-    .card-desc {
-      font-size: 0.925rem;
-      color: var(--steel);
-      line-height: 1.65;
-    }
-    .card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 1.25rem;
-    }
-    .card-tag {
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--sage);
-      background: rgba(91, 138, 114, 0.08);
-      padding: 0.25rem 0.6rem;
-      border-radius: 3px;
-      font-weight: 500;
-    }
-
-    /* ═══════════════════════════
-       PROCESS
-    ═══════════════════════════ */
-    .process-track {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      position: relative;
-      margin-top: 1rem;
-    }
-    .process-track::before {
-      content: '';
-      position: absolute;
-      top: 36px;
-      left: 16.67%;
-      right: 16.67%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--amber), var(--sage));
-      opacity: 0.3;
-    }
-    .process-step {
-      text-align: center;
-      position: relative;
-      padding: 0 1.5rem;
-    }
-    .step-marker {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: var(--midnight);
-      color: var(--amber);
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.5rem;
-      position: relative;
-      z-index: 2;
-      box-shadow: 0 4px 16px rgba(11, 29, 51, 0.15);
-    }
-    .step-title {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      color: var(--midnight);
-      margin-bottom: 0.75rem;
-    }
-    .step-desc {
-      font-size: 0.9rem;
-      color: var(--steel);
-      line-height: 1.6;
-      max-width: 280px;
-      margin: 0 auto;
-    }
-
-    /* ═══════════════════════════
-       TEAM
-    ═══════════════════════════ */
-    .team-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-    .team-card {
-      background: white;
-      border: 1px solid var(--mist);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-    .team-card:hover {
-      box-shadow: 0 8px 32px rgba(11, 29, 51, 0.06);
-    }
-    .team-visual {
-      height: 200px;
-      position: relative;
-      overflow: hidden;
-    }
-    .team-visual.tech {
-      background: linear-gradient(135deg, var(--midnight) 0%, var(--deep-teal) 100%);
-    }
-    .team-visual.pharma {
-      background: linear-gradient(135deg, var(--deep-teal) 0%, #1a4a4b 100%);
-    }
-    .team-visual-pattern {
-      position: absolute;
-      inset: 0;
-      opacity: 0.06;
-      background-image: 
-        radial-gradient(circle at 20% 50%, var(--amber) 1px, transparent 1px),
-        radial-gradient(circle at 80% 20%, var(--amber) 1px, transparent 1px),
-        radial-gradient(circle at 60% 80%, var(--amber) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-    .team-visual-label {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 1.5rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--amber);
-      font-weight: 600;
-    }
-    .team-initials {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      color: rgba(255,255,255,0.12);
-      letter-spacing: 0.1em;
-    }
-    .team-info {
-      padding: 2rem;
-    }
-    .team-name {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      color: var(--midnight);
-      margin-bottom: 0.25rem;
-    }
-    .team-role {
-      font-size: 0.85rem;
-      color: var(--amber);
-      font-weight: 500;
-      margin-bottom: 1rem;
-    }
-    .team-bio {
-      font-size: 0.9rem;
-      color: var(--steel);
-      line-height: 1.65;
-    }
-    .team-credentials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 1.25rem;
-    }
-    .credential {
-      font-size: 0.7rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.65rem;
-      border-radius: 3px;
-      font-weight: 500;
-      background: var(--sand);
-      color: var(--steel);
-    }
-
-    /* ═══════════════════════════
-       STATS
-    ═══════════════════════════ */
-    .stats-section {
-      background: var(--deep-teal);
-      padding: 5rem 0;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-    .stat-block {
-      text-align: center;
-    }
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      color: var(--amber);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .stat-label {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.4;
-    }
-
-    /* ═══════════════════════════
-       QUOTE / TESTIMONIAL
-    ═══════════════════════════ */
-    .quote-section {
-      padding: 7rem 0;
-    }
-    .quote-block {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .quote-text {
-      font-family: var(--font-display);
-      font-size: clamp(1.5rem, 2.5vw, 2rem);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--midnight);
-      line-height: 1.5;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .quote-text::before {
-      content: '"';
-      font-family: var(--font-display);
-      font-size: 6rem;
-      color: var(--amber);
-      position: absolute;
-      top: -2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      line-height: 1;
-      opacity: 0.2;
-    }
-    .quote-source {
-      font-size: 0.85rem;
-      color: var(--steel);
-    }
-    .quote-source strong {
-      color: var(--graphite);
-    }
-
-    /* ═══════════════════════════
-       CONTACT
-    ═══════════════════════════ */
-    .contact-section {
-      background: var(--midnight);
-      padding: 7rem 0;
-    }
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .contact-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 2.75rem);
-      font-weight: 400;
-      color: var(--ivory);
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-    }
-    .contact-desc {
-      font-size: 1.05rem;
-      color: rgba(255,255,255,0.55);
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
-    }
-    .contact-details {
-      list-style: none;
-    }
-    .contact-details li {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem 0;
-      color: rgba(255,255,255,0.6);
-      font-size: 0.95rem;
-    }
-    .contact-details li span {
-      color: var(--amber);
-      font-size: 1rem;
-      width: 20px;
-      text-align: center;
-    }
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-    .form-input {
-      width: 100%;
-      padding: 1rem 1.25rem;
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      border: 1.5px solid rgba(255,255,255,0.1);
-      border-radius: 6px;
-      background: rgba(255,255,255,0.04);
-      color: var(--ivory);
-      transition: border-color 0.25s ease;
-      outline: none;
-    }
-    .form-input:focus {
-      border-color: var(--amber);
-    }
-    .form-input::placeholder {
-      color: rgba(255,255,255,0.3);
-    }
-    textarea.form-input {
-      resize: vertical;
-      min-height: 140px;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-    .form-submit {
-      background: var(--amber);
-      color: var(--midnight);
-      padding: 1.1rem 2rem;
-      font-family: var(--font-body);
-      font-size: 1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-    .form-submit:hover {
-      background: var(--amber-light);
-      transform: translateY(-1px);
-    }
-
-    /* ═══════════════════════════
-       FOOTER
-    ═══════════════════════════ */
-    .footer {
-      background: #060F1B;
-      padding: 5rem 0 3rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .footer-brand {
-      font-family: var(--font-display);
-      font-size: clamp(4rem, 10vw, 8rem);
-      color: rgba(255,255,255,0.03);
-      letter-spacing: 0.06em;
-      text-align: center;
-      line-height: 1;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      white-space: nowrap;
-      pointer-events: none;
-    }
-    .footer-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-    }
-    .footer-left {}
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      margin-bottom: 1rem;
-    }
-    .footer-logo svg {
-      width: 24px;
-      height: 24px;
-    }
-    .footer-logo-text {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      color: var(--ivory);
-      letter-spacing: 0.04em;
-    }
-    .footer-tagline {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.35);
-      max-width: 360px;
-      line-height: 1.6;
-    }
-    .footer-right {
-      text-align: right;
-    }
-    .footer-locations {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.35);
-      margin-bottom: 0.5rem;
-    }
-    .footer-copy {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.2);
-    }
-
-    /* ═══════════════════════════
-       ANIMATIONS
-    ═══════════════════════════ */
-    .reveal {
+      --indigo: #1A1464;
+      --indigo-dark: #110E42;
+      --graphite: #4A4A56;
+      --graphite-light: #6B6B78;
+      --offwhite: #FBFAFF;
+      --white: #FFFFFF;
+    }
+    
+    body { 
+      font-family: 'Inter', sans-serif; 
+    }
+    
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Fade-in animation */
+    .fade-in-up {
       opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    .reveal.visible {
+    
+    .fade-in-up.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.35s; }
-
-    /* ═══════════════════════════
-       RESPONSIVE
-    ═══════════════════════════ */
-    @media (max-width: 1024px) {
-      .hero-quill { display: none; }
-    }
-
-    @media (max-width: 768px) {
-      .section { padding: 4.5rem 0; }
-
-      .nav-links { display: none; }
-      .nav-toggle { display: block; }
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: var(--ivory);
-        padding: 1.5rem 2rem;
-        border-bottom: 1px solid var(--mist);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-      }
-      .nav-links.open a {
-        color: var(--graphite) !important;
-        padding: 0.75rem 0;
-      }
-
-      .problem-grid,
-      .solution-grid,
-      .contact-grid,
-      .team-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .trust-bar {
-        grid-template-columns: 1fr 1fr;
-      }
-      .trust-pillar:nth-child(2) { border-right: none; }
-      .trust-pillar:nth-child(1),
-      .trust-pillar:nth-child(2) { border-bottom: 1px solid var(--mist); }
-
-      .process-track {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .process-track::before { display: none; }
-
-      .stats-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-content {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2rem;
-      }
-      .footer-right { text-align: left; }
-
-      .hero-content { padding: 7rem 0 4rem; }
-    }
-
-    @media (max-width: 480px) {
-      .trust-bar { grid-template-columns: 1fr; }
-      .trust-pillar { border-right: none; border-bottom: 1px solid var(--mist); }
-      .trust-pillar:last-child { border-bottom: none; }
-      .stats-grid { grid-template-columns: 1fr; }
-    }
+    
+    /* Stagger animation delays */
+    .fade-in-up:nth-child(1) { transition-delay: 0s; }
+    .fade-in-up:nth-child(2) { transition-delay: 0.1s; }
+    .fade-in-up:nth-child(3) { transition-delay: 0.2s; }
+    .fade-in-up:nth-child(4) { transition-delay: 0.3s; }
+    .fade-in-up:nth-child(5) { transition-delay: 0.4s; }
+    .fade-in-up:nth-child(6) { transition-delay: 0.5s; }
   </style>
 </head>
-<body>
+<body class="bg-offwhite text-graphite">
 
-  <!-- ═══ NAVIGATION ═══ -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path class="quill-stroke" d="M28 4C22 10 18 18 16 26C15 30 14 34 14 36C14 34 12 30 10 28C14 24 20 16 28 4Z" stroke="#D4A44C" stroke-width="1.5" fill="none"/>
-          <path class="quill-stroke" d="M16 26C18 22 22 14 28 4" stroke="rgba(212,164,76,0.4)" stroke-width="0.75" fill="none"/>
-          <line class="quill-stroke" x1="14" y1="36" x2="12" y2="38" stroke="#D4A44C" stroke-width="1" stroke-linecap="round"/>
-        </svg>
-        <span class="nav-logo-text">Acriba</span>
-      </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#contact" class="nav-cta">Get in touch <span class="arrow">→</span></a></li>
-      </ul>
+<!-- ═══════════════════════════════════════ -->
+<!-- NAVIGATION                              -->
+<!-- ═══════════════════════════════════════ -->
+<nav class="bg-white border-b-2 border-graphite/20 sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-6 md:px-8">
+    <div class="flex justify-between items-center py-4">
+      <a href="#" class="font-display font-bold text-indigo text-lg md:text-xl">Acriba</a>
+      
+      <div class="hidden md:flex items-center gap-8 text-sm text-graphite">
+        <a href="#services" class="hover:text-indigo transition-colors">Services</a>
+        <a href="#process" class="hover:text-indigo transition-colors">Process</a>
+        <a href="#team" class="hover:text-indigo transition-colors">Team</a>
+        <a href="#contact" class="px-5 py-2 bg-indigo text-white font-display font-semibold text-xs hover:bg-indigo-dark transition-colors">CONTACT</a>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <button class="md:hidden px-4 py-2 bg-indigo text-white font-display font-semibold text-xs">MENU</button>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- ═══ HERO ═══ -->
-  <section class="hero" id="hero">
-    <div class="hero-quill">
-      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M280 20C200 100 160 200 140 280C130 320 120 360 120 380C120 360 100 320 80 300C140 260 220 160 280 20Z" stroke="rgba(212,164,76,0.5)" stroke-width="1" fill="none"/>
-        <path d="M140 280C160 240 220 140 280 20" stroke="rgba(212,164,76,0.25)" stroke-width="0.5" fill="none"/>
-        <line x1="120" y1="380" x2="110" y2="395" stroke="rgba(212,164,76,0.5)" stroke-width="0.75" stroke-linecap="round"/>
-      </svg>
-    </div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-label reveal">Consulting & Operating Firm</div>
-        <h1 class="reveal reveal-delay-1">Accelerating drug development by combining <em>pharma expertise</em> and <em>AI</em></h1>
-        <p class="hero-sub reveal reveal-delay-2">We bring together subject-matter experts in non-clinical, clinical, CMC, and regulatory with the latest advancements in AI — to reduce timelines and costs at every stage of drug development.</p>
-        <div class="hero-buttons reveal reveal-delay-3">
-          <a href="#contact" class="btn btn-primary">Start a conversation <span class="arrow">→</span></a>
-          <a href="#services" class="btn btn-outline-light">Explore our services</a>
-        </div>
+<!-- ═══════════════════════════════════════ -->
+<!-- HERO                                    -->
+<!-- ═══════════════════════════════════════ -->
+<section class="bg-offwhite">
+  <div class="max-w-6xl mx-auto px-6 md:px-8 py-16 md:py-24">
+    <div class="max-w-3xl">
+      <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-3">Regulatory Intelligence</p>
+      
+      <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-indigo leading-tight mb-6">
+        AI-powered regulatory writing for pharma
+      </h1>
+      
+      <p class="text-[15px] md:text-base leading-relaxed text-graphite mb-8 max-w-2xl">
+        From IB to IMPD to eCTD — precision documents backed by expert review and proprietary AI tools. Get your regulatory submissions done in weeks, not months.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#contact" class="px-7 py-3 bg-indigo text-white font-display font-semibold text-sm text-center hover:bg-indigo-dark transition-colors">GET STARTED →</a>
+        <a href="#services" class="px-7 py-3 border-2 border-indigo text-indigo font-display font-semibold text-sm text-center hover:bg-indigo/5 transition-colors">OUR SERVICES</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ TRUST BAR ═══ -->
-  <section class="trust-section">
-    <div class="container">
-      <div class="trust-bar">
-        <div class="trust-pillar reveal">
-          <div class="trust-number">30+</div>
-          <div class="trust-text">Years of pharma<br>regulatory expertise</div>
-        </div>
-        <div class="trust-pillar reveal reveal-delay-1">
-          <div class="trust-number">10×</div>
-          <div class="trust-text">Faster document<br>production</div>
-        </div>
-        <div class="trust-pillar reveal reveal-delay-2">
-          <div class="trust-number">FDA</div>
-          <div class="trust-text">& EMA submission<br>ready</div>
-        </div>
-        <div class="trust-pillar reveal reveal-delay-3">
-          <div class="trust-number">AI</div>
-          <div class="trust-text">Proprietary tools<br>built in-house</div>
-        </div>
+<!-- ═══════════════════════════════════════ -->
+<!-- STATS                                   -->
+<!-- ═══════════════════════════════════════ -->
+<section class="bg-white">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4">
+      <div class="p-6 md:p-8 text-center border-r border-graphite/10 fade-in-up">
+        <p class="font-display text-4xl md:text-5xl font-bold text-indigo leading-none">50+</p>
+        <p class="text-[10px] text-graphite/50 uppercase tracking-[0.1em] mt-2">Dossiers</p>
+      </div>
+      <div class="p-6 md:p-8 text-center border-r border-graphite/10 fade-in-up">
+        <p class="font-display text-4xl md:text-5xl font-bold text-indigo leading-none">3×</p>
+        <p class="text-[10px] text-graphite/50 uppercase tracking-[0.1em] mt-2">Faster</p>
+      </div>
+      <div class="p-6 md:p-8 text-center border-r border-graphite/10 fade-in-up">
+        <p class="font-display text-4xl md:text-5xl font-bold text-indigo leading-none">100%</p>
+        <p class="text-[10px] text-graphite/50 uppercase tracking-[0.1em] mt-2">First-round approval</p>
+      </div>
+      <div class="p-6 md:p-8 text-center fade-in-up">
+        <p class="font-display text-4xl md:text-5xl font-bold text-indigo leading-none">30</p>
+        <p class="text-[10px] text-graphite/50 uppercase tracking-[0.1em] mt-2">Days average</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ PROBLEM ═══ -->
-  <section class="section" id="problem">
-    <div class="container">
-      <div class="problem-grid">
-        <div>
-          <div class="section-label reveal">The Problem</div>
-          <div class="section-title reveal reveal-delay-1">Drug development is too slow, too expensive, and too manual</div>
-          <div class="problem-statement reveal reveal-delay-2" style="margin-top:2rem;">
-            The pharmaceutical industry spends billions on regulatory processes that haven't fundamentally changed in decades.
-          </div>
-        </div>
-        <ul class="problem-list">
-          <li class="problem-item reveal">
-            <div class="problem-icon">⏱️</div>
-            <div>
-              <h4>Painfully slow timelines</h4>
-              <p>An Investigator's Brochure takes 3–6 months to write using traditional approaches. Regulatory bottlenecks delay trial starts by quarters.</p>
-            </div>
-          </li>
-          <li class="problem-item reveal reveal-delay-1">
-            <div class="problem-icon">💰</div>
-            <div>
-              <h4>Spiraling costs</h4>
-              <p>Traditional CROs charge premium rates for labor-intensive manual work. Small biotechs burn capital waiting for deliverables.</p>
-            </div>
-          </li>
-          <li class="problem-item reveal reveal-delay-2">
-            <div class="problem-icon">📋</div>
-            <div>
-              <h4>Inconsistent quality</h4>
-              <p>Document quality varies wildly between writers. Junior staff handle senior-level work. Errors compound through each revision cycle.</p>
-            </div>
-          </li>
-          <li class="problem-item reveal reveal-delay-3">
-            <div class="problem-icon">🔍</div>
-            <div>
-              <h4>Missing intelligence</h4>
-              <p>Most regulatory teams work in silos, without systematic access to competitive intelligence, site performance data, or market insights.</p>
-            </div>
-          </li>
-        </ul>
+<!-- ═══════════════════════════════════════ -->
+<!-- SERVICES                                -->
+<!-- ═══════════════════════════════════════ -->
+<section id="services" class="bg-offwhite py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-6 md:px-8">
+    <div class="max-w-2xl mb-12">
+      <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-3">Services</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-indigo mb-4">Complete regulatory writing suite</h2>
+      <p class="text-[15px] leading-relaxed text-graphite">Every document type, every regulatory pathway. Expert-reviewed, AI-augmented, submission-ready.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="bg-white p-7 border-l-[3px] border-graphite fade-in-up">
+        <h3 class="font-display text-sm font-bold text-indigo mb-2">Investigator's Brochure</h3>
+        <p class="text-sm text-graphite leading-relaxed">Complete IB authoring with integrated safety analysis and regulatory compliance. From preclinical to Phase III.</p>
+      </div>
+      
+      <div class="bg-white p-7 border-l-[3px] border-graphite fade-in-up">
+        <h3 class="font-display text-sm font-bold text-indigo mb-2">IMPD / IND</h3>
+        <p class="text-sm text-graphite leading-relaxed">End-to-end dossier preparation for clinical trial applications across EU and US regulatory pathways.</p>
+      </div>
+      
+      <div class="bg-white p-7 border-l-[3px] border-graphite fade-in-up">
+        <h3 class="font-display text-sm font-bold text-indigo mb-2">eCTD Publishing</h3>
+        <p class="text-sm text-graphite leading-relaxed">Structured submissions ready for EMA and FDA portals. Full validation and compliance checks.</p>
+      </div>
+      
+      <div class="bg-white p-7 border-l-[3px] border-graphite fade-in-up">
+        <h3 class="font-display text-sm font-bold text-indigo mb-2">Clinical Study Report</h3>
+        <p class="text-sm text-graphite leading-relaxed">ICH E3-compliant CSRs with integrated statistical analysis and safety narratives.</p>
+      </div>
+      
+      <div class="bg-white p-7 border-l-[3px] border-graphite fade-in-up">
+        <h3 class="font-display text-sm font-bold text-indigo mb-2">Protocol Synopsis</h3>
+        <p class="text-sm text-graphite leading-relaxed">Clear, concise protocol summaries for investigators, regulators, and ethics committees.</p>
+      </div>
+      
+      <div class="bg-white p-7 border-l-[3px] border-graphite fade-in-up">
+        <h3 class="font-display text-sm font-bold text-indigo mb-2">Orphan Drug Designation</h3>
+        <p class="text-sm text-graphite leading-relaxed">Strategic dossiers for orphan designation in EU and US. Maximize your regulatory advantages.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ SOLUTION ═══ -->
-  <section class="section bg-sand" id="solution">
-    <div class="container">
-      <div class="solution-grid">
-        <div>
-          <div class="section-label reveal">Our Approach</div>
-          <div class="solution-statement reveal reveal-delay-1">
-            We don't replace expertise with AI.<br>
-            We <em>amplify</em> it.
-          </div>
-          <p class="solution-detail reveal reveal-delay-2">
-            Acriba is a consulting and operating firm that uses the latest advancements in AI, coupled with subject-matter experts across every discipline of drug development. The result: faster timelines, lower costs, and higher quality — without compromise.
-          </p>
-          <div class="expertise-tags reveal reveal-delay-3">
-            <span class="expertise-tag">Non-Clinical</span>
-            <span class="expertise-tag">Clinical</span>
-            <span class="expertise-tag">CMC</span>
-            <span class="expertise-tag">Regulatory</span>
-          </div>
-        </div>
-        <div class="solution-pillars">
-          <div class="solution-pillar reveal">
-            <div class="pillar-header">
-              <div class="pillar-icon ai">🤖</div>
-              <div class="pillar-title">AI-Powered Drafting</div>
-            </div>
-            <p class="pillar-desc">Proprietary AI tools generate comprehensive first drafts from your source data — protocols, brochures, and submission packages in days, not months.</p>
-          </div>
-          <div class="solution-pillar reveal reveal-delay-1">
-            <div class="pillar-header">
-              <div class="pillar-icon expert">⚗️</div>
-              <div class="pillar-title">Expert Validation</div>
-            </div>
-            <p class="pillar-desc">Every deliverable is reviewed by senior regulatory professionals with decades of experience at companies like Pierre Fabre, Merck Serono, and ObsEva.</p>
-          </div>
-        </div>
+<!-- ═══════════════════════════════════════ -->
+<!-- TRUST BAR                               -->
+<!-- ═══════════════════════════════════════ -->
+<section class="bg-white py-16 md:py-20">
+  <div class="max-w-6xl mx-auto px-6 md:px-8">
+    <div class="max-w-2xl mb-12 text-center mx-auto">
+      <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-3">Why Acriba</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-indigo mb-4">The best of both worlds</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+      <div class="p-8 border-l-[3px] border-indigo fade-in-up">
+        <p class="font-display text-sm font-bold text-indigo mb-2">Expert Review</p>
+        <p class="text-sm text-graphite leading-relaxed mb-3">Every document reviewed by senior regulatory professionals via our partner <a href="https://cxo.swiss/" target="_blank" rel="noopener" class="underline hover:text-indigo">CXO Swiss</a>.</p>
+        <p class="text-xs text-graphite/60">20+ years average experience across EMA, FDA, and global regulatory agencies.</p>
+      </div>
+      
+      <div class="p-8 border-l-[3px] border-graphite fade-in-up">
+        <p class="font-display text-sm font-bold text-indigo mb-2">AI-Augmented</p>
+        <p class="text-sm text-graphite leading-relaxed mb-3">Proprietary tools for consistency checks, cross-referencing, and regulatory compliance.</p>
+        <p class="text-xs text-graphite/60">Automated quality control that catches what humans miss. Speed without compromise.</p>
+      </div>
+      
+      <div class="p-8 border-l-[3px] border-indigo fade-in-up">
+        <p class="font-display text-sm font-bold text-indigo mb-2">Data Privacy</p>
+        <p class="text-sm text-graphite leading-relaxed mb-3">Zero data retention. Your clinical data never leaves secure processing environments.</p>
+        <p class="text-xs text-graphite/60">GDPR-compliant, SOC 2 certified infrastructure. Your IP stays yours.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ SERVICES ═══ -->
-  <section class="section" id="services">
-    <div class="container">
-      <div class="section-label reveal">Services</div>
-      <div class="section-title reveal reveal-delay-1">End-to-end regulatory and development support</div>
-      <div class="section-subtitle reveal reveal-delay-2">From first-in-human to market authorization. AI accelerates; experts validate.</div>
-
-      <div class="services-grid">
-        <div class="service-card reveal">
-          <div class="card-number">01</div>
-          <div class="card-title">Regulatory Document Writing</div>
-          <div class="card-desc">AI-generated first drafts of core regulatory documents, reviewed and finalized by seasoned professionals. Faster delivery, consistent quality.</div>
-          <div class="card-tags">
-            <span class="card-tag">IB</span>
-            <span class="card-tag">IMPD</span>
-            <span class="card-tag">Protocol</span>
-            <span class="card-tag">ICF</span>
-            <span class="card-tag">CSR</span>
-          </div>
-        </div>
-        <div class="service-card reveal reveal-delay-1">
-          <div class="card-number">02</div>
-          <div class="card-title">IND & CTA Packages</div>
-          <div class="card-desc">Complete submission packages for FDA and EMA. We structure and compile every module, optimized for first-cycle approval.</div>
-          <div class="card-tags">
-            <span class="card-tag">FDA</span>
-            <span class="card-tag">EMA</span>
-            <span class="card-tag">Module 1–5</span>
-          </div>
-        </div>
-        <div class="service-card reveal reveal-delay-2">
-          <div class="card-number">03</div>
-          <div class="card-title">Market Research & Site Identification</div>
-          <div class="card-desc">Proprietary AI tools to map competitive landscapes, identify optimal clinical sites, and analyze patient populations across geographies.</div>
-          <div class="card-tags">
-            <span class="card-tag">Intelligence</span>
-            <span class="card-tag">Site ID</span>
-            <span class="card-tag">Competitive Analysis</span>
-          </div>
-        </div>
-        <div class="service-card reveal reveal-delay-3">
-          <div class="card-number">04</div>
-          <div class="card-title">Drug Repositioning Analysis</div>
-          <div class="card-desc">AI-driven identification of existing compounds with potential in new therapeutic areas. Data-backed opportunity assessments for licensing and development.</div>
-          <div class="card-tags">
-            <span class="card-tag">Strategic</span>
-            <span class="card-tag">Licensing</span>
-            <span class="card-tag">AI Analysis</span>
-          </div>
-        </div>
+<!-- ═══════════════════════════════════════ -->
+<!-- PROCESS (OPTIONAL - CAN BE EXPANDED)    -->
+<!-- ═══════════════════════════════════════ -->
+<section id="process" class="bg-offwhite py-16 md:py-24">
+  <div class="max-w-6xl mx-auto px-6 md:px-8">
+    <div class="max-w-2xl mb-12">
+      <p class="font-display text-xs font-semibold tracking-[0.15em] text-indigo/50 uppercase mb-3">How It Works</p>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-indigo mb-4">From brief to submission in three steps</h2>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-7 fade-in-up">
+        <p class="font-display text-3xl font-bold text-indigo/20 mb-3">01</p>
+        <h3 class="font-display text-sm font-bold text-indigo mb-2">Scope & Quote</h3>
+        <p class="text-sm text-graphite leading-relaxed">Share your protocol and data package. We deliver a fixed-price quote within 48 hours.</p>
+      </div>
+      
+      <div class="bg-white p-7 fade-in-up">
+        <p class="font-display text-3xl font-bold text-indigo/20 mb-3">02</p>
+        <h3 class="font-display text-sm font-bold text-indigo mb-2">Draft & Review</h3>
+        <p class="text-sm text-graphite leading-relaxed">AI-assisted first draft, then expert review by senior regulatory professionals. Typical turnaround: 2-4 weeks.</p>
+      </div>
+      
+      <div class="bg-white p-7 fade-in-up">
+        <p class="font-display text-3xl font-bold text-indigo/20 mb-3">03</p>
+        <h3 class="font-display text-sm font-bold text-indigo mb-2">Submit</h3>
+        <p class="text-sm text-graphite leading-relaxed">Final QC, eCTD formatting if needed, and submission support to EMA, FDA, or other agencies.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ PROCESS ═══ -->
-  <section class="section bg-sand" id="process">
-    <div class="container">
-      <div style="text-align:center;max-width:600px;margin:0 auto 4rem;">
-        <div class="section-label reveal" style="justify-content:center;">
-          <span style="display:flex;align-items:center;gap:1rem;"><span style="width:32px;height:1px;background:var(--amber);display:block;"></span>How It Works</span>
-        </div>
-        <div class="section-title reveal reveal-delay-1" style="margin:0 auto 1rem;text-align:center;">From briefing to submission-ready documents</div>
-        <p class="reveal reveal-delay-2" style="color:var(--steel);font-size:1.05rem;line-height:1.7;">A streamlined process designed to deliver quality at speed.</p>
+<!-- ═══════════════════════════════════════ -->
+<!-- CTA FINAL                               -->
+<!-- ═══════════════════════════════════════ -->
+<section id="contact" class="bg-indigo py-16 md:py-24">
+  <div class="max-w-4xl mx-auto px-6 md:px-8 text-center">
+    <p class="font-display text-xs font-semibold tracking-[0.15em] text-white/50 uppercase mb-3">Ready to Start?</p>
+    <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">Let's accelerate your regulatory pathway</h2>
+    <p class="text-[15px] md:text-base leading-relaxed text-white/80 mb-8 max-w-2xl mx-auto">
+      Share your project details and we'll get back to you with a tailored proposal within 48 hours.
+    </p>
+    <a href="mailto:contact@acriba.io" class="inline-block px-9 py-4 bg-white text-indigo font-display font-semibold text-base hover:bg-offwhite transition-colors">GET IN TOUCH →</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- FOOTER                                  -->
+<!-- ═══════════════════════════════════════ -->
+<footer class="bg-indigo-dark px-6 md:px-8 py-12">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between gap-8 mb-10">
+      <div class="md:max-w-sm">
+        <p class="font-display font-bold text-white text-lg mb-3">Acriba</p>
+        <p class="text-sm text-white/75 leading-relaxed">AI-powered regulatory writing for pharma. Precision documents, expert-reviewed, submission-ready.</p>
       </div>
-
-      <div class="process-track">
-        <div class="process-step reveal">
-          <div class="step-marker">1</div>
-          <div class="step-title">AI Draft Generation</div>
-          <div class="step-desc">Our proprietary AI tools ingest your source data — protocols, preclinical reports, CMC dossiers — and generate comprehensive first drafts.</div>
-        </div>
-        <div class="process-step reveal reveal-delay-1">
-          <div class="step-marker">2</div>
-          <div class="step-title">Expert Review & Refinement</div>
-          <div class="step-desc">Senior regulatory professionals with decades of experience review every line for scientific accuracy, compliance, and submission readiness.</div>
-        </div>
-        <div class="process-step reveal reveal-delay-2">
-          <div class="step-marker">3</div>
-          <div class="step-title">Delivery & Support</div>
-          <div class="step-desc">Submission-ready documents in your preferred format. Includes revision support and guidance through the regulatory process.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ TEAM ═══ -->
-  <section class="section" id="team">
-    <div class="container">
-      <div class="section-label reveal">The Team</div>
-      <div class="section-title reveal reveal-delay-1">Built at the intersection of pharma and technology</div>
-      <div class="section-subtitle reveal reveal-delay-2">Two complementary profiles. One mission: make drug development faster and more accessible.</div>
-
-      <div class="team-grid">
-        <div class="team-card reveal">
-          <div class="team-visual tech">
-            <div class="team-visual-pattern"></div>
-            <div class="team-initials">JG</div>
-            <div class="team-visual-label">Technology & AI</div>
-          </div>
-          <div class="team-info">
-            <div class="team-name">Jérémy Gotteland</div>
-            <div class="team-role">Founder</div>
-            <p class="team-bio">Tech entrepreneur and AI specialist. Previously CTO at Kolet, early team at Cajoo (acquired by Flink). Co-founder of Helvetic Ventures, a Swiss startup investment club. Builds the proprietary AI tools that power Acriba's speed advantage.</p>
-            <div class="team-credentials">
-              <span class="credential">AI / Machine Learning</span>
-              <span class="credential">Tech Leadership</span>
-              <span class="credential">Startups</span>
-            </div>
+      
+      <div class="flex flex-col sm:flex-row gap-6">
+        <div class="bg-white/5 px-6 py-5 min-w-[160px]">
+          <p class="font-display text-xs font-semibold text-white/90 uppercase tracking-[0.1em] mb-4">Services</p>
+          <div class="space-y-2.5 text-sm text-white/75">
+            <p><a href="#services" class="hover:text-white transition-colors">Investigator's Brochure</a></p>
+            <p><a href="#services" class="hover:text-white transition-colors">IMPD / IND</a></p>
+            <p><a href="#services" class="hover:text-white transition-colors">eCTD Publishing</a></p>
+            <p><a href="#services" class="hover:text-white transition-colors">CSR</a></p>
+            <p><a href="#services" class="hover:text-white transition-colors">Protocol Synopsis</a></p>
+            <p><a href="#services" class="hover:text-white transition-colors">Orphan Drug</a></p>
           </div>
         </div>
-        <div class="team-card reveal reveal-delay-1">
-          <div class="team-visual pharma">
-            <div class="team-visual-pattern"></div>
-            <div class="team-initials">JPG</div>
-            <div class="team-visual-label">Pharma & Regulatory</div>
-          </div>
-          <div class="team-info">
-            <div class="team-name">Jean-Pierre Gotteland</div>
-            <div class="team-role">Pharma & Regulatory Expert</div>
-            <p class="team-bio">Three decades of pharmaceutical regulatory experience across major organizations including Pierre Fabre, Merck Serono, and PregLem/ObsEva. Deep expertise in non-clinical development, clinical strategy, and regulatory submissions across FDA and EMA pathways.</p>
-            <div class="team-credentials">
-              <span class="credential">30+ Years Pharma</span>
-              <span class="credential">FDA / EMA</span>
-              <span class="credential">Non-Clinical & Clinical</span>
-            </div>
+        
+        <div class="bg-white/5 px-6 py-5 min-w-[140px]">
+          <p class="font-display text-xs font-semibold text-white/90 uppercase tracking-[0.1em] mb-4">Company</p>
+          <div class="space-y-2.5 text-sm text-white/75">
+            <p><a href="#" class="hover:text-white transition-colors">About</a></p>
+            <p><a href="#process" class="hover:text-white transition-colors">Process</a></p>
+            <p><a href="#team" class="hover:text-white transition-colors">Team</a></p>
+            <p><a href="#contact" class="hover:text-white transition-colors">Contact</a></p>
+            <p><a href="https://cxo.swiss/" target="_blank" rel="noopener" class="hover:text-white transition-colors">Partner: CXO Swiss ↗</a></p>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ═══ STATS ═══ -->
-  <section class="stats-section">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-block reveal">
-          <div class="stat-number">10×</div>
-          <div class="stat-label">Faster regulatory<br>document production</div>
-        </div>
-        <div class="stat-block reveal reveal-delay-1">
-          <div class="stat-number">30+</div>
-          <div class="stat-label">Years of pharma<br>regulatory experience</div>
-        </div>
-        <div class="stat-block reveal reveal-delay-2">
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Expert-reviewed<br>deliverables</div>
-        </div>
-        <div class="stat-block reveal reveal-delay-3">
-          <div class="stat-number">4</div>
-          <div class="stat-label">Disciplines covered: non-clinical,<br>clinical, CMC, regulatory</div>
-        </div>
-      </div>
+    
+    <div class="border-t border-white/25 pt-6">
+      <p class="text-xs text-white/60">© 2026 Acriba. All rights reserved. | <a href="mailto:contact@acriba.io" class="hover:text-white transition-colors">contact@acriba.io</a></p>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- ═══ QUOTE ═══ -->
-  <section class="quote-section bg-sand">
-    <div class="container">
-      <div class="quote-block reveal">
-        <p class="quote-text">Generative AI represents a generation-defining shift for biopharma regulatory affairs. The firms that combine deep pharma expertise with AI capability will set the new standard.</p>
-        <p class="quote-source"><strong>Acriba</strong> — Combining pharma and AI expertise</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ CONTACT ═══ -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div>
-          <div class="section-label reveal" style="color:var(--amber);">Get In Touch</div>
-          <h2 class="contact-title reveal reveal-delay-1">Let's discuss how AI can accelerate your next milestone</h2>
-          <p class="contact-desc reveal reveal-delay-2">Whether you're preparing an IND, writing a clinical protocol, or exploring a new indication — we'd like to hear about your project.</p>
-          <ul class="contact-details reveal reveal-delay-3">
-            <li><span>✉</span> contact@acriba.ai</li>
-            <li><span>📍</span> Paris, France · Geneva, Switzerland</li>
-          </ul>
-        </div>
-        <form class="contact-form reveal reveal-delay-2" onsubmit="event.preventDefault(); this.querySelector('.form-submit').textContent = 'Message sent ✓'; this.querySelector('.form-submit').style.background = 'var(--sage)';">
-          <div class="form-row">
-            <input type="text" class="form-input" placeholder="Full name" required>
-            <input type="email" class="form-input" placeholder="Work email" required>
-          </div>
-          <input type="text" class="form-input" placeholder="Company">
-          <textarea class="form-input" placeholder="Tell us about your project — therapeutic area, development stage, timeline, and what you need help with."></textarea>
-          <button type="submit" class="form-submit">Send message <span class="arrow">→</span></button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ FOOTER ═══ -->
-  <footer class="footer">
-    <div class="footer-brand">Acriba</div>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-left">
-          <div class="footer-logo">
-            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M28 4C22 10 18 18 16 26C15 30 14 34 14 36C14 34 12 30 10 28C14 24 20 16 28 4Z" stroke="#D4A44C" stroke-width="1.5" fill="none"/>
-              <path d="M16 26C18 22 22 14 28 4" stroke="rgba(212,164,76,0.4)" stroke-width="0.75" fill="none"/>
-              <line x1="14" y1="36" x2="12" y2="38" stroke="#D4A44C" stroke-width="1" stroke-linecap="round"/>
-            </svg>
-            <span class="footer-logo-text">Acriba</span>
-          </div>
-          <p class="footer-tagline">Accelerating drug development by combining pharma expertise and AI.</p>
-        </div>
-        <div class="footer-right">
-          <p class="footer-locations">Paris, France · Geneva, Switzerland</p>
-          <p class="footer-copy">© 2025 Acriba. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ═══ SCRIPTS ═══ -->
-  <script>
-    // ── Scroll-triggered reveal animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    // ── Sticky nav
-    const nav = document.getElementById('nav');
-    let lastScroll = 0;
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      if (scrollY > 80) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
+<!-- ═══════════════════════════════════════ -->
+<!-- SCROLL ANIMATIONS                       -->
+<!-- ═══════════════════════════════════════ -->
+<script>
+  // Intersection Observer for fade-in animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+  
+  const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Optional: unobserve after animation to improve performance
+        // observer.unobserve(entry.target);
       }
-      lastScroll = scrollY;
-    }, { passive: true });
-
-    // ── Mobile menu toggle
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
     });
-
-    // Close mobile menu on link click
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-      });
-    });
-
-    // ── Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          const offset = 80;
-          const position = target.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top: position, behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
+  };
+  
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+  
+  // Observe all fade-in elements
+  document.addEventListener('DOMContentLoaded', () => {
+    const fadeElements = document.querySelectorAll('.fade-in-up');
+    fadeElements.forEach(el => observer.observe(el));
+  });
+</script>
 
 </body>
 </html>
