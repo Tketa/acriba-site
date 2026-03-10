@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acriba — Brand Book</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #FBFAFF; color: #4A4A56; }
+    
+    /* ─── Layout ─── */
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 80px 0; }
+    .sep { height: 1px; max-width: 960px; margin: 0 auto; background: linear-gradient(to right, transparent, #E2E1E8, transparent); }
+    
+    /* ─── Typography ─── */
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: #1A1464; }
+    h1 { font-size: 2.4rem; font-weight: 700; line-height: 1.1; }
+    h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+    h3 { font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; }
+    .overline { font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; font-weight: 600; color: #1A1464; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.5; margin-bottom: 12px; }
+    .body-text { font-size: 0.95rem; line-height: 1.7; color: #4A4A56; }
+    .caption { font-size: 0.75rem; color: #4A4A56; opacity: 0.6; }
+    
+    /* ─── Components ─── */
+    .btn-primary { display: inline-block; padding: 12px 28px; background: #1A1464; color: white; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem; text-decoration: none; border: none; cursor: pointer; }
+    .btn-ghost { display: inline-block; padding: 12px 28px; border: 2px solid #1A1464; color: #1A1464; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.85rem; text-decoration: none; background: transparent; cursor: pointer; }
+    .card { background: white; padding: 28px; border-left: 3px solid #4A4A56; }
+    
+    /* ─── Swatches ─── */
+    .swatch-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+    .swatch-item { text-align: center; }
+    .swatch-color { width: 100%; aspect-ratio: 1; margin-bottom: 8px; border: 1px solid #E2E1E8; }
+    .swatch-label { font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; font-weight: 600; color: #1A1464; }
+    .swatch-hex { font-family: monospace; font-size: 0.65rem; color: #4A4A56; }
+    .swatch-role { font-size: 0.65rem; color: #4A4A56; opacity: 0.6; margin-top: 2px; }
+    
+    /* ─── Stats ─── */
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 32px 0; }
+    .stat { padding: 32px 24px; text-align: center; border-right: 1px solid #E2E1E8; }
+    .stat:last-child { border-right: none; }
+    .stat-number { font-family: 'Space Grotesk', sans-serif; font-size: 3.2rem; font-weight: 700; color: #1A1464; line-height: 1; }
+    .stat-label { font-size: 0.7rem; color: #4A4A56; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 8px; opacity: 0.6; }
+    
+    /* ─── Type Scale ─── */
+    .type-row { display: flex; align-items: baseline; gap: 24px; padding: 16px 0; border-bottom: 1px solid #E2E1E8; }
+    .type-meta { width: 160px; flex-shrink: 0; }
+    .type-name { font-family: 'Space Grotesk', sans-serif; font-size: 0.7rem; font-weight: 600; color: #1A1464; }
+    .type-spec { font-family: monospace; font-size: 0.6rem; color: #4A4A56; opacity: 0.6; }
+    
+    /* ─── Grid ─── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+    
+    @media (max-width: 768px) {
+      .swatch-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stat { border-bottom: 1px solid #E2E1E8; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .type-row { flex-direction: column; gap: 4px; }
+      .type-meta { width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════ -->
+<!-- COVER                                  -->
+<!-- ══════════════════════════════════════ -->
+<section style="padding: 120px 0 80px; text-align: center;">
+  <div class="container">
+    <div class="overline">Brand Guidelines</div>
+    <h1 style="font-size: 3.2rem; margin-bottom: 16px;">Acriba</h1>
+    <p class="body-text" style="max-width: 480px; margin: 0 auto;">AI-powered regulatory writing for pharma.<br>Identity system — March 2026.</p>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 1. PALETTE                             -->
+<!-- ══════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="overline">01 — Colour</div>
+    <h2>Palette</h2>
+    <p class="body-text" style="max-width: 520px; margin-bottom: 32px;">Trois tons. Indigo pour l'autorité. Off-white pour respirer. Gris pour structurer. Pas d'accent, pas de fioritures.</p>
+    
+    <div class="swatch-grid">
+      <div class="swatch-item">
+        <div class="swatch-color" style="background: #1A1464;"></div>
+        <div class="swatch-label">Indigo</div>
+        <div class="swatch-hex">#1A1464</div>
+        <div class="swatch-role">Titres, nav, CTA</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch-color" style="background: #4A4A56;"></div>
+        <div class="swatch-label">Graphite</div>
+        <div class="swatch-hex">#4A4A56</div>
+        <div class="swatch-role">Body text, borders</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch-color" style="background: #FBFAFF;"></div>
+        <div class="swatch-label">Off-white</div>
+        <div class="swatch-hex">#FBFAFF</div>
+        <div class="swatch-role">Fonds</div>
+      </div>
+      <div class="swatch-item">
+        <div class="swatch-color" style="background: #FFFFFF;"></div>
+        <div class="swatch-label">White</div>
+        <div class="swatch-hex">#FFFFFF</div>
+        <div class="swatch-role">Cartes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 2. TYPOGRAPHY                          -->
+<!-- ══════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="overline">02 — Typography</div>
+    <h2>Type Scale</h2>
+    <p class="body-text" style="max-width: 520px; margin-bottom: 32px;">Space Grotesk pour les titres — géométrique, technique, sérieux. Inter pour le body — lisible, neutre, professionnel.</p>
+    
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-name">Display</div>
+        <div class="type-spec">Space Grotesk 700 / 3.2rem</div>
+      </div>
+      <div style="font-family: 'Space Grotesk', sans-serif; font-size: 3.2rem; font-weight: 700; color: #1A1464; line-height: 1;">Acriba</div>
+    </div>
+    
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-name">H1</div>
+        <div class="type-spec">Space Grotesk 700 / 2.4rem</div>
+      </div>
+      <div style="font-family: 'Space Grotesk', sans-serif; font-size: 2.4rem; font-weight: 700; color: #1A1464; line-height: 1.1;">Regulatory precision</div>
+    </div>
+    
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-name">H2</div>
+        <div class="type-spec">Space Grotesk 700 / 1.4rem</div>
+      </div>
+      <div style="font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: #1A1464;">Section heading</div>
+    </div>
+    
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-name">Overline</div>
+        <div class="type-spec">Space Grotesk 600 / 0.7rem / caps</div>
+      </div>
+      <div class="overline" style="margin-bottom: 0;">Regulatory Intelligence</div>
+    </div>
+    
+    <div class="type-row">
+      <div class="type-meta">
+        <div class="type-name">Body</div>
+        <div class="type-spec">Inter 400 / 0.95rem / 1.7</div>
+      </div>
+      <div class="body-text">From IB to IMPD to eCTD — precision documents backed by expert review and proprietary AI tools.</div>
+    </div>
+    
+    <div class="type-row" style="border-bottom: none;">
+      <div class="type-meta">
+        <div class="type-name">Caption</div>
+        <div class="type-spec">Inter 400 / 0.75rem</div>
+      </div>
+      <div class="caption">Supporting text and metadata</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 3. STATS                               -->
+<!-- ══════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="overline">03 — Data Display</div>
+    <h2>Key Figures</h2>
+    <p class="body-text" style="max-width: 520px; margin-bottom: 8px;">Les chiffres parlent. Gros, clairs, sans décoration.</p>
+    
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Dossiers delivered</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">3×</div>
+        <div class="stat-label">Faster than CROs</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">First-round approval</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">30</div>
+        <div class="stat-label">Days average</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 4. COMPONENTS                          -->
+<!-- ══════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="overline">04 — Components</div>
+    <h2>UI Elements</h2>
+    <p class="body-text" style="max-width: 520px; margin-bottom: 32px;">Rectangulaires. Pas de border-radius. L'angle droit = rigueur réglementaire.</p>
+    
+    <!-- Buttons -->
+    <h3 style="margin-top: 32px; margin-bottom: 16px; color: #4A4A56; opacity: 0.6; font-size: 0.7rem; letter-spacing: 0.1em;">BUTTONS</h3>
+    <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 40px;">
+      <span class="btn-primary">GET STARTED</span>
+      <span class="btn-ghost">OUR PROCESS</span>
+    </div>
+    
+    <!-- Cards -->
+    <h3 style="margin-bottom: 16px; color: #4A4A56; opacity: 0.6; font-size: 0.7rem; letter-spacing: 0.1em;">CARDS</h3>
+    <div class="grid-3" style="margin-bottom: 40px;">
+      <div class="card">
+        <h3>Investigator's Brochure</h3>
+        <p style="font-size: 0.8rem; color: #4A4A56; line-height: 1.5;">Complete IB authoring with integrated safety analysis and regulatory compliance.</p>
+      </div>
+      <div class="card">
+        <h3>IMPD / IND</h3>
+        <p style="font-size: 0.8rem; color: #4A4A56; line-height: 1.5;">End-to-end dossier preparation for clinical trial applications across EU and US.</p>
+      </div>
+      <div class="card">
+        <h3>eCTD Publishing</h3>
+        <p style="font-size: 0.8rem; color: #4A4A56; line-height: 1.5;">Structured submissions ready for EMA and FDA portals.</p>
+      </div>
+    </div>
+    
+    <!-- Nav -->
+    <h3 style="margin-bottom: 16px; color: #4A4A56; opacity: 0.6; font-size: 0.7rem; letter-spacing: 0.1em;">NAVIGATION</h3>
+    <div style="background: white; display: flex; justify-content: space-between; align-items: center; padding: 14px 32px; border-bottom: 2px solid #4A4A56;">
+      <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #1A1464; font-size: 1.15rem;">Acriba</div>
+      <div style="display: flex; gap: 24px; font-size: 0.8rem; color: #4A4A56; align-items: center;">
+        <span>Services</span><span>Process</span><span>Team</span>
+        <span class="btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">CONTACT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 5. LAYOUT PREVIEW                      -->
+<!-- ══════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="overline">05 — Layout</div>
+    <h2>Homepage — V1 Light</h2>
+    <p class="body-text" style="max-width: 520px; margin-bottom: 32px;">Nav blanche, hero off-white, cartes blanches. Tout respire.</p>
+    
+    <div style="border: 1px solid #E2E1E8; overflow: hidden;">
+      <!-- Nav -->
+      <div style="background: white; display: flex; justify-content: space-between; align-items: center; padding: 14px 32px; border-bottom: 2px solid #4A4A56;">
+        <div style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #1A1464; font-size: 1.15rem;">Acriba</div>
+        <div style="display: flex; gap: 24px; font-size: 0.8rem; color: #4A4A56; align-items: center;">
+          <span>Services</span><span>Process</span><span>Team</span>
+          <span style="padding: 8px 20px; background: #1A1464; color: white; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.8rem;">CONTACT</span>
+        </div>
+      </div>
+      <!-- Hero -->
+      <div style="background: #FBFAFF; padding: 64px 32px 56px;">
+        <div style="max-width: 600px;">
+          <div class="overline">Regulatory Intelligence</div>
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; color: #1A1464; line-height: 1.15; margin-bottom: 16px;">AI-powered regulatory writing for pharma</div>
+          <div style="font-size: 0.9rem; color: #4A4A56; line-height: 1.6; margin-bottom: 28px;">From IB to IMPD to eCTD — precision documents backed by expert review and proprietary AI tools.</div>
+          <div style="display: flex; gap: 0;">
+            <span class="btn-primary">GET STARTED</span>
+            <span class="btn-ghost">OUR PROCESS</span>
+          </div>
+        </div>
+      </div>
+      <!-- Stats -->
+      <div style="background: white;">
+        <div class="stats-row" style="margin: 0;">
+          <div class="stat">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Dossiers</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">3×</div>
+            <div class="stat-label">Faster</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Approved</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number">30</div>
+            <div class="stat-label">Days avg</div>
+          </div>
+        </div>
+      </div>
+      <!-- Services -->
+      <div style="background: #FBFAFF; padding: 32px;">
+        <div class="grid-3">
+          <div class="card">
+            <h3>Investigator's Brochure</h3>
+            <p style="font-size: 0.78rem; color: #4A4A56; line-height: 1.5;">Complete IB authoring with integrated safety analysis and regulatory compliance.</p>
+          </div>
+          <div class="card">
+            <h3>IMPD / IND</h3>
+            <p style="font-size: 0.78rem; color: #4A4A56; line-height: 1.5;">End-to-end dossier preparation for clinical trial applications across EU and US.</p>
+          </div>
+          <div class="card">
+            <h3>eCTD Publishing</h3>
+            <p style="font-size: 0.78rem; color: #4A4A56; line-height: 1.5;">Structured submissions ready for EMA and FDA portals.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════ -->
+<!-- 6. PRINCIPLES                          -->
+<!-- ══════════════════════════════════════ -->
+<section>
+  <div class="container">
+    <div class="overline">06 — Principles</div>
+    <h2>Brand Rules</h2>
+    
+    <div class="grid-2" style="margin-top: 32px;">
+      <div>
+        <h3 style="margin-bottom: 12px;">Do</h3>
+        <ul style="font-size: 0.85rem; line-height: 1.8; list-style: none;">
+          <li>✓ Angles droits partout — pas de border-radius</li>
+          <li>✓ Beaucoup de blanc — laisser respirer</li>
+          <li>✓ Chiffres en grand — les données parlent</li>
+          <li>✓ Hiérarchie claire — indigo > gris > off-white</li>
+          <li>✓ Space Grotesk pour tout ce qui impacte</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom: 12px;">Don't</h3>
+        <ul style="font-size: 0.85rem; line-height: 1.8; list-style: none;">
+          <li>✗ Pas de violet, pas de couleur d'accent</li>
+          <li>✗ Pas de gradients ni d'ombres portées</li>
+          <li>✗ Pas de rounded corners</li>
+          <li>✗ Pas d'illustrations décoratives</li>
+          <li>✗ Pas plus de 3 niveaux de gris</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="text-align: center; padding: 64px 24px; font-size: 0.75rem; color: #4A4A56; opacity: 0.4;">
+  Acriba Brand Book — v1.0 — March 2026
+</div>
+
+</body>
+</html>
