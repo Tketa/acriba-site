@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About · Acriba</title>
-  <meta name="description" content="A father with thirty years of regulatory work. A son who builds software. Acriba is what happened when they pointed those two careers at the same problem.">
+  <meta name="description" content="Pharma & software expertise. Acriba is led by Jean-Pierre Gotteland, a 30-year drug-development veteran, and his son Jérémy Gotteland, a software & AI engineer.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,92 +65,145 @@
     .nav-cta:hover{background:var(--indigo-dark)}
     @media (max-width:760px){.nav-links a:not(.nav-cta){display:none}}
 
-    /* ── ARTICLE ── */
-    article.about{
-      max-width:680px;
+    /* ── PAGE ── */
+    main.about{
+      max-width:1080px;
       margin:0 auto;
-      padding:96px 32px 48px;
+      padding:96px 32px 120px;
     }
-    @media (max-width:720px){article.about{padding:72px 20px 40px}}
+    @media (max-width:720px){main.about{padding:64px 20px 80px}}
 
-    .about-kicker{
+    .about-eyebrow{
       font-family:'JetBrains Mono',monospace;
       font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
       color:var(--graphite-light);
       display:flex;align-items:center;gap:14px;
-      padding-bottom:28px;
+      padding-bottom:32px;
     }
-    .about-kicker .dot{width:4px;height:4px;background:var(--indigo);display:inline-block;flex:none}
-    .about-kicker .r{flex:1;height:1px;background:var(--rule);display:inline-block}
+    .about-eyebrow .dot{width:4px;height:4px;background:var(--indigo);display:inline-block;flex:none}
+    .about-eyebrow .r{flex:1;height:1px;background:var(--rule);display:inline-block}
 
-    .about h1{
-      font-size:clamp(30px,3.6vw,40px);
-      font-weight:600;line-height:1.15;
-      letter-spacing:-0.022em;
-      margin:0 0 8px;
+    .about-title{
+      font-size:clamp(36px,5vw,60px);
+      font-weight:600;line-height:1.05;
+      letter-spacing:-0.025em;
+      margin:0 0 16px;
     }
-    .about h1 .em{font-style:italic;font-weight:500;color:var(--indigo-soft)}
-    .about .dek{
+    .about-dek{
+      font-family:'Inter',sans-serif;
+      font-size:18px;color:var(--graphite-light);
+      max-width:560px;line-height:1.55;
+    }
+
+    /* ── FOUNDER GRID ── */
+    .founders{
+      margin-top:72px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:64px 56px;
+    }
+    @media (max-width:760px){
+      .founders{grid-template-columns:1fr;gap:56px;margin-top:56px}
+    }
+
+    .headshot{
+      display:flex;align-items:center;justify-content:center;
+      width:200px;height:200px;
+      margin-bottom:24px;
+      background:var(--white);
+      border:1px solid var(--rule-strong);
+      border-radius:6px;
+      color:var(--indigo);
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:500;font-size:48px;letter-spacing:-0.03em;
+      overflow:hidden;
+    }
+    .headshot img{width:100%;height:100%;object-fit:cover;display:block}
+    @media (max-width:480px){
+      .headshot{width:170px;height:170px;font-size:42px}
+    }
+
+    .founder h2{
+      font-size:24px;font-weight:500;
+      letter-spacing:-0.015em;
+      margin-bottom:18px;
+      color:var(--indigo);
+    }
+    .founder .role{
       font-family:'JetBrains Mono',monospace;
-      font-size:12px;letter-spacing:0.06em;
+      font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
       color:var(--graphite-light);
-      padding-top:14px;margin-top:4px;
+      margin-bottom:14px;display:block;
+    }
+    .founder p{
+      font-size:16px;line-height:1.6;color:var(--graphite);
+      margin-bottom:14px;
+    }
+    .founder p:last-child{margin-bottom:0}
+    .founder p .n{color:var(--indigo);font-weight:500}
+    .founder .edu{
+      font-size:14.5px;color:var(--graphite-light);
+      padding-top:14px;margin-top:6px;
       border-top:1px solid var(--rule);
     }
 
-    .about-body{
-      margin-top:40px;
-      font-size:17px;line-height:1.7;color:var(--graphite);
-    }
-    .about-body > p{margin-bottom:22px}
-    .about-body > p:last-child{margin-bottom:0}
-    .about-body p .n{color:var(--indigo);font-weight:500}
-    .about-body p em{color:var(--indigo-soft);font-style:italic}
-
-    /* small-caps opener for the first paragraph */
-    .about-body > p:first-of-type::first-line{
-      font-family:'Space Grotesk',sans-serif;
-      font-variant:small-caps;
-      letter-spacing:0.04em;
-      color:var(--indigo);
-      font-weight:500;
-    }
-
-    /* pull quote */
-    .pull{
-      margin:42px 0;
-      padding:6px 0 6px 24px;
-      border-left:2px solid var(--indigo);
-      font-family:'Space Grotesk',sans-serif;
-      font-weight:500;
-      color:var(--indigo);
-      font-size:clamp(20px,2.1vw,24px);
-      line-height:1.35;letter-spacing:-0.012em;
-      text-wrap:balance;
-    }
-    .pull .em{color:var(--indigo-soft);font-style:italic;font-weight:500}
-
-    /* tiny dossier strip (bottom of article) */
-    .dossier{
-      margin-top:56px;padding-top:22px;
+    /* ── credentials (logo strips) ── */
+    .creds{
+      margin-top:22px;padding-top:18px;
       border-top:1px solid var(--rule);
-      display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:24px;
+      display:flex;flex-direction:column;gap:18px;
     }
-    @media (max-width:620px){.dossier{grid-template-columns:1fr;gap:14px}}
-    .dossier .k{
+    .creds-row{display:flex;flex-direction:column;gap:10px}
+    .creds-row .label{
       font-family:'JetBrains Mono',monospace;
-      font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;
-      color:var(--graphite-light);margin-bottom:6px;display:block;
+      font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+      color:var(--graphite-light);
     }
-    .dossier .v{
+    .logo-strip{
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+    }
+    .brand-mark{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-width:108px;height:52px;padding:0 14px;
+      background:#fff;
+      border:1px solid var(--rule);
+      border-radius:4px;
       font-family:'Space Grotesk',sans-serif;
-      color:var(--indigo);font-size:14.5px;
-      line-height:1.45;font-weight:500;letter-spacing:-0.005em;
+      font-weight:600;font-size:13px;letter-spacing:-0.005em;
+      color:var(--indigo);
+      text-align:center;line-height:1.15;
+      transition:border-color .15s, color .15s;
+    }
+    .brand-mark .sup{
+      font-family:'JetBrains Mono',monospace;
+      font-size:9px;letter-spacing:0.08em;font-weight:500;
+      color:var(--graphite-light);
+      text-transform:uppercase;
+      margin-right:6px;display:inline-block;
+      transform:translateY(-3px);
+    }
+    .brand-mark .sub{
+      display:block;
+      font-family:'Inter',sans-serif;
+      font-size:9.5px;letter-spacing:0.04em;font-weight:500;
+      color:var(--graphite-light);
+      text-transform:uppercase;
+      margin-top:2px;
+    }
+    .brand-mark.is-empty{
+      background:transparent;
+      border-style:dashed;
+      color:var(--graphite-light);
+      font-weight:500;
+    }
+    .brand-mark img{
+      max-width:100%;max-height:32px;display:block;object-fit:contain;
     }
 
-    /* sign-off */
+    /* ── tiny footer strip ── */
     .signoff{
-      margin-top:28px;
+      margin-top:96px;padding-top:24px;
+      border-top:1px solid var(--rule);
       font-family:'JetBrains Mono',monospace;
       font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
       color:var(--graphite-light);
@@ -158,18 +211,6 @@
     }
     .signoff a{color:var(--indigo);border-bottom:1px solid var(--indigo);padding-bottom:1px}
     .signoff a:hover{color:var(--indigo-dark)}
-
-    /* ── FOOTER (shared) ── */
-    footer{background:var(--indigo-dark);color:rgba(255,255,255,.7);padding:56px 0 36px;margin-top:120px;display:none}
-    .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
-    @media (max-width:760px){.foot{grid-template-columns:1fr 1fr;gap:28px}}
-    .foot h5{color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px;font-weight:500}
-    .foot a{color:rgba(255,255,255,.7);font-size:14px;display:block;padding:3px 0;transition:color .15s}
-    .foot a:hover{color:#fff}
-    .foot .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;color:#fff;font-size:20px;letter-spacing:-0.02em;margin-bottom:14px;display:inline-flex;align-items:baseline;gap:6px}
-    .foot .brand::after{content:"";width:5px;height:5px;background:#fff;display:inline-block;transform:translateY(-1px)}
-    .foot .desc{font-size:13.5px;line-height:1.55;max-width:300px}
-    .foot-bar{margin-top:48px;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.55);letter-spacing:0.04em;flex-wrap:wrap;gap:12px}
   </style>
 </head>
 <body>
@@ -188,91 +229,76 @@
 </nav>
 
 <!-- ARTICLE -->
-<article class="about">
+<main class="about">
 
-  <div class="about-kicker">
+  <div class="about-eyebrow">
     <span class="dot"></span>
     <span>About · Acriba</span>
     <span class="r"></span>
-    <span>2024 — present</span>
+    <span>Founders</span>
   </div>
 
-  <h1>Two careers, one workshop<span class="em">.</span></h1>
-  <p class="dek">A short note on how Acriba came to be, and what we are actually doing.</p>
+  <h1 class="about-title">Pharma &amp; software expertise.</h1>
+  <p class="about-dek">Thirty years in drug development. A decade building software. Acriba is what happens when those two careers point at the same problem.</p>
 
-  <div class="about-body">
-    <p>We are a father and a son. One of us spent thirty years producing the regulatory documents that bring drugs to patients — in medicinal chemistry, then clinical development, then at the head of European biotechs filing with the EMA and FDA. The other spent a decade building software, including one company built and sold along the way.</p>
+  <div class="founders">
 
-    <p>For years we worked in parallel, pointing in opposite directions. Then, around 2023, we started comparing notes on the same problem: the best regulatory writers were spending most of their week on work that did not require their expertise.</p>
+    <div class="founder">
+      <div class="headshot" aria-label="Jean-Pierre Gotteland">JP</div>
+      <h2>Jean-Pierre Gotteland</h2>
+      <span class="role">Pharma</span>
+      <p>Drug-development expert with <span class="n">30+ years</span> in pharma, achieving critical regulatory approvals (MAA, NDA). Former CSO at ObsEva.</p>
 
-    <p class="pull">Eighty percent of a dossier is structure, cross-references, source traces, format. <span class="em">The hard, valuable twenty percent is where thirty years of experience earn their fee — and it is the part people run out of time for.</span></p>
-
-    <p>So we built Acriba around that split. A proprietary editor — AcribaWord — handles the mechanical part: ICH-compliant scaffolding, cross-references, source traces, consistency checks across the dossier. A network of senior reviewers, drawn from CXO Swiss, owns the part that decides whether an agency accepts or rejects your filing: strategy, narrative, final sign-off.</p>
-
-    <p>We started with regulatory writing because it is what we know. We added clinical development documents — protocols, SAPs, ICFs — because the same split applies. Strategic intelligence came next, for the same reason. We are deliberately narrow.</p>
-
-    <p>We work mostly with clinical-stage biotechs, the ones where one missed filing window costs a quarter and one unclear paragraph costs a meeting. You talk to the person writing your document. You know who reviewed it. You see the source trace for every sentence.</p>
-
-    <p>That is all we are trying to do.</p>
-  </div>
-
-  <!-- tiny dossier strip -->
-  <div class="dossier">
-    <div>
-      <span class="k">Founded</span>
-      <span class="v">2024 · Lyon &amp; Geneva</span>
+      <div class="creds">
+        <div class="creds-row">
+          <span class="label">Experience</span>
+          <div class="logo-strip">
+            <span class="brand-mark">ObsEva<span class="sub">CSO</span></span>
+            <span class="brand-mark">PregLem</span>
+          </div>
+        </div>
+        <div class="creds-row">
+          <span class="label">Education</span>
+          <div class="logo-strip">
+            <span class="brand-mark">UC Berkeley<span class="sub">Postdoc</span></span>
+            <span class="brand-mark">Claude Bernard Lyon<span class="sub">PhD</span></span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-      <span class="k">Founders</span>
-      <span class="v">Jean-Pierre Gotteland, PhD<br>Jérémy Gotteland, MSc</span>
+
+    <div class="founder">
+      <div class="headshot" aria-label="Jérémy Gotteland">JG</div>
+      <h2>Jérémy Gotteland</h2>
+      <span class="role">Software</span>
+      <p>Technology entrepreneur specializing in <span class="n">AI applications</span>, with 10+ years in tech. Co-founded and led engineering at several tech companies as CTO.</p>
+
+      <div class="creds">
+        <div class="creds-row">
+          <span class="label">Experience</span>
+          <div class="logo-strip">
+            <span class="brand-mark is-empty">Company 01</span>
+            <span class="brand-mark is-empty">Company 02</span>
+            <span class="brand-mark is-empty">Company 03</span>
+          </div>
+        </div>
+        <div class="creds-row">
+          <span class="label">Education</span>
+          <div class="logo-strip">
+            <span class="brand-mark">EPFL<span class="sub">MSc CS</span></span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-      <span class="k">Partner network</span>
-      <span class="v">CXO Swiss</span>
-    </div>
+
   </div>
 
   <div class="signoff">
-    <span>— Jean-Pierre &amp; Jérémy Gotteland</span>
+    <span>— Lyon &amp; Geneva · 2024 — present</span>
     <a href="index.html#contact">Get in touch →</a>
   </div>
 
-</article>
-
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot">
-      <div>
-        <div class="brand">Acriba</div>
-        <p class="desc">Regulatory writing, clinical development and strategic intelligence for biotechs — produced by senior reviewers, inside proprietary AI tools.</p>
-      </div>
-      <div>
-        <h5>Services</h5>
-        <a href="index.html#services">Regulatory</a>
-        <a href="index.html#services">Clinical Development</a>
-        <a href="index.html#services">Strategic Intelligence</a>
-        <a href="index.html#product">AcribaWord</a>
-      </div>
-      <div>
-        <h5>Company</h5>
-        <a href="about.html">About</a>
-        <a href="index.html#team">Team</a>
-        <a href="mailto:contact@acriba.io">contact@acriba.io</a>
-      </div>
-      <div>
-        <h5>Legal</h5>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">DPA</a>
-      </div>
-    </div>
-    <div class="foot-bar">
-      <span>© 2026 Acriba SAS — All rights reserved</span>
-      <span>ACRIBA · ἀκρίβεια · precision</span>
-    </div>
-  </div>
-</footer>
+</main>
 
 </body>
 </html>
