@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80">
-  <!-- Red bars icon -->
+  
   <g transform="translate(10, 12)">
-    <rect x="0" y="0" width="18" height="4" rx="2" fill="#C41230"/>
-    <rect x="0" y="8" width="22" height="4" rx="2" fill="#C41230"/>
-    <rect x="0" y="16" width="26" height="4" rx="2" fill="#C41230"/>
-    <rect x="0" y="24" width="30" height="4" rx="2" fill="#C41230"/>
-    <rect x="0" y="32" width="26" height="4" rx="2" fill="#C41230"/>
-    <rect x="0" y="40" width="22" height="4" rx="2" fill="#C41230"/>
-    <rect x="0" y="48" width="18" height="4" rx="2" fill="#C41230"/>
+    <rect x="0" y="0" width="18" height="4" rx="2" fill="#C41230"></rect>
+    <rect x="0" y="8" width="22" height="4" rx="2" fill="#C41230"></rect>
+    <rect x="0" y="16" width="26" height="4" rx="2" fill="#C41230"></rect>
+    <rect x="0" y="24" width="30" height="4" rx="2" fill="#C41230"></rect>
+    <rect x="0" y="32" width="26" height="4" rx="2" fill="#C41230"></rect>
+    <rect x="0" y="40" width="22" height="4" rx="2" fill="#C41230"></rect>
+    <rect x="0" y="48" width="18" height="4" rx="2" fill="#C41230"></rect>
   </g>
-  <!-- serono text -->
-  <text x="52" y="52" font-family="'Helvetica Neue', Arial, sans-serif" font-size="44" font-weight="700" fill="#007B99" letter-spacing="1">serono</text>
-  <!-- biotech & beyond tagline -->
-  <text x="148" y="72" font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" font-weight="400" fill="#C41230" font-style="italic">biotech &amp; beyond</text>
+  
+  <text x="52" y="52" font-family="&#39;Helvetica Neue&#39;, Arial, sans-serif" font-size="44" font-weight="700" fill="#007B99" letter-spacing="1">serono</text>
+  
+  <text x="148" y="72" font-family="&#39;Helvetica Neue&#39;, Arial, sans-serif" font-size="14" font-weight="400" fill="#C41230" font-style="italic">biotech &amp; beyond</text>
 </svg>
