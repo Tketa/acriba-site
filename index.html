@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acriba — Regulatory writing for biotechs, produced by senior reviewers</title>
-  <meta name="description" content="Regulatory writing, clinical development and strategic intelligence for biotechs — produced by senior reviewers with proprietary AI tools. From IB to MAA, faster.">
+  <meta name="description" content="Regulatory, medical and strategic writing for biotechs. Produced by senior reviewers inside our own AI tools. From IB to MAA, faster.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/feather-icon.svg">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/feather-icon-512.png">
+  <link rel="apple-touch-icon" href="assets/feather-icon-512.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,13 +72,9 @@
       font-family:'Space Grotesk',sans-serif;
       font-weight:700;font-size:20px;color:var(--indigo);
       letter-spacing:-0.02em;
-      display:inline-flex;align-items:baseline;gap:8px;
+      display:inline-flex;align-items:center;gap:10px;
     }
-    .logo::after{
-      content:"";
-      width:6px;height:6px;background:var(--indigo);
-      display:inline-block;transform:translateY(-1px);
-    }
+    .logo-mark{height:26px;width:auto;display:block;flex:none}
     .nav-links{display:flex;gap:28px;align-items:center;font-size:13px;color:var(--graphite)}
     .nav-links a{transition:color .15s}
     .nav-links a:hover{color:var(--indigo)}
@@ -731,7 +731,7 @@
     .word-copy h3{font-size:clamp(28px,3.6vw,44px);font-weight:600;line-height:1.05;letter-spacing:-0.025em;margin-bottom:20px}
     .word-copy .lead{font-family:'Space Grotesk',sans-serif;font-size:19px;color:var(--indigo-soft);font-weight:500;margin-bottom:22px;line-height:1.3}
     .word-copy p{font-size:16px;line-height:1.6;margin-bottom:24px}
-    .word-copy .standalone-note{
+    .standalone-note{
       font-family:'JetBrains Mono',monospace;
       font-size:12px;line-height:1.6;letter-spacing:0.01em;
       color:var(--graphite-light);
@@ -739,13 +739,13 @@
       background:var(--offwhite);
       border-left:2px solid var(--rule-strong);
     }
-    .word-copy .standalone-note .mark{
+    .standalone-note .mark{
       color:var(--indigo);font-weight:500;letter-spacing:0.06em;text-transform:uppercase;font-size:10.5px;margin-right:4px;
     }
-    .word-copy .standalone-note a{
+    .standalone-note a{
       color:var(--indigo);border-bottom:1px solid var(--indigo);padding-bottom:1px;margin-left:4px;white-space:nowrap;
     }
-    .word-copy .standalone-note a:hover{color:var(--indigo-dark)}
+    .standalone-note a:hover{color:var(--indigo-dark)}
     .word-feat{
       display:grid;grid-template-columns:repeat(5, minmax(0,1fr));gap:0;
       border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
@@ -866,7 +866,164 @@
 <!-- NAV -->
 <nav class="top">
   <div class="wrap nav-inner">
-    <a href="#" class="logo">Acriba</a>
+    <a href="#" class="logo" aria-label="Acriba"><svg class="logo-mark" viewBox="0 0 854 1170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g transform="translate(0.000000,1170.000000) scale(0.100000,-0.100000)"
+fill="currentColor" stroke="none">
+<path d="M6834 10792 c-130 -4 -129 -3 -129 -192 0 -199 -8 -190 180 -190 192
+0 186 -6 178 188 -6 142 -6 143 -35 167 -16 14 -40 25 -53 25 -13 0 -29 1 -37
+3 -7 1 -54 1 -104 -1z"/>
+<path d="M5883 10380 c-38 -16 -43 -41 -43 -220 0 -213 -12 -204 253 -198 226
+4 209 -14 205 215 -4 224 14 207 -216 210 -97 1 -187 -2 -199 -7z"/>
+<path d="M7390 10140 c-20 -20 -22 -30 -18 -122 4 -126 6 -128 135 -128 127 0
+133 6 133 139 0 124 -1 125 -131 129 -89 4 -99 2 -119 -18z"/>
+<path d="M6674 9956 c-18 -13 -19 -28 -19 -196 0 -230 -17 -212 207 -208 215
+4 201 -9 209 191 7 170 3 197 -32 214 -36 19 -339 18 -365 -1z"/>
+<path d="M5356 9885 c-50 -13 -119 -27 -155 -31 -36 -3 -88 -15 -116 -25 -27
+-10 -86 -25 -129 -34 -43 -8 -89 -21 -101 -29 -13 -8 -53 -22 -89 -30 -37 -9
+-77 -23 -90 -31 -12 -8 -47 -22 -77 -30 -30 -8 -76 -26 -103 -40 -27 -14 -57
+-25 -66 -25 -9 0 -31 -11 -50 -25 -19 -14 -41 -25 -49 -25 -9 0 -29 -8 -46
+-17 -111 -60 -156 -84 -200 -106 -27 -13 -56 -31 -64 -40 -7 -10 -19 -17 -25
+-17 -6 0 -36 -15 -66 -34 -53 -33 -78 -51 -164 -116 -21 -17 -43 -30 -47 -30
+-14 0 -279 -233 -354 -311 -132 -137 -208 -235 -260 -331 -161 -299 -165 -318
+-176 -838 -6 -239 -14 -439 -18 -443 -5 -5 -14 13 -20 40 -7 26 -21 62 -32 79
+-11 19 -25 72 -33 130 -8 55 -24 137 -35 184 -11 49 -22 142 -26 220 -12 260
+-39 324 -126 305 -37 -8 -212 -180 -311 -305 -37 -47 -73 -92 -80 -100 -7 -8
+-26 -32 -43 -54 -16 -22 -42 -56 -57 -75 -15 -20 -35 -49 -44 -66 -9 -16 -29
+-44 -43 -61 -14 -18 -39 -55 -56 -84 -16 -28 -40 -66 -52 -83 -23 -33 -42 -67
+-86 -149 -13 -25 -33 -59 -44 -75 -11 -15 -26 -45 -32 -65 -7 -20 -19 -42 -26
+-48 -8 -7 -21 -33 -29 -59 -8 -25 -26 -68 -40 -95 -14 -27 -26 -57 -26 -65 0
+-9 -9 -31 -20 -49 -11 -18 -25 -57 -31 -85 -6 -29 -23 -86 -37 -127 -26 -74
+-27 -80 -26 -320 1 -204 4 -254 18 -300 10 -30 24 -89 33 -130 8 -41 23 -98
+34 -125 10 -28 26 -87 33 -130 8 -44 24 -104 36 -134 27 -69 33 -184 9 -189
+-11 -2 -23 13 -38 45 -12 26 -37 75 -56 108 -18 33 -41 76 -49 95 -9 19 -27
+55 -40 80 -13 25 -29 62 -35 82 -7 20 -18 42 -26 48 -8 6 -19 28 -25 48 -6 20
+-22 60 -35 87 -13 28 -42 89 -65 137 -41 89 -83 133 -118 126 -23 -4 -78 -116
+-97 -196 -8 -34 -22 -76 -31 -93 -8 -17 -22 -65 -30 -107 -8 -42 -23 -97 -33
+-122 -10 -25 -22 -70 -25 -100 -4 -30 -18 -91 -30 -135 -13 -44 -31 -147 -41
+-230 -9 -82 -21 -181 -27 -220 -17 -116 -13 -445 6 -560 9 -55 23 -147 31
+-205 8 -58 23 -127 34 -155 10 -27 22 -70 26 -95 4 -25 15 -60 26 -78 10 -18
+24 -54 30 -80 6 -26 22 -66 35 -89 13 -23 24 -47 24 -55 0 -13 57 -139 85
+-188 8 -14 22 -41 30 -60 9 -19 21 -44 27 -55 7 -11 26 -45 43 -76 16 -31 42
+-79 57 -106 14 -27 34 -55 42 -62 9 -8 16 -19 16 -26 0 -8 11 -27 25 -43 62
+-73 66 -198 14 -391 -11 -41 -27 -126 -35 -188 -8 -63 -21 -132 -29 -153 -8
+-22 -19 -89 -25 -148 -7 -59 -22 -156 -35 -217 -13 -60 -26 -155 -30 -210 -4
+-55 -15 -145 -26 -200 -20 -105 -39 -328 -39 -455 0 -89 16 -120 60 -120 75 0
+124 56 139 160 6 36 17 98 26 138 8 40 22 146 29 235 8 89 23 209 34 267 11
+58 25 159 31 225 6 66 18 145 26 175 8 30 21 118 30 195 8 77 21 158 29 180 8
+22 19 83 25 135 16 129 18 136 55 164 36 27 82 41 170 51 32 4 86 17 121 30
+35 13 87 27 116 31 30 4 74 17 99 29 25 12 65 26 90 30 25 4 62 16 84 27 21
+11 64 26 95 34 31 8 65 21 76 28 11 7 45 21 75 31 30 10 66 26 80 35 14 10 39
+21 57 24 18 4 43 16 57 27 14 11 42 26 63 33 21 7 55 24 75 37 20 13 60 38 88
+54 28 17 69 44 90 60 33 26 84 64 199 150 82 61 292 286 384 412 15 21 41 55
+56 75 51 67 53 162 4 174 -42 11 -216 -4 -269 -22 -64 -23 -219 -26 -219 -5 0
+9 20 20 55 29 30 7 62 20 71 28 9 8 38 21 65 30 27 9 56 23 64 30 9 7 31 20
+50 29 36 16 124 68 201 119 70 46 204 163 274 239 77 83 201 268 220 329 5 12
+18 37 30 53 12 17 28 47 34 67 7 21 17 40 22 43 19 12 159 313 165 356 12 91
+-21 96 -405 66 -192 -15 -221 -14 -221 9 0 18 24 29 90 43 30 7 65 18 76 26
+12 8 44 19 71 26 26 6 67 22 90 35 23 13 48 24 55 24 8 0 45 16 84 35 38 19
+75 35 83 35 8 0 29 11 47 25 18 14 36 25 41 25 14 0 116 66 156 101 97 85 153
+152 251 299 9 14 32 45 51 70 19 25 46 65 60 90 27 46 56 90 100 149 14 19 25
+40 25 46 0 7 7 19 16 26 36 30 134 205 134 239 0 72 -32 81 -257 74 -104 -4
+-205 -4 -226 0 -58 11 -46 31 29 50 37 9 83 25 103 35 20 10 52 22 71 26 19 4
+51 17 70 30 19 13 46 26 60 30 14 4 38 17 55 29 16 11 46 29 65 39 110 55 286
+229 373 370 56 91 149 290 167 356 6 24 18 54 25 65 8 12 21 51 29 87 9 36 24
+86 35 110 25 56 53 224 42 252 -5 12 -18 31 -30 41 -20 18 -22 18 -40 2 -26
+-24 -67 -105 -75 -148 -10 -54 -25 -58 -211 -58 -91 0 -175 -4 -185 -10 -12
+-7 -21 -30 -30 -76 -17 -100 -7 -107 158 -114 145 -6 152 -11 113 -89 -12 -22
+-21 -46 -21 -53 0 -7 -13 -40 -30 -73 -16 -33 -36 -76 -45 -95 -15 -35 -56
+-102 -106 -176 -34 -49 -181 -188 -234 -219 -109 -64 -318 -160 -370 -169 -22
+-4 -62 -18 -90 -31 -27 -12 -75 -26 -105 -30 -30 -4 -80 -17 -110 -30 -30 -12
+-79 -25 -109 -29 -29 -4 -82 -18 -116 -31 -35 -13 -85 -27 -112 -31 -26 -3
+-64 -15 -84 -25 -19 -9 -62 -25 -95 -33 -32 -9 -88 -30 -124 -48 -60 -31 -65
+-36 -68 -69 -2 -24 3 -42 13 -53 20 -19 17 -19 685 -20 485 -1 485 -1 488 -24
+2 -13 -5 -33 -15 -44 -10 -11 -29 -39 -43 -63 -29 -50 -121 -190 -145 -220 -9
+-11 -23 -32 -33 -46 -71 -108 -97 -141 -150 -194 -80 -79 -227 -185 -257 -185
+-6 0 -27 -11 -47 -25 -20 -14 -43 -25 -51 -25 -8 0 -39 -13 -69 -29 -30 -15
+-72 -31 -93 -35 -21 -4 -59 -18 -84 -31 -25 -13 -66 -26 -91 -30 -25 -4 -62
+-16 -82 -26 -21 -11 -69 -26 -108 -34 -39 -8 -83 -21 -99 -29 -15 -8 -57 -22
+-94 -30 -36 -9 -83 -25 -104 -36 -21 -11 -44 -20 -52 -20 -38 0 -297 -126
+-317 -155 -20 -28 -18 -72 4 -84 84 -45 499 -70 682 -42 41 7 158 18 260 25
+173 11 185 11 202 -6 19 -19 12 -56 -17 -88 -7 -8 -23 -35 -34 -60 -12 -25
+-36 -72 -55 -105 -19 -33 -46 -83 -59 -111 -14 -28 -30 -55 -36 -58 -6 -4 -18
+-24 -26 -44 -19 -44 -17 -42 -146 -171 -98 -97 -132 -126 -215 -177 -19 -11
+-44 -30 -56 -41 -13 -11 -39 -26 -59 -32 -20 -7 -44 -20 -54 -31 -9 -10 -30
+-22 -45 -25 -15 -3 -42 -17 -61 -31 -18 -13 -38 -24 -43 -24 -6 0 -42 -16 -80
+-35 -39 -19 -75 -35 -81 -35 -6 0 -26 -11 -44 -24 -18 -13 -49 -27 -69 -31
+-20 -4 -55 -18 -78 -31 -22 -13 -48 -24 -56 -24 -9 0 -42 -13 -73 -30 -31 -16
+-62 -30 -69 -30 -7 0 -43 -16 -82 -35 -38 -19 -74 -35 -81 -35 -20 0 -53 -51
+-53 -82 0 -22 6 -31 26 -38 34 -13 595 -13 738 0 116 10 126 9 126 -19 0 -29
+-309 -331 -339 -331 -5 0 -27 -15 -49 -32 -22 -18 -60 -44 -83 -58 -23 -14
+-58 -36 -78 -49 -20 -13 -58 -36 -86 -50 -27 -15 -59 -32 -70 -38 -47 -27
+-173 -83 -184 -83 -7 0 -31 -11 -54 -24 -23 -13 -63 -29 -89 -35 -26 -6 -62
+-20 -80 -30 -18 -11 -53 -22 -78 -26 -25 -4 -63 -16 -84 -27 -22 -11 -79 -28
+-127 -38 -47 -10 -96 -23 -109 -30 -21 -11 -181 -39 -227 -40 -33 0 -38 45
+-14 116 11 32 27 104 35 159 9 56 22 121 31 145 9 24 23 87 31 139 8 52 21
+106 29 121 7 14 21 67 30 116 9 49 23 99 31 111 8 13 21 56 28 97 8 41 23 92
+34 113 11 21 23 58 27 83 4 25 18 68 30 95 13 28 27 68 31 90 4 22 17 60 30
+86 12 25 26 63 30 85 3 21 17 57 29 79 12 22 28 63 35 90 6 28 20 64 30 80 10
+17 21 46 25 65 4 19 17 53 30 75 13 22 28 60 35 85 7 25 20 56 30 70 10 14 21
+41 25 60 4 19 17 51 30 70 13 19 28 52 33 72 6 21 19 50 29 65 11 15 25 47 31
+69 7 23 19 47 26 54 8 6 22 33 31 60 9 27 22 54 30 60 8 6 21 33 30 60 9 27
+22 54 30 60 8 6 21 33 30 60 9 27 22 54 30 60 8 6 19 28 26 48 6 20 17 43 23
+50 11 14 55 97 100 189 14 28 30 54 35 57 6 4 20 26 31 49 11 23 36 67 55 97
+19 30 46 76 60 103 14 26 29 47 34 47 5 0 14 14 21 30 7 17 26 47 41 67 16 20
+29 41 29 48 0 7 7 19 16 26 9 7 38 47 65 89 26 41 55 84 63 95 67 89 86 116
+96 136 7 13 25 38 39 56 14 17 51 66 81 108 30 42 78 104 105 138 57 70 101
+126 130 167 33 46 365 441 416 495 26 28 80 88 121 135 41 47 86 99 100 115
+14 17 57 66 95 110 104 121 106 123 141 157 17 17 32 36 32 42 0 5 10 20 22
+33 30 32 5 53 -27 23 -12 -11 -27 -20 -35 -20 -56 0 -448 -357 -751 -684 -35
+-38 -77 -84 -94 -101 -30 -31 -102 -117 -215 -255 -33 -41 -71 -86 -83 -99
+-12 -13 -29 -34 -37 -47 -8 -12 -35 -49 -60 -81 -25 -32 -53 -69 -63 -83 -9
+-14 -33 -45 -52 -70 -19 -25 -59 -81 -90 -125 -64 -92 -98 -140 -123 -174 -17
+-23 -36 -54 -77 -120 -11 -18 -32 -49 -47 -68 -16 -20 -28 -41 -28 -48 0 -6
+-9 -20 -20 -30 -12 -10 -30 -37 -41 -59 -10 -23 -35 -66 -54 -96 -55 -88 -135
+-227 -180 -315 -15 -27 -41 -77 -60 -110 -19 -33 -41 -76 -49 -95 -9 -19 -23
+-46 -31 -60 -8 -14 -22 -41 -30 -60 -33 -73 -78 -166 -92 -190 -8 -14 -21 -41
+-29 -60 -8 -19 -25 -57 -38 -85 -14 -27 -30 -65 -36 -84 -5 -19 -17 -42 -26
+-52 -8 -9 -21 -40 -29 -69 -8 -29 -20 -59 -28 -69 -8 -9 -22 -40 -31 -70 -9
+-30 -22 -64 -30 -75 -7 -12 -21 -47 -30 -78 -9 -32 -25 -72 -35 -90 -10 -18
+-24 -54 -30 -80 -6 -26 -20 -62 -30 -80 -10 -18 -22 -51 -26 -73 -4 -21 -15
+-56 -26 -77 -11 -21 -26 -67 -35 -104 -8 -36 -22 -76 -30 -89 -8 -12 -21 -55
+-30 -94 -8 -40 -21 -83 -30 -95 -8 -13 -21 -58 -29 -100 -8 -42 -22 -90 -31
+-107 -8 -17 -22 -69 -30 -116 -9 -48 -22 -99 -29 -113 -8 -15 -21 -70 -29
+-122 -9 -52 -22 -111 -31 -130 -8 -20 -22 -81 -30 -135 -20 -126 -23 -133 -45
+-133 -35 0 -50 12 -70 58 -12 26 -27 53 -34 62 -7 8 -18 30 -25 49 -6 19 -18
+42 -26 51 -8 9 -21 35 -30 59 -8 23 -24 55 -35 71 -11 15 -20 35 -20 43 0 8
+-13 39 -28 69 -16 29 -34 74 -40 100 -7 26 -21 62 -31 80 -11 18 -22 53 -26
+78 -4 25 -17 68 -30 95 -12 28 -26 82 -30 120 -3 39 -16 111 -28 160 -30 123
+-33 664 -5 755 9 30 24 109 32 175 8 66 24 145 34 176 11 30 23 84 27 120 13
+112 80 205 102 142 9 -28 32 -76 48 -103 8 -14 22 -41 30 -60 9 -19 31 -62 50
+-95 18 -33 44 -82 58 -110 13 -27 31 -56 40 -64 10 -7 17 -19 17 -25 0 -6 10
+-26 23 -45 132 -201 170 -253 226 -310 32 -32 67 -62 80 -66 28 -9 88 35 97
+71 12 48 -2 306 -20 355 -9 26 -23 86 -31 134 -9 48 -22 100 -31 117 -8 16
+-21 67 -29 112 -7 46 -20 97 -29 114 -8 16 -22 69 -30 115 -9 47 -25 114 -37
+149 -42 125 -38 574 7 660 9 18 23 58 30 90 7 31 23 72 34 90 11 18 20 40 20
+49 0 9 13 40 29 70 15 30 34 71 40 91 7 20 18 42 26 48 8 6 19 28 26 48 6 20
+20 46 30 57 10 11 26 40 37 65 11 25 27 51 36 59 9 7 16 19 16 26 0 8 11 27
+25 43 14 17 32 46 40 64 7 19 21 41 30 48 9 8 25 30 36 49 22 41 59 94 90 131
+12 14 41 52 66 85 173 232 180 236 198 115 4 -25 15 -81 25 -125 10 -44 21
+-109 25 -145 3 -36 17 -101 30 -145 13 -44 31 -107 39 -140 23 -94 87 -264
+124 -332 59 -109 77 -133 108 -148 41 -19 53 -13 89 39 38 56 44 108 55 526 6
+206 15 418 19 470 26 286 34 337 56 390 13 30 26 69 30 85 3 17 16 46 29 65
+13 19 28 51 35 71 6 20 21 45 31 54 11 10 20 24 20 31 0 10 33 57 82 114 98
+116 309 311 403 373 74 49 90 61 115 83 14 12 37 28 51 35 62 33 138 81 149
+94 7 8 18 15 25 15 7 0 30 12 51 26 21 15 52 31 69 37 16 5 44 20 60 32 17 12
+41 26 55 30 14 4 45 18 70 31 85 44 175 82 210 89 19 4 50 16 69 26 18 11 62
+26 96 34 34 8 82 23 106 34 24 11 77 24 117 30 41 6 87 18 103 26 34 18 234
+48 266 40 28 -7 37 -34 23 -71 -11 -28 -40 -235 -40 -286 0 -87 136 -91 181
+-6 6 11 17 75 24 143 8 68 21 138 30 154 8 17 23 75 32 129 17 96 16 99 -3
+133 -20 34 -20 34 -110 36 -67 2 -111 -4 -178 -22z"/>
+<path d="M6061 9504 c-20 -25 -21 -40 -21 -220 0 -246 -21 -226 240 -222 178
+3 193 4 206 23 12 16 14 55 12 211 -4 254 16 234 -229 234 -188 0 -188 0 -208
+-26z"/>
+<path d="M7108 9190 c-67 -12 -68 -15 -68 -190 0 -158 0 -158 31 -184 30 -26
+33 -26 190 -26 198 0 191 -8 182 214 -8 192 0 183 -168 188 -71 3 -147 1 -167
+-2z"/>
+<path d="M5405 8930 c-18 -19 -20 -40 -23 -165 -5 -202 -9 -198 197 -187 135
+7 155 10 168 27 19 27 15 307 -5 327 -9 9 -57 14 -165 16 -146 3 -154 2 -172
+-18z"/>
+<path d="M6430 8648 c-24 -13 -25 -16 -28 -145 -3 -174 -4 -173 142 -173 103
+0 153 10 168 33 15 23 9 251 -6 273 -18 24 -234 34 -276 12z"/>
+</g></svg><span>Acriba</span></a>
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#product">AcribaWord</a>
@@ -885,8 +1042,11 @@
           Regulatory, Medical and Strategic Writing
         </h1>
         <p class="hero-lede">
-          Your subject-matter experts shouldn&rsquo;t be writing and formatting templated documents. They should be reviewing them. We produce the documents — at competitive prices, within your timelines — so their hours go to the decisions only they can make.
+          We write complex pharmaceutical documents with purpose-built AI. 
         </p>
+        <p class="hero-lede">We produce them up to 6&times; faster than a traditional consultancy, at a competitive price.</p>
+        <p class="hero-lede">Subject-matter experts shouldn&rsquo;t be writing and formatting templated documents. We allow their time to be spent on the science instead.</p>
+        
 
         <div class="chip-row" role="list">
           <div class="chip is-live" role="listitem" data-chip="0">
@@ -919,8 +1079,8 @@
         </div>
         <div class="hero-meta-list" id="hmList"></div>
         <div class="hero-meta-foot">
-          <span id="hmFoot">Non-exhaustive</span>
-          <a href="#services">See all <span>→</span></a>
+          <span id="hmFoot"></span>
+          <a href="#services"></a>
         </div>
       </aside>
     </div>
@@ -967,257 +1127,35 @@
 <section class="block" id="services" style="padding-top:96px">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-id">§01 · Approach</div>
+      <div class="section-id">Approach</div>
       <div>
         <span class="eyebrow">Our approach</span>
         <h2>Internal AI software, paired with an expert human in the loop.</h2>
-        <p class="sub">Our in-house tooling handles the structured drafting, source-tracing and formatting. Senior reviewers from industry do the thinking and sign-off. You get the document — fast, defensible, and produced by people who&rsquo;ve filed them before.</p>
+        <p class="sub">Our in-house software handles the drafting, source-tracing and formatting. Senior reviewers who have performed actual submissions use it to generate your documents.</p>
 
         <div class="approach-grid">
           <div class="approach-card approach-card--dark">
             <div class="approach-head">
               <span class="approach-n">A.</span>
-              <span class="approach-tag">Software layer</span>
+              <span class="approach-tag">Software</span>
             </div>
-            <h3 class="approach-t">Internal AI Software</h3>
-            <p class="approach-d">AcribaWord is our proprietary editor. It ingests your documents as well as the relevant guidelines and  produces traceable first drafts, flags inconsistencies across sections, and keeps every claim linked to a source. It also ensures adequate cross-linking and formatting across the document.</p>
-            <ul class="approach-list">
-              <li><span class="approach-k">Built-in</span><span class="approach-v">Source-trace · cross-section consistency · ICH M4 scaffolds</span></li>
-              <li><span class="approach-k">Output</span><span class="approach-v">Word · eCTD-ready · red-line memo</span></li>
-              <li><span class="approach-k">Data</span><span class="approach-v">Per-engagement isolation · no third-party training</span></li>
-            </ul>
+            <h3 class="approach-t">Proprietary AI Software</h3>
+            <p class="approach-d">AcribaWord is our own editor. It reads your reports, the relevant guidelines, and any other relevant information. Then it produces a consistent submission-ready document which our reviewers can iterate on.</p>
           </div>
 
           <div class="approach-card">
             <div class="approach-head">
               <span class="approach-n">B.</span>
-              <span class="approach-tag">Human layer</span>
+              <span class="approach-tag">Pharmaceutical Expertise</span>
             </div>
-            <h3 class="approach-t">Expert Human in the Loop</h3>
-            <p class="approach-d">A curated bench of senior regulatory, clinical and strategic reviewers — ex-Pfizer, Merck, Novartis, Pierre Fabre. Every document is scoped, reviewed and signed off by a domain lead with MAA / NDA approvals on record. No juniors learning on your dossier.</p>
-            <ul class="approach-list">
-              <li><span class="approach-k">Roles</span><span class="approach-v">Reg writer · Clinical author · Biostat · Med-writer QC</span></li>
-              <li><span class="approach-k">Seniority</span><span class="approach-v">15+ yrs avg · agency-facing experience</span></li>
-              <li><span class="approach-k">Coverage</span><span class="approach-v">EMA · FDA · PMDA · MHRA</span></li>
-            </ul>
+            <h3 class="approach-t">Expert Review</h3>
+            <p class="approach-d">Our experts work inside AcribaWord to bring the document to submission quality. It runs QC on the reports for them, so their time goes to content and strategy, not formatting.</p>
           </div>
         </div>
 
       </div>
     </div>
 
-    <div role="tablist" class="svc-tabs">
-      <button role="tab" aria-selected="true" aria-controls="svc-1" class="svc-tab" data-tab="1">
-        <span class="num">01 / Regulatory</span>
-        <span class="t">IND · IMPD · CTA</span>
-      </button>
-      <button role="tab" aria-selected="false" aria-controls="svc-2" class="svc-tab" data-tab="2">
-        <span class="num">02 / Clinical Development</span>
-        <span class="t">Protocols · SAP · sites</span>
-      </button>
-      <button role="tab" aria-selected="false" aria-controls="svc-3" class="svc-tab" data-tab="3">
-        <span class="num">03 / Strategic Intelligence</span>
-        <span class="t">Precedent · landscape · KOL</span>
-      </button>
-    </div>
-
-    <div class="svc-body">
-      <!-- Panel 1 · Regulatory -->
-      <div id="svc-1" role="tabpanel" class="svc-panel active">
-        <div>
-          <h3>Submission-ready dossiers, written by reviewers who&rsquo;ve filed them.</h3>
-          <p class="lead">Clinical trial applications (IND / IMPD+CTA / CTN). Nonclinical (M2.4 / M2.6) and clinical (M2.5 / M2.7) summaries. Investigator&rsquo;s Brochures. Briefing Books. Clinical Study Reports.</p>
-          <p>AI-assisted drafts prepared inside AcribaWord, then reviewed section-by-section by a senior regulatory writer with MAA and NDA approvals on record. You get the ICH-compliant document, the source trace, and the reviewer&rsquo;s red-line memo.</p>
-          <div class="svc-meta">
-            <div><div class="k">Turnaround</div><div class="v">2–10 weeks by document</div></div>
-            <div><div class="k">Pricing</div><div class="v">Fixed per-document quote in 48h</div></div>
-            <div><div class="k">Format</div><div class="v">Word · eCTD-ready · ICH M4</div></div>
-            <div><div class="k">Agencies</div><div class="v">EMA · FDA · PMDA · MHRA</div></div>
-          </div>
-        </div>
-        <div>
-          <p class="eyebrow" style="margin-bottom:16px">Documents we deliver</p>
-          <div class="doc-list">
-            <div class="doc-row">
-              <span class="code">CTA</span>
-              <div>
-                <div class="name">Clinical trial application</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">The milestone filing. End-to-end dossier preparation for FDA IND, EMA CTA+IMPD, and MHRA CTN — filing-ready for EMA CTIS or FDA ESG.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">IMPD</span>
-              <div>
-                <div class="name">IMPD / Quality dossier</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Investigational Medicinal Product Dossier for EU CTAs — Quality (S / P), Nonclinical and Clinical parts, aligned with your M3 CMC data.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">M2.4/6</span>
-              <div>
-                <div class="name">Nonclinical Overview &amp; Summaries</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Nonclinical Overview (2.4) and Written &amp; Tabulated Summaries (2.6) integrated from your tox CRO reports. Tightly cross-referenced to Module 4.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">M2.5/7</span>
-              <div>
-                <div class="name">Clinical Overview &amp; Summary</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Clinical Overview (2.5) and Clinical Summary (2.7) synthesising efficacy, safety and benefit-risk across your studies, referenced to Module 5.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">IB</span>
-              <div>
-                <div class="name">Investigator&rsquo;s Brochure</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Required for filing and for dosing. Complete IB drafting with nonclinical and clinical safety integration. Source-traced; reviewed by a senior safety reviewer.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">BB</span>
-              <div>
-                <div class="name">Briefing Book</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">De-risks the IND. Strategic question framing, precedent search, briefing document drafting, and meeting rehearsal support for agency interactions.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">CSR</span>
-              <div>
-                <div class="name">Clinical Study Report</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">The major deliverable at the end of every completed study. Integrated narrative with TLFs, safety and efficacy sections, appendices — reviewed by a senior clinical author.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 2 · Clinical Development -->
-      <div id="svc-2" role="tabpanel" class="svc-panel">
-        <div>
-          <h3>From protocol to site list — the documents that actually run the study.</h3>
-          <p class="lead">Clinical study protocols and amendments. Informed Consent Forms. Statistical Analysis Plans. Feasibility and site selection. Risk-Based Monitoring plans.</p>
-          <p>Co-developed with your medical lead and signed off by a senior clinical development reviewer from the CXO Swiss bench. Operationally realistic, statistically defensible, IRB-ready.</p>
-          <div class="svc-meta">
-            <div><div class="k">Turnaround</div><div class="v">3–8 weeks by document</div></div>
-            <div><div class="k">Output</div><div class="v">Protocol · SAP · feasibility report</div></div>
-            <div><div class="k">Scope</div><div class="v">Ph I–III · EU · US · ROW</div></div>
-            <div><div class="k">Handoff</div><div class="v">CRO- and sponsor-ready</div></div>
-          </div>
-        </div>
-        <div>
-          <p class="eyebrow" style="margin-bottom:16px">Documents we deliver</p>
-          <div class="doc-list">
-            <div class="doc-row">
-              <span class="code">CSP</span>
-              <div>
-                <div class="name">Clinical Study Protocol</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Full protocol authoring — synopsis, objectives, design, population, dose-escalation, statistical framework, safety and operational sections. Amendments authored against the tracked baseline.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">ICF</span>
-              <div>
-                <div class="name">Informed Consent Form</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Master ICF and country-adapted versions, written in plain language against the protocol and aligned with local IRB/EC requirements.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">SAP</span>
-              <div>
-                <div class="name">Statistical Analysis Plan</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Estimand-framed SAPs with TLF shells, sensitivity and subgroup strategy, and alignment to the protocol and CRF build.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">FEAS</span>
-              <div>
-                <div class="name">Feasibility &amp; site selection</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Country mix, site shortlist benchmarked against trial-registry recruitment history, PI profiles and outreach scripts.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">MON</span>
-              <div>
-                <div class="name">Risk-Based Monitoring (RBM) plan</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Risk-Based Monitoring plan with site-level triggers, central monitoring rules, and CRO escalation paths.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Panel 3 · Strategic Intelligence -->
-      <div id="svc-3" role="tabpanel" class="svc-panel">
-        <div>
-          <h3>Regulatory, clinical and commercial intelligence — decision-ready, not deck-filler.</h3>
-          <p class="lead">Scientific rationale &amp; evidence dossier, regulatory precedent, competitive &amp; pipeline landscape, epidemiology and patient-pool sizing, and KOL mapping — decision-ready for your next move.</p>
-          <p>We combine FDA/EMA approval trackers, trial registries, payer signals, and KOL interviews into memos your board can act on. Every number in the deck traces back to its source.</p>
-          <div class="svc-meta">
-            <div><div class="k">Turnaround</div><div class="v">2–5 weeks</div></div>
-            <div><div class="k">Output</div><div class="v">Memo · deck · raw sources</div></div>
-            <div><div class="k">Scope</div><div class="v">Regulatory · clinical · commercial</div></div>
-            <div><div class="k">Format</div><div class="v">Source-linked &amp; auditable</div></div>
-          </div>
-        </div>
-        <div>
-          <p class="eyebrow" style="margin-bottom:16px">Typical engagements</p>
-          <div class="doc-list">
-            <div class="doc-row">
-              <span class="code">SCI</span>
-              <div>
-                <div class="name">Scientific rationale &amp; evidence dossier</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Scientific rationale built from systematic literature review — ready to slot into IB Section 1, protocol rationale, or pre-IND briefing.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">REG</span>
-              <div>
-                <div class="name">Regulatory precedent analysis</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Approvals with the same MoA or indication — endpoints accepted, label language, statistical precedent, and advisory-committee signals.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">LAND</span>
-              <div>
-                <div class="name">Competitive &amp; pipeline landscape</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Pipeline map with trial timing, MoA deltas, readout calendar and positioning white-space.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">EPI</span>
-              <div>
-                <div class="name">Epidemiology &amp; patient-pool sizing</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Incidence/prevalence modelling with sub-population segmentation — eligibility-adjusted, not brochure-grade.</div>
-            </div>
-            <div class="doc-row">
-              <span class="code">KOL</span>
-              <div>
-                <div class="name">KOL mapping</div>
-              </div>
-              <span class="chev">›</span>
-              <div class="doc-detail">Ranked KOL shortlist with publication, trial and guideline-committee footprint — ready for advisory-board outreach.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1234,9 +1172,9 @@
 
     <!-- Title block -->
     <div class="case-head">
-      <span class="eyebrow">§03 · Case study</span>
+      <span class="eyebrow">Case study</span>
       <h2>30-day IND update for a Phase&nbsp;2 biotech.</h2>
-      <p class="case-lede">We delivered an IND update — fifteen documents, with M2.4, M2.5 and M2.7 summaries generated from scratch — in thirty days, and at 20% below the nearest competitive quote (which ran three months or more). Every page was reviewed end-to-end by our lead reviewer.</p>
+      <p class="case-lede">We delivered an IND update in thirty days: fifteen documents, including M2.4, M2.5 and M2.7 summaries written from scratch. The price was far below the nearest quote, which ran three months or more. Every page was reviewed by a former CSO who filed multiple INDs in the past.</p>
     </div>
 
     <!-- Stats row -->
@@ -1273,273 +1211,29 @@
   </div>
 </section>
 
-<!-- TRUST BAND -->
-<section class="trust">
-  <div class="wrap">
-    <span class="eyebrow">§02 · Why Acriba</span>
-    <h2 style="margin-top:12px">Two things a CRO can&rsquo;t give you at the same time: senior reviewers and weekly turnaround.</h2>
-    <div class="trust-grid">
-      <div class="trust-cell">
-        <h3>Senior reviewers</h3>
-        <p>Every document is reviewed by a senior with hands-on MAA or NDA approvals. No junior gate, no ghost-writer chain.</p>
-        <div class="mono-note">Serono · Pfizer · Novartis · Pierre Fabre</div>
-      </div>
-      <div class="trust-cell">
-        <h3>AI-augmented drafting</h3>
-        <p>AcribaWord handles structure, cross-references, and source traces so reviewers spend their hours on content, not formatting.</p>
-        <div class="mono-note">ICH E3 · E6 · E9 · M4 baked in</div>
-      </div>
-      <div class="trust-cell">
-        <h3>Your data stays yours</h3>
-        <p>Isolated processing, zero retention for model training, EU-hosted by default. DPAs and security questionnaires on request.</p>
-        <div class="mono-note">ISO 27001 compliant · SOC 2 in progress · EU-hosted</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ACRIBAWORD PRODUCT -->
 <section class="block" id="product" style="background:var(--offwhite)">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-id">§03 · AcribaWord</div>
+      <div class="section-id">AcribaWord</div>
       <div>
         <span class="eyebrow">Our technology</span>
-        <h2>Claude or ChatGPT are not suited for pharma documents.</h2>
-        <p class="sub">Claude, ChatGPT and Gemini are excellent at prose. They struggle with what regulatory writing actually requires: keeping cross-links, abbreviations and terminology consistent across a 400-page document, and tracing every value back to the exact page of the source report for QC. That&rsquo;s why we built custom software <em>around</em> these models — AcribaWord — instead of pasting prompts into one.</p>
+        <h2>Claude, ChatGPT or Gemini are not suited for pharmaceutical documents.</h2>
+        <p class="sub">Generic AI tools can&rsquo;t ingest the inputs of a drug program. One program is dozens of reports and hundreds of pages, dense with tables and figures. And they can draft a simple document, but not the formatting and cross-referencing a regulatory or medical dossier requires.</p>
       </div>
     </div>
 
-    <div class="word-outer">
-      <!-- Copy row: title + key feature tiles ABOVE the editor -->
-      <div class="word-copy">
-        <div class="lead-block">
-          <span class="eyebrow">AcribaWord · v2.1</span>
-          <p class="lead">Draft faster. Catch source inconsistencies — and complex tables — before the reviewer does.</p>
-          <p>AcribaWord is the internal tool our writers run all day. It understands ICH E3, E6, E9 and M4 structure, traces every sentence back to its source document, and handles the multi-level merged-header tables that typically break every other editor.</p>
-          <p class="standalone-note"><span class="mark">Note —</span> AcribaWord is also available as a standalone product, on request. <a href="#contact">Enquire about licensing →</a></p>
-          <a href="#contact" class="btn btn-ghost" style="margin-top:8px;align-self:start">Request a walkthrough <span class="btn-arrow">→</span></a>
-        </div>
-        <div class="side-block">
-          <div class="word-feat" style="margin-bottom:0">
-            <div><div class="t">Faster drafting</div><div class="d">Section-aware AI suggestions that respect regulatory structure.</div></div>
-            <div><div class="t">Regulatory intelligence</div><div class="d">ICH, EMA and FDA guidelines ingested in the context of your project.</div></div>
-            <div><div class="t">Source trace</div><div class="d">Every sentence linked to its originating protocol, table or safety record.</div></div>
-            <div><div class="t">Connectors</div><div class="d">PubMed, ClinicalTrials.gov, FDA, EMA, PMDA and your internal corpus.</div></div>
-            <div><div class="t">Privacy &amp; security</div><div class="d">Never used to train AI models. EU-hosted, ISO 27001 compliant, SOC 2 in progress.</div></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Editor -->
-      <div class="editor-wrap" aria-label="AcribaWord editor mockup" id="editor">
-        <div class="editor-chrome">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span class="tab-doc">IB_PhII_oncology_v3.acw<span class="small">· draft</span></span>
-          <span class="editor-crumbs">ACRIBAWORD · /programs/AB-104/IB/v3</span>
-        </div>
-        <div class="editor-main">
-          <aside class="editor-tree">
-            <div class="tree-sect">Module 1</div>
-            <div class="tree-item">1.1 Cover letter</div>
-            <div class="tree-item">1.2 Application form</div>
-            <div class="tree-sect">Module 2</div>
-            <div class="tree-item">2.4 Nonclinical overview</div>
-            <div class="tree-item flagged">2.5 Clinical overview</div>
-            <div class="tree-item">2.7 Clinical summary</div>
-            <div class="tree-sect">Investigator&rsquo;s Brochure</div>
-            <div class="tree-item">IB 1. Summary</div>
-            <div class="tree-item flagged">IB 2. Introduction</div>
-            <div class="tree-item active">IB 5. Effects in humans</div>
-            <div class="tree-item">IB 6. Summary &amp; guidance</div>
-          </aside>
-
-          <div class="editor-doc" id="ed-doc">
-            <!-- Page A · Narrative -->
-            <div class="ed-page is-active" data-page="a">
-              <span class="sect-id">IB 5 · EFFECTS IN HUMANS · 5.2 PHARMACODYNAMICS</span>
-              <h5>5.2 Pharmacodynamics</h5>
-              <p>In the Phase&nbsp;Ib dose-escalation study (AB-104-101), ABX-104 administered at 120&nbsp;mg QD produced a dose-dependent reduction in serum biomarker&nbsp;X of 58% (90% CI: 44–69) versus baseline at Week&nbsp;8.</p>
-              <p>Pharmacodynamic responses in the 60&nbsp;mg and 90&nbsp;mg cohorts were consistent with the exposure–response model fitted to Phase&nbsp;I data (Section&nbsp;<span class="flag-underline" data-flag="2">5.1.3</span>), supporting the rationale for the recommended Phase&nbsp;II dose.</p>
-              <p>Two <span class="flag-underline" data-flag="5">SAEs</span> were reported in the 120&nbsp;mg cohort and were classified as <span class="flag-underline" data-flag="6">treatment-related adverse events</span>; both resolved without sequelae.</p>
-              <p id="typing-line">Across all evaluable subjects, the onset of pharmacodynamic effect was observed within <span class="blink" id="type-target">72 hours of first dose</span><span class="cursor"></span></p>
-            </div>
-
-            <!-- Page B · Complex table with rowspan + colspan -->
-            <div class="ed-page" data-page="b">
-              <span class="sect-id">IB 5 · EFFECTS IN HUMANS · 5.4 EFFICACY BY SUBGROUP</span>
-              <h5>Table 5.4-1 · Efficacy by baseline subgroup (ITT population)</h5>
-              <div class="ed-table-wrap">
-                <table class="ed-table">
-                  <caption>Study AB-104-201 · Week 24 · ITT (N = 412)</caption>
-                  <thead>
-                    <tr>
-                      <th rowspan="3">Subgroup</th>
-                      <th colspan="6">Treatment arm</th>
-                      <th rowspan="3">Δ vs placebo<br>(95% CI)</th>
-                    </tr>
-                    <tr>
-                      <th colspan="2">Placebo</th>
-                      <th colspan="2">ABX-104 60 mg</th>
-                      <th colspan="2">ABX-104 120 mg</th>
-                    </tr>
-                    <tr>
-                      <th>n</th><th>Resp. %</th>
-                      <th>n</th><th>Resp. %</th>
-                      <th>n</th><th>Resp. %</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><td class="group" colspan="8">Age, years</td></tr>
-                    <tr>
-                      <th>&lt; 40</th>
-                      <td class="num">34</td><td class="num">14.7</td>
-                      <td class="num">36</td><td class="num">41.7</td>
-                      <td class="num">38</td><td class="num">63.2</td>
-                      <td class="num">+48.5 (33.2–63.8)</td>
-                    </tr>
-                    <tr>
-                      <th>40 – 64</th>
-                      <td class="num">52</td><td class="num">13.5</td>
-                      <td class="num">54</td><td class="num">38.9</td>
-                      <td class="num">56</td><td class="num">60.7</td>
-                      <td class="num">+47.2 (34.6–59.8)</td>
-                    </tr>
-                    <tr>
-                      <th>≥ 65</th>
-                      <td class="num">40</td><td class="num">12.5</td>
-                      <td class="num">42</td><td class="num">35.7</td>
-                      <td class="num">44</td><td class="num flag-cell" data-flag="3">52.3</td>
-                      <td class="num">+39.8 (26.1–53.5)</td>
-                    </tr>
-
-                    <tr><td class="group" colspan="8">Baseline severity (score)</td></tr>
-                    <tr>
-                      <th>Mild (6 – 10)</th>
-                      <td class="num">28</td><td class="num">21.4</td>
-                      <td class="num">30</td><td class="num">46.7</td>
-                      <td class="num">32</td><td class="num">68.8</td>
-                      <td class="num">+47.4 (30.8–63.9)</td>
-                    </tr>
-                    <tr>
-                      <th>Moderate (11 – 15)</th>
-                      <td class="num">54</td><td class="num">13.0</td>
-                      <td class="num">56</td><td class="num">39.3</td>
-                      <td class="num">58</td><td class="num">62.1</td>
-                      <td class="num">+49.1 (36.4–61.8)</td>
-                    </tr>
-                    <tr>
-                      <th>Severe (≥ 16)</th>
-                      <td class="num">44</td><td class="num">9.1</td>
-                      <td class="num">46</td><td class="num">32.6</td>
-                      <td class="num">48</td><td class="num">54.2</td>
-                      <td class="num">+45.1 (31.2–59.0)</td>
-                    </tr>
-
-                    <tr><td class="group" colspan="8">Prior therapy</td></tr>
-                    <tr>
-                      <th>Naïve</th>
-                      <td class="num">62</td><td class="num">16.1</td>
-                      <td class="num">64</td><td class="num">43.8</td>
-                      <td class="num">66</td><td class="num">65.2</td>
-                      <td class="num">+49.1 (37.2–61.0)</td>
-                    </tr>
-                    <tr>
-                      <th>≥ 1 prior line</th>
-                      <td class="num">64</td><td class="num">10.9</td>
-                      <td class="num">68</td><td class="num">33.8</td>
-                      <td class="num">72</td><td class="num">55.6</td>
-                      <td class="num">+44.7 (32.4–57.0)</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="ed-table-note">
-                  <span>Source: <a href="#" onclick="return false">csr-ab104-201, Table 14.2.4.3</a></span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <aside class="editor-side">
-            <h6>AI review <span class="pill-count" id="flag-count">3</span></h6>
-
-            <!-- Page A flags -->
-            <div class="flag-card ed-flag-a" id="flag-card-2">
-              <span class="tag">Cross-ref missing</span>
-              <div class="msg">Section 5.1.3 referenced but not yet drafted.</div>
-              <div class="ref">→ ib.5.1.3 · not-authored</div>
-              <div class="actions">
-                <button class="flag-btn" onclick="dismissFlag(2)">Draft</button>
-                <button class="flag-btn sec" onclick="dismissFlag(2)">Later</button>
-              </div>
-            </div>
-
-            <div class="flag-card ed-flag-a" id="flag-card-5">
-              <span class="tag">Abbreviation · ICH E3</span>
-              <div class="msg">&ldquo;SAEs&rdquo; used before first definition. Expand on first occurrence: serious adverse events (SAEs).</div>
-              <div class="ref">→ ib · first use · §5.2</div>
-              <div class="actions">
-                <button class="flag-btn" onclick="dismissFlag(5)">Expand</button>
-                <button class="flag-btn sec" onclick="dismissFlag(5)">Ignore</button>
-              </div>
-            </div>
-
-            <div class="flag-card ed-flag-a" id="flag-card-6">
-              <span class="tag">Terminology drift · ICH E2A</span>
-              <div class="msg">&ldquo;Treatment-related AE&rdquo; used here, &ldquo;treatment-emergent AE&rdquo; in §5.3 — distinct ICH E2A definitions.</div>
-              <div class="ref">→ ib · §5.2 ↔ §5.3 · 4 instances</div>
-              <div class="actions">
-                <button class="flag-btn" onclick="dismissFlag(6)">Reconcile</button>
-                <button class="flag-btn sec" onclick="dismissFlag(6)">Ignore</button>
-              </div>
-            </div>
-
-            <!-- Page B flags -->
-            <div class="flag-card ed-flag-b" id="flag-card-3" style="display:none">
-              <span class="tag">Subgroup signal · ICH E9</span>
-              <div class="msg">Response rate in ≥ 65 arm (52.3%) below pooled trend. Consider narrative in §5.4.2.</div>
-              <div class="ref">→ csr-ab104-201 · Table 14.2.4.3</div>
-              <div class="actions">
-                <button class="flag-btn" onclick="dismissFlag(3)">Draft note</button>
-                <button class="flag-btn sec" onclick="dismissFlag(3)">Dismiss</button>
-              </div>
-            </div>
-
-            <div class="flag-card ed-flag-b" id="flag-card-4" style="display:none">
-              <span class="tag">Table structure · OK</span>
-              <div class="msg">2 merged header rows, 3 row-groups, rowspan/colspan validated against ICH E3.</div>
-              <div class="ref">→ acriba.tables · validator</div>
-              <div class="actions">
-                <button class="flag-btn" onclick="dismissFlag(4)">Accept</button>
-                <button class="flag-btn sec" onclick="dismissFlag(4)">Review</button>
-              </div>
-            </div>
-
-            <div style="margin-top:24px">
-              <h6>Source trace</h6>
-              <div class="mono" style="font-size:10.5px;line-height:1.7;color:var(--graphite)" id="ed-trace">
-                · protocol.v2.1 · §4.3<br>
-                · csr-ab104-101 · Table 14.2.1<br>
-                · safety-db · 2026-04-12<br>
-                · ich-e6(r3) · §6.2
-              </div>
-            </div>
-          </aside>
-        </div>
-
-        <!-- Pager -->
-        <div class="ed-pager" role="tablist" aria-label="Editor document pages">
-          <span>View</span>
-          <div class="ed-pager-dots">
-            <button class="ed-page-dot is-active" data-dot="a" role="tab" aria-selected="true">01 · Narrative</button>
-            <button class="ed-page-dot" data-dot="b" role="tab" aria-selected="false">02 · Complex table</button>
-          </div>
-          <span class="ed-pager-spacer"></span>
-          <span id="ed-pager-meta">Page 1 of 2</span>
-        </div>
-      </div>
-
+    <div class="word-feat">
+      <div><div class="t">Faster drafting</div><div class="d">Section-aware AI suggestions that respect regulatory structure.</div></div>
+      <div><div class="t">Regulatory intelligence</div><div class="d">ICH, EMA and FDA guidelines, read in the context of your project.</div></div>
+      <div><div class="t">Source trace</div><div class="d">Every sentence linked to its originating protocol, table or safety record.</div></div>
+      <div><div class="t">Connectors</div><div class="d">PubMed, ClinicalTrials.gov, FDA, EMA, PMDA and your internal corpus.</div></div>
+      <div><div class="t">Privacy &amp; security</div><div class="d">Never used to train AI models. EU-hosted, ISO 27001 compliant, SOC 2 in progress.</div></div>
     </div>
+
+    <p class="standalone-note" style="margin-top:28px"><span class="mark">Note:</span> AcribaWord is also available as a standalone product. <a href="#contact">Enquire about licensing &rarr;</a></p>
+    <a href="#contact" class="btn btn-ghost" style="margin-top:8px">Request a walkthrough <span class="btn-arrow">&rarr;</span></a>
   </div>
 </section>
 
@@ -1549,20 +1243,20 @@
 <section class="block" id="team">
   <div class="wrap">
     <div class="section-head">
-      <div class="section-id">§04 · People</div>
+      <div class="section-id">Expertise</div>
       <div>
-        <span class="eyebrow">Expert review bench</span>
+        <span class="eyebrow">Network of experts</span>
         <h2>Every document is signed off by an expert from our network.</h2>
-        <p class="sub">We work hand-in-hand with CXO Swiss — a network of part-time senior pharmaceutical leaders covering clinical, regulatory, preclinical, CMC and finance. You know who read your dossier and what they approved in it.</p>
+        <p class="sub">We work with experts across most modalities and therapeutic areas. We have a partnership with CXO Swiss, a network of Swiss pharmaceutical leaders across clinical, regulatory, preclinical, CMC and finance.</p>
       </div>
     </div>
 
     <!-- CXO Swiss -->
     <aside class="partner" style="margin-top:0">
       <div>
-        <span class="eyebrow">Our partner</span>
+        <span class="eyebrow">Partner</span>
         <h3>CXO Swiss</h3>
-        <p>A Switzerland-based network of senior pharmaceutical executives — former CMOs, CROs, CSOs and CFOs — available on a part-time, mandate-driven basis.</p>
+        <p>A Switzerland-based network of senior pharmaceutical executives: former CMOs, CROs, CSOs and CFOs.</p>
         <p style="margin-top:18px"><a href="https://cxo.swiss/" target="_blank" rel="noopener" class="link">Visit CXO Swiss ↗</a></p>
       </div>
       <ul>
@@ -1580,11 +1274,11 @@
   <div class="wrap">
     <div class="cta-block">
       <div>
-        <span class="eyebrow">§05 · Get in touch</span>
+        <span class="eyebrow">Get in touch</span>
         <h2>Tell us about your program. </h2>
-        <p>Share the document type, target agency, and where you are in development. We&rsquo;ll come back with a plan, a named reviewer, and a realistic timeline — usually within 48 hours.</p>
+        <a href="mailto:contact@acriba.io" class="btn btn-primary">Get in touch <span class="btn-arrow">→</span></a>
       </div>
-      <a href="mailto:contact@acriba.io" class="btn btn-primary">Get in touch <span class="btn-arrow">→</span></a>
+      
     </div>
   </div>
 </section>
@@ -1595,51 +1289,36 @@
     <div class="foot">
       <div>
         <div class="brand">Acriba</div>
-        <p class="desc">Regulatory writing, clinical development and strategic intelligence for biotechs — produced by senior reviewers, inside proprietary AI tools.</p>
+        <p class="desc">Regulatory writing, clinical development and strategic intelligence for biotechs</p>
       </div>
-      <div>
+      <!-- <div>
         <h5>Services</h5>
         <a href="#services">Regulatory</a>
         <a href="#services">Clinical Development</a>
         <a href="#services">Strategic Intelligence</a>
         <a href="#product">AcribaWord</a>
-      </div>
-      <div>
+      </div> -->
+      <!-- <div>
         <h5>Company</h5>
         <a href="about.html">About</a>
         <a href="#team">Team</a>
         <a href="mailto:contact@acriba.io">contact@acriba.io</a>
-      </div>
-      <div>
+      </div> -->
+      <!-- <div>
         <h5>Legal</h5>
         <a href="#">Privacy</a>
         <a href="#">Terms</a>
         <a href="#">DPA</a>
-      </div>
+      </div> -->
     </div>
     <div class="foot-bar">
       <span>© 2026 Acriba SAS — All rights reserved</span>
-      <span>ACRIBA · ἀκρίβεια · precision</span>
+      <!--<span>ACRIBA · ἀκρίβεια · precision</span> -->
     </div>
   </div>
 </footer>
 
 <script>
-  // ─── Tabs ───
-  const tabs=document.querySelectorAll('.svc-tab');
-  const panels=document.querySelectorAll('.svc-panel');
-  tabs.forEach(t=>t.addEventListener('click',()=>{
-    tabs.forEach(x=>x.setAttribute('aria-selected','false'));
-    panels.forEach(p=>p.classList.remove('active'));
-    t.setAttribute('aria-selected','true');
-    document.getElementById('svc-'+t.dataset.tab).classList.add('active');
-  }));
-
-  // ─── Expandable doc rows ───
-  document.querySelectorAll('.doc-row').forEach(r=>{
-    r.addEventListener('click',()=>r.classList.toggle('open'));
-  });
-
   // ─── Animated stats ───
   function animateNumber(el){
     const target=parseFloat(el.dataset.num);
@@ -1728,7 +1407,6 @@
             '<span class="name">' + doc.name + '</span>' +
             '</div>'
         ).join('');
-        foot.textContent = 'Non-exhaustive';
         panel.classList.remove('is-swapping');
       }, 220);
     }

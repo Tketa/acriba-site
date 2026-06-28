@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AcribaWord — editor mockup (archive)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --indigo:#1A1464;
+      --indigo-dark:#110E42;
+      --indigo-soft:#2A2480;
+      --graphite:#4A4A56;
+      --graphite-light:#6B6B78;
+      --rule:#E2E1E8;
+      --rule-strong:#C8C7D2;
+      --offwhite:#FBFAFF;
+      --cream:#F5F0E6;
+      --white:#FFFFFF;
+      --flag:#C4572B; /* subtle warm accent, only inside editor mockup */
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Inter',system-ui,sans-serif;
+      font-size:16px;
+      line-height:1.55;
+      color:var(--graphite);
+      background:var(--offwhite);
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+    ::selection{background:var(--indigo);color:#fff}
+    h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;color:var(--indigo);letter-spacing:-0.01em;text-wrap:balance}
+    p{text-wrap:pretty}
+    a{color:inherit;text-decoration:none}
+    .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+    .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+    @media (max-width:720px){.wrap{padding:0 20px}}
+    .hr{height:1px;background:var(--rule);border:0;margin:0}
+    .hr-strong{height:1px;background:var(--rule-strong)}
+    .eyebrow{
+      font-family:'JetBrains Mono',monospace;
+      font-size:11px;
+      font-weight:500;
+      color:var(--indigo);
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      display:inline-flex;align-items:center;gap:10px;
+    }
+    .eyebrow::before{content:"";display:inline-block;width:18px;height:1px;background:var(--indigo);opacity:.5}
+
+    /* ─── EDITOR MOCKUP ─── */
+    .editor-wrap{
+      background:var(--white);border:1px solid var(--rule-strong);
+      font-family:'Inter',sans-serif;
+      overflow:hidden;
+      box-shadow:0 1px 0 var(--rule);
+    }
+    .editor-chrome{
+      background:var(--cream);
+      border-bottom:1px solid var(--rule-strong);
+      padding:12px 16px;
+      display:flex;align-items:center;gap:14px;
+      font-family:'JetBrains Mono',monospace;font-size:11px;
+    }
+    .dot{width:8px;height:8px;background:#CFCFD6;display:inline-block}
+    .tab-doc{background:var(--white);padding:6px 12px;color:var(--indigo);font-weight:500;border:1px solid var(--rule-strong);border-bottom-color:var(--white);margin-bottom:-1px;position:relative;z-index:2}
+    .tab-doc .small{color:var(--graphite-light);margin-left:6px}
+    .editor-crumbs{color:var(--graphite-light);flex:1;text-align:right;font-size:10px;letter-spacing:0.05em}
+    .editor-main{display:grid;grid-template-columns:200px minmax(0,1fr) 260px}
+    @media (max-width:1040px){.editor-main{grid-template-columns:180px minmax(0,1fr) 240px}}
+    @media (max-width:860px){.editor-main{grid-template-columns:1fr}}
+    .editor-tree{background:var(--offwhite);border-right:1px solid var(--rule);padding:18px 16px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--graphite)}
+    @media (max-width:900px){.editor-tree{display:none}}
+    .tree-sect{color:var(--graphite-light);letter-spacing:0.08em;text-transform:uppercase;font-size:10px;margin:12px 0 6px}
+    .tree-sect:first-child{margin-top:0}
+    .tree-item{padding:3px 0 3px 12px;color:var(--graphite);cursor:default;border-left:1px solid var(--rule);line-height:1.5}
+    .tree-item.active{color:var(--indigo);font-weight:600;border-left-color:var(--indigo)}
+    .tree-item.flagged::after{content:"●";color:var(--flag);margin-left:6px;font-size:10px}
+
+    .editor-doc{padding:28px 36px;font-size:14px;color:var(--graphite);line-height:1.65;min-height:420px;position:relative}
+    .editor-doc .ed-page{display:none;animation:edFade .28s ease both}
+    .editor-doc .ed-page.is-active{display:block}
+    @keyframes edFade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+    /* Complex multi-level table (rowspan + colspan headers) — regulatory B&W */
+    .ed-table-wrap{margin-top:6px;overflow-x:auto;border:1px solid #111;background:#fff}
+    .ed-table{
+      width:100%;border-collapse:collapse;
+      font-family:'Times New Roman', Times, serif;font-size:11.5px;color:#111;
+      background:#fff;
+    }
+    .ed-table caption{
+      caption-side:top;text-align:left;
+      font-family:'Times New Roman', Times, serif;font-size:11.5px;
+      color:#111;font-weight:700;
+      padding:8px 12px;background:#fff;border-bottom:1px solid #111;
+      letter-spacing:0;text-transform:none;
+    }
+    .ed-table th, .ed-table td{
+      border:1px solid #111;
+      padding:6px 10px;text-align:center;vertical-align:middle;
+      line-height:1.3;
+    }
+    .ed-table thead th{
+      background:#fff;color:#111;
+      font-family:'Times New Roman', Times, serif;font-weight:700;font-size:11.5px;
+      letter-spacing:0;text-transform:none;
+    }
+    .ed-table thead tr:first-child th{
+      background:#fff;color:#111;
+      font-family:'Times New Roman', Times, serif;font-size:11.5px;
+      font-weight:700;letter-spacing:0;text-transform:none;
+      border-bottom:1.5px solid #111;
+    }
+    .ed-table tbody th{
+      background:#fff;color:#111;
+      font-family:'Times New Roman', Times, serif;font-weight:400;font-size:11.5px;
+      text-align:left;padding-left:12px;font-style:italic;
+    }
+    .ed-table tbody tr td{background:#fff}
+    .ed-table td.num{font-variant-numeric:tabular-nums;font-family:'Times New Roman', Times, serif;font-size:11.5px}
+    .ed-table td.group{
+      background:#fff;color:#111;font-family:'Times New Roman', Times, serif;
+      font-weight:700;text-align:left;letter-spacing:0;text-transform:none;
+      padding-left:8px;font-size:11.5px;
+      border-top:1.5px solid #111;border-bottom:1px solid #111;
+    }
+    /* AI overlays — amber highlight, not indigo */
+    .ed-table .flag-cell{
+      position:relative;
+      background:rgba(255,179,0,0.22);
+      outline:1.5px solid var(--flag);outline-offset:-1.5px;
+    }
+    .ed-table .flag-cell::after{
+      content:"";position:absolute;top:-4px;right:-4px;
+      width:8px;height:8px;background:var(--flag);border-radius:50%;
+      box-shadow:0 0 0 2px #fff;
+    }
+    .ed-table .ai-col{
+      background:rgba(26,20,100,0.06) !important;
+    }
+    .ed-table .ai-col-header{
+      background:rgba(26,20,100,0.08) !important;
+      position:relative;
+    }
+    .ed-table-note{
+      font-family:'Times New Roman', Times, serif;font-size:10px;
+      color:#111;letter-spacing:0;
+      padding:6px 10px;background:#fff;border-top:1px solid #111;
+      display:flex;justify-content:space-between;gap:16px;
+      font-style:italic;
+    }
+    .ed-table-note a{
+      color:#0645AD;text-decoration:underline;font-style:normal;
+      font-family:'Times New Roman', Times, serif;
+    }
+    .ed-table-note a:hover{color:#0B0080}
+
+    /* Page dots / tabs under the chrome */
+    .ed-pager{
+      display:flex;align-items:center;gap:14px;
+      padding:10px 16px;border-top:1px solid var(--rule);
+      background:var(--offwhite);
+      font-family:'JetBrains Mono',monospace;font-size:10px;
+      color:var(--graphite-light);letter-spacing:0.06em;text-transform:uppercase;
+    }
+    .ed-pager-dots{display:flex;gap:8px}
+    .ed-page-dot{
+      cursor:pointer;background:transparent;border:0;padding:6px 10px;
+      font-family:'JetBrains Mono',monospace;font-size:10px;
+      color:var(--graphite-light);letter-spacing:0.06em;text-transform:uppercase;
+      border:1px solid var(--rule);background:var(--white);
+      transition:background .15s, color .15s, border-color .15s;
+    }
+    .ed-page-dot:hover{border-color:var(--rule-strong);color:var(--indigo)}
+    .ed-page-dot.is-active{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+    .ed-pager-spacer{flex:1}
+    .editor-doc h5{font-family:'Space Grotesk',sans-serif;color:var(--indigo);font-size:16px;font-weight:600;margin-bottom:6px;letter-spacing:-0.01em}
+    .editor-doc .sect-id{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--graphite-light);letter-spacing:0.08em;margin-bottom:14px;display:block}
+    .editor-doc p{margin-bottom:10px;font-size:13.5px}
+    .editor-doc .blink{
+      background:rgba(26,20,100,.08);padding:1px 2px;
+      border-bottom:1px solid var(--indigo);
+      animation:typebg 1.6s ease-in-out infinite;
+    }
+    @keyframes typebg{0%,100%{background:rgba(26,20,100,.08)}50%{background:rgba(26,20,100,.16)}}
+    .cursor{display:inline-block;width:2px;height:1em;background:var(--indigo);animation:blink 1s steps(1) infinite;vertical-align:-0.15em;margin-left:1px}
+    @keyframes blink{50%{opacity:0}}
+    .flag-underline{
+      border-bottom:1.5px dashed var(--flag);cursor:help;
+      position:relative;
+    }
+
+    .editor-side{background:var(--offwhite);border-left:1px solid var(--rule);padding:18px 18px}
+    @media (max-width:900px){.editor-side{border-left:0;border-top:1px solid var(--rule)}}
+    .flag-card{
+      background:#fff;border:1px solid var(--rule-strong);
+      border-left:2px solid var(--flag);
+      padding:12px 14px;margin-bottom:10px;
+      transform-origin:top right;
+      animation:slideIn .5s ease;
+    }
+    @keyframes slideIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+    .flag-card .tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--flag);letter-spacing:0.1em;text-transform:uppercase;font-weight:600;margin-bottom:6px;display:block}
+    .flag-card .msg{font-size:12px;color:var(--indigo);font-family:'Space Grotesk',sans-serif;font-weight:500;margin-bottom:4px;line-height:1.35}
+    .flag-card .ref{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--graphite-light)}
+    .flag-card .actions{display:flex;gap:6px;margin-top:10px}
+    .flag-btn{font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;background:var(--indigo);color:#fff;border:0;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer}
+    .flag-btn.sec{background:transparent;color:var(--graphite);border:1px solid var(--rule-strong)}
+    .editor-side h6{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--graphite-light);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+    .pill-count{background:var(--indigo);color:#fff;padding:1px 6px;font-weight:600;font-size:10px}
+
+    body{padding:56px 24px;background:var(--offwhite)}
+    .mockup-wrap{max-width:1120px;margin:0 auto}
+    .arch-note{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--graphite-light);
+      letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px}
+  </style>
+</head>
+<body>
+  <div class="mockup-wrap">
+    <p class="arch-note">AcribaWord editor mockup · archived from the landing page (kept for reuse)</p>
+      <!-- Editor -->
+      <div class="editor-wrap" aria-label="AcribaWord editor mockup" id="editor">
+        <div class="editor-chrome">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="tab-doc">IB_PhII_oncology_v3.acw<span class="small">· draft</span></span>
+          <span class="editor-crumbs">ACRIBAWORD · /programs/AB-104/IB/v3</span>
+        </div>
+        <div class="editor-main">
+          <aside class="editor-tree">
+            <div class="tree-sect">Module 1</div>
+            <div class="tree-item">1.1 Cover letter</div>
+            <div class="tree-item">1.2 Application form</div>
+            <div class="tree-sect">Module 2</div>
+            <div class="tree-item">2.4 Nonclinical overview</div>
+            <div class="tree-item flagged">2.5 Clinical overview</div>
+            <div class="tree-item">2.7 Clinical summary</div>
+            <div class="tree-sect">Investigator&rsquo;s Brochure</div>
+            <div class="tree-item">IB 1. Summary</div>
+            <div class="tree-item flagged">IB 2. Introduction</div>
+            <div class="tree-item active">IB 5. Effects in humans</div>
+            <div class="tree-item">IB 6. Summary &amp; guidance</div>
+          </aside>
+
+          <div class="editor-doc" id="ed-doc">
+            <!-- Page A · Narrative -->
+            <div class="ed-page is-active" data-page="a">
+              <span class="sect-id">IB 5 · EFFECTS IN HUMANS · 5.2 PHARMACODYNAMICS</span>
+              <h5>5.2 Pharmacodynamics</h5>
+              <p>In the Phase&nbsp;Ib dose-escalation study (AB-104-101), ABX-104 administered at 120&nbsp;mg QD produced a dose-dependent reduction in serum biomarker&nbsp;X of 58% (90% CI: 44–69) versus baseline at Week&nbsp;8.</p>
+              <p>Pharmacodynamic responses in the 60&nbsp;mg and 90&nbsp;mg cohorts were consistent with the exposure–response model fitted to Phase&nbsp;I data (Section&nbsp;<span class="flag-underline" data-flag="2">5.1.3</span>), supporting the rationale for the recommended Phase&nbsp;II dose.</p>
+              <p>Two <span class="flag-underline" data-flag="5">SAEs</span> were reported in the 120&nbsp;mg cohort and were classified as <span class="flag-underline" data-flag="6">treatment-related adverse events</span>; both resolved without sequelae.</p>
+              <p id="typing-line">Across all evaluable subjects, the onset of pharmacodynamic effect was observed within <span class="blink" id="type-target">72 hours of first dose</span><span class="cursor"></span></p>
+            </div>
+
+            <!-- Page B · Complex table with rowspan + colspan -->
+            <div class="ed-page" data-page="b">
+              <span class="sect-id">IB 5 · EFFECTS IN HUMANS · 5.4 EFFICACY BY SUBGROUP</span>
+              <h5>Table 5.4-1 · Efficacy by baseline subgroup (ITT population)</h5>
+              <div class="ed-table-wrap">
+                <table class="ed-table">
+                  <caption>Study AB-104-201 · Week 24 · ITT (N = 412)</caption>
+                  <thead>
+                    <tr>
+                      <th rowspan="3">Subgroup</th>
+                      <th colspan="6">Treatment arm</th>
+                      <th rowspan="3">Δ vs placebo<br>(95% CI)</th>
+                    </tr>
+                    <tr>
+                      <th colspan="2">Placebo</th>
+                      <th colspan="2">ABX-104 60 mg</th>
+                      <th colspan="2">ABX-104 120 mg</th>
+                    </tr>
+                    <tr>
+                      <th>n</th><th>Resp. %</th>
+                      <th>n</th><th>Resp. %</th>
+                      <th>n</th><th>Resp. %</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="group" colspan="8">Age, years</td></tr>
+                    <tr>
+                      <th>&lt; 40</th>
+                      <td class="num">34</td><td class="num">14.7</td>
+                      <td class="num">36</td><td class="num">41.7</td>
+                      <td class="num">38</td><td class="num">63.2</td>
+                      <td class="num">+48.5 (33.2–63.8)</td>
+                    </tr>
+                    <tr>
+                      <th>40 – 64</th>
+                      <td class="num">52</td><td class="num">13.5</td>
+                      <td class="num">54</td><td class="num">38.9</td>
+                      <td class="num">56</td><td class="num">60.7</td>
+                      <td class="num">+47.2 (34.6–59.8)</td>
+                    </tr>
+                    <tr>
+                      <th>≥ 65</th>
+                      <td class="num">40</td><td class="num">12.5</td>
+                      <td class="num">42</td><td class="num">35.7</td>
+                      <td class="num">44</td><td class="num flag-cell" data-flag="3">52.3</td>
+                      <td class="num">+39.8 (26.1–53.5)</td>
+                    </tr>
+
+                    <tr><td class="group" colspan="8">Baseline severity (score)</td></tr>
+                    <tr>
+                      <th>Mild (6 – 10)</th>
+                      <td class="num">28</td><td class="num">21.4</td>
+                      <td class="num">30</td><td class="num">46.7</td>
+                      <td class="num">32</td><td class="num">68.8</td>
+                      <td class="num">+47.4 (30.8–63.9)</td>
+                    </tr>
+                    <tr>
+                      <th>Moderate (11 – 15)</th>
+                      <td class="num">54</td><td class="num">13.0</td>
+                      <td class="num">56</td><td class="num">39.3</td>
+                      <td class="num">58</td><td class="num">62.1</td>
+                      <td class="num">+49.1 (36.4–61.8)</td>
+                    </tr>
+                    <tr>
+                      <th>Severe (≥ 16)</th>
+                      <td class="num">44</td><td class="num">9.1</td>
+                      <td class="num">46</td><td class="num">32.6</td>
+                      <td class="num">48</td><td class="num">54.2</td>
+                      <td class="num">+45.1 (31.2–59.0)</td>
+                    </tr>
+
+                    <tr><td class="group" colspan="8">Prior therapy</td></tr>
+                    <tr>
+                      <th>Naïve</th>
+                      <td class="num">62</td><td class="num">16.1</td>
+                      <td class="num">64</td><td class="num">43.8</td>
+                      <td class="num">66</td><td class="num">65.2</td>
+                      <td class="num">+49.1 (37.2–61.0)</td>
+                    </tr>
+                    <tr>
+                      <th>≥ 1 prior line</th>
+                      <td class="num">64</td><td class="num">10.9</td>
+                      <td class="num">68</td><td class="num">33.8</td>
+                      <td class="num">72</td><td class="num">55.6</td>
+                      <td class="num">+44.7 (32.4–57.0)</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="ed-table-note">
+                  <span>Source: <a href="#" onclick="return false">csr-ab104-201, Table 14.2.4.3</a></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="editor-side">
+            <h6>AI review <span class="pill-count" id="flag-count">3</span></h6>
+
+            <!-- Page A flags -->
+            <div class="flag-card ed-flag-a" id="flag-card-2">
+              <span class="tag">Cross-ref missing</span>
+              <div class="msg">Section 5.1.3 referenced but not yet drafted.</div>
+              <div class="ref">→ ib.5.1.3 · not-authored</div>
+              <div class="actions">
+                <button class="flag-btn" onclick="dismissFlag(2)">Draft</button>
+                <button class="flag-btn sec" onclick="dismissFlag(2)">Later</button>
+              </div>
+            </div>
+
+            <div class="flag-card ed-flag-a" id="flag-card-5">
+              <span class="tag">Abbreviation · ICH E3</span>
+              <div class="msg">&ldquo;SAEs&rdquo; used before first definition. Expand on first occurrence: serious adverse events (SAEs).</div>
+              <div class="ref">→ ib · first use · §5.2</div>
+              <div class="actions">
+                <button class="flag-btn" onclick="dismissFlag(5)">Expand</button>
+                <button class="flag-btn sec" onclick="dismissFlag(5)">Ignore</button>
+              </div>
+            </div>
+
+            <div class="flag-card ed-flag-a" id="flag-card-6">
+              <span class="tag">Terminology drift · ICH E2A</span>
+              <div class="msg">&ldquo;Treatment-related AE&rdquo; used here, &ldquo;treatment-emergent AE&rdquo; in §5.3 — distinct ICH E2A definitions.</div>
+              <div class="ref">→ ib · §5.2 ↔ §5.3 · 4 instances</div>
+              <div class="actions">
+                <button class="flag-btn" onclick="dismissFlag(6)">Reconcile</button>
+                <button class="flag-btn sec" onclick="dismissFlag(6)">Ignore</button>
+              </div>
+            </div>
+
+            <!-- Page B flags -->
+            <div class="flag-card ed-flag-b" id="flag-card-3" style="display:none">
+              <span class="tag">Subgroup signal · ICH E9</span>
+              <div class="msg">Response rate in ≥ 65 arm (52.3%) below pooled trend. Consider narrative in §5.4.2.</div>
+              <div class="ref">→ csr-ab104-201 · Table 14.2.4.3</div>
+              <div class="actions">
+                <button class="flag-btn" onclick="dismissFlag(3)">Draft note</button>
+                <button class="flag-btn sec" onclick="dismissFlag(3)">Dismiss</button>
+              </div>
+            </div>
+
+            <div class="flag-card ed-flag-b" id="flag-card-4" style="display:none">
+              <span class="tag">Table structure · OK</span>
+              <div class="msg">2 merged header rows, 3 row-groups, rowspan/colspan validated against ICH E3.</div>
+              <div class="ref">→ acriba.tables · validator</div>
+              <div class="actions">
+                <button class="flag-btn" onclick="dismissFlag(4)">Accept</button>
+                <button class="flag-btn sec" onclick="dismissFlag(4)">Review</button>
+              </div>
+            </div>
+
+            <div style="margin-top:24px">
+              <h6>Source trace</h6>
+              <div class="mono" style="font-size:10.5px;line-height:1.7;color:var(--graphite)" id="ed-trace">
+                · protocol.v2.1 · §4.3<br>
+                · csr-ab104-101 · Table 14.2.1<br>
+                · safety-db · 2026-04-12<br>
+                · ich-e6(r3) · §6.2
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Pager -->
+        <div class="ed-pager" role="tablist" aria-label="Editor document pages">
+          <span>View</span>
+          <div class="ed-pager-dots">
+            <button class="ed-page-dot is-active" data-dot="a" role="tab" aria-selected="true">01 · Narrative</button>
+            <button class="ed-page-dot" data-dot="b" role="tab" aria-selected="false">02 · Complex table</button>
+          </div>
+          <span class="ed-pager-spacer"></span>
+          <span id="ed-pager-meta">Page 1 of 2</span>
+        </div>
+      </div>
+  </div>
+  <script>
+  // ─── Typing demo inside editor ───
+  const typingEl=document.getElementById('type-target');
+  const typingPhrases=[
+    '72 hours of first dose',
+    '72 hours of first dose and sustained through Week 4',
+    '72 hours of first dose and was sustained through Week 4 (Fig. 5.2-1)'
+  ];
+  let typIdx=0;
+  function cycleTyping(){
+    if(!typingEl) return;
+    typIdx=(typIdx+1)%typingPhrases.length;
+    typingEl.style.opacity=0;
+    setTimeout(()=>{
+      typingEl.textContent=typingPhrases[typIdx];
+      typingEl.style.transition='opacity .25s';
+      typingEl.style.opacity=1;
+    },180);
+  }
+  setInterval(cycleTyping,3000);
+
+  // ─── Flag dismiss (demo only, re-appears after 4s) ───
+  function dismissFlag(n){
+    const card=document.getElementById('flag-card-'+n);
+    if(!card) return;
+    card.style.transition='opacity .25s, transform .25s';
+    card.style.opacity=0;
+    card.style.transform='translateX(20px)';
+    setTimeout(()=>{
+      card.style.opacity=1;card.style.transform='translateX(0)';
+    },4000);
+  }
+  window.dismissFlag=dismissFlag;
+
+  // ─── Editor page carousel (Narrative ↔ Complex table) ───
+  (function(){
+    const dots  = document.querySelectorAll('.ed-page-dot');
+    const pages = document.querySelectorAll('.editor-doc .ed-page');
+    const flagsA = document.querySelectorAll('.ed-flag-a');
+    const flagsB = document.querySelectorAll('.ed-flag-b');
+    const count = document.getElementById('flag-count');
+    const meta  = document.getElementById('ed-pager-meta');
+    const trace = document.getElementById('ed-trace');
+    if(!dots.length || !pages.length) return;
+
+    const traces = {
+      a: '· protocol.v2.1 · §4.3<br>· csr-ab104-101 · Table 14.2.1<br>· safety-db · 2026-04-12<br>· ich-e6(r3) · §6.2',
+      b: '· csr-ab104-201 · Table 14.2.4.3<br>· sap.v1.3 · §5.4 subgroup<br>· ich-e3 · §11.4.2<br>· ich-e9 · §5.7'
+    };
+
+    function go(key){
+      pages.forEach(p => p.classList.toggle('is-active', p.dataset.page === key));
+      dots.forEach(d => {
+        const on = d.dataset.dot === key;
+        d.classList.toggle('is-active', on);
+        d.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      flagsA.forEach(f => f.style.display = key === 'a' ? '' : 'none');
+      flagsB.forEach(f => f.style.display = key === 'b' ? '' : 'none');
+      if(count) count.textContent = key === 'a' ? '3' : '2';
+      if(trace) trace.innerHTML = traces[key];
+      if(meta){
+        meta.textContent = key === 'a'
+          ? 'Page 1 of 2'
+          : 'Page 2 of 2 · 2 merged header rows · rowspan/colspan OK';
+      }
+    }
+
+    dots.forEach(d => d.addEventListener('click', ()=>{
+      stopAuto();
+      go(d.dataset.dot);
+    }));
+
+    // gentle auto-advance; stops on first user interaction
+    let active = 'a';
+    let auto = setInterval(()=>{
+      active = active === 'a' ? 'b' : 'a';
+      go(active);
+    }, 6500);
+    function stopAuto(){ if(auto){ clearInterval(auto); auto = null; } }
+  })();
+  </script>
+</body>
+</html>
